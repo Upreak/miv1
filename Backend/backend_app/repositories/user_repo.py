@@ -1,203 +1,135 @@
-from sqlalchemy.orm import Session
-from typing import Optional, List
-from ..models.users import User
+"""
+User Repository
+Handles database operations for User model.
+"""
 from datetime import datetime
-import logging
+from typing import Optional, List
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select, update
+from sqlalchemy.exc import IntegrityError
 
-logger = logging.getLogger(__name__)
+from backend_app.db.connection import Base
+from backend_app.models.users import User
+
 
 class UserRepository:
-    def __init__(self, db: Session):
+    """Repository for User model operations"""
+    
+    def __init__(self, db: AsyncSession):
         self.db = db
     
-    def get_by_id(self, user_id: str) -> Optional[User]:
+    async def get_by_id(self, user_id: str) -> Optional[User]:
         """Get user by ID"""
         try:
-            return self.db.query(User).filter(User.id == user_id).first()
-        except Exception as e:
-            logger.error(f"Error getting user by ID {user_id}: {str(e)}")
-            return None
-    
-    def get_by_phone(self, phone: str) -> Optional[User]:
-        """Get user by phone number"""
-        try:
-            return self.db.query(User).filter(User.phone == phone).first()
-        except Exception as e:
-            logger.error(f"Error getting user by phone {phone}: {str(e)}")
-            return None
-    
-    def get_by_whatsapp(self, whatsapp_number: str) -> Optional[User]:
-        """Get user by WhatsApp number"""
-        try:
-            return self.db.query(User).filter(User.whatsapp_number == whatsapp_number).first()
-        except Exception as e:
-            logger.error(f"Error getting user by WhatsApp {whatsapp_number}: {str(e)}")
-            return None
-    
-    def get_by_telegram(self, telegram_id: str) -> Optional[User]:
-        """Get user by Telegram ID"""
-        try:
-            return self.db.query(User).filter(User.telegram_id == telegram_id).first()
-        except Exception as e:
-            logger.error(f"Error getting user by Telegram ID {telegram_id}: {str(e)}")
-            return None
-    
-    def get_by_phone_or_create(self, phone: str, role: str = "CANDIDATE") -> User:
-        """Get user by phone or create new user"""
-        try:
-            user = self.get_by_phone(phone)
-            if user:
-                return user
-            
-            # Create new user
-            user = User(
-                phone=phone,
-                role=role,
-                is_verified=False,
-                status="Active"
+            result = await self.db.execute(
+                select(User).where(User.id == user_id)
             )
-            
-            self.db.add(user)
-            self.db.commit()
-            self.db.refresh(user)
-            
-            logger.info(f"Created new user with phone {phone}")
-            return user
-            
-        except Exception as e:
-            logger.error(f"Error getting or creating user with phone {phone}: {str(e)}")
-            self.db.rollback()
-            raise
+            return result.scalar_one_or_none()
+        except Exception:
+            return None
     
-    def get_by_telegram_or_create(self, telegram_id: str, role: str = "CANDIDATE") -> User:
-        """Get user by Telegram ID or create new user"""
+    async def get_by_email(self, email: str) -> Optional[User]:
+        """Get user by email"""
         try:
-            user = self.get_by_telegram(telegram_id)
-            if user:
-                return user
-            
-            # Create new user with Telegram ID
-            user = User(
-                telegram_id=telegram_id,
-                role=role,
-                is_verified=True,  # Telegram users are automatically verified
-                status="Active"
+            result = await self.db.execute(
+                select(User).where(User.email == email)
             )
-            
+            return result.scalar_one_or_none()
+        except Exception:
+            return None
+    
+    async def create(self, user_data: dict) -> User:
+        """Create a new user"""
+        try:
+            user = User(**user_data)
             self.db.add(user)
-            self.db.commit()
-            self.db.refresh(user)
-            
-            logger.info(f"Created new user with Telegram ID {telegram_id}")
+            await self.db.commit()
+            await self.db.refresh(user)
             return user
-            
-        except Exception as e:
-            logger.error(f"Error getting or creating user with Telegram ID {telegram_id}: {str(e)}")
-            self.db.rollback()
+        except IntegrityError:
+            await self.db.rollback()
             raise
-    
-    def get_by_whatsapp_or_create(self, whatsapp_number: str, role: str = "CANDIDATE") -> User:
-        """Get user by WhatsApp number or create new user"""
-        try:
-            user = self.get_by_whatsapp(whatsapp_number)
-            if user:
-                return user
-            
-            # Create new user with WhatsApp number
-            user = User(
-                whatsapp_number=whatsapp_number,
-                role=role,
-                is_verified=True,  # WhatsApp users are automatically verified
-                status="Active"
-            )
-            
-            self.db.add(user)
-            self.db.commit()
-            self.db.refresh(user)
-            
-            logger.info(f"Created new user with WhatsApp number {whatsapp_number}")
-            return user
-            
         except Exception as e:
-            logger.error(f"Error getting or creating user with WhatsApp number {whatsapp_number}: {str(e)}")
-            self.db.rollback()
-            raise
+            await self.db.rollback()
+            raise e
     
-    def save(self, user: User) -> User:
-        """Save user to database"""
-        try:
-            self.db.add(user)
-            self.db.commit()
-            self.db.refresh(user)
-            return user
-        except Exception as e:
-            logger.error(f"Error saving user {user.id}: {str(e)}")
-            self.db.rollback()
-            raise
-    
-    def update(self, user: User) -> User:
-        """Update user in database"""
-        try:
-            self.db.commit()
-            self.db.refresh(user)
-            return user
-        except Exception as e:
-            logger.error(f"Error updating user {user.id}: {str(e)}")
-            self.db.rollback()
-            raise
-    
-    def set_verified(self, user: User) -> User:
-        """Mark user as verified"""
-        try:
-            user.is_verified = True
-            user.mark_verified()
-            return self.update(user)
-        except Exception as e:
-            logger.error(f"Error setting user {user.id} as verified: {str(e)}")
-            raise
-    
-    def update_last_login(self, user: User) -> User:
+    async def update_last_login(self, user_id: str) -> bool:
         """Update user's last login timestamp"""
         try:
-            user.update_last_login()
-            return self.update(user)
-        except Exception as e:
-            logger.error(f"Error updating last login for user {user.id}: {str(e)}")
-            raise
+            await self.db.execute(
+                update(User)
+                .where(User.id == user_id)
+                .values(last_login=datetime.utcnow())
+            )
+            await self.db.commit()
+            return True
+        except Exception:
+            await self.db.rollback()
+            return False
     
-    def update_last_active(self, user: User) -> User:
+    async def update_last_active(self, user_id: str) -> bool:
         """Update user's last active timestamp"""
         try:
-            user.update_last_active()
-            return self.update(user)
-        except Exception as e:
-            logger.error(f"Error updating last active for user {user.id}: {str(e)}")
-            raise
+            await self.db.execute(
+                update(User)
+                .where(User.id == user_id)
+                .values(last_active=datetime.utcnow())
+            )
+            await self.db.commit()
+            return True
+        except Exception:
+            await self.db.rollback()
+            return False
     
-    def get_all_users(self, skip: int = 0, limit: int = 100) -> List[User]:
+    async def update_status(self, user_id: str, status: str) -> bool:
+        """Update user status"""
+        try:
+            await self.db.execute(
+                update(User)
+                .where(User.id == user_id)
+                .values(status=status)
+            )
+            await self.db.commit()
+            return True
+        except Exception:
+            await self.db.rollback()
+            return False
+    
+    async def update_verification_status(self, user_id: str, is_verified: bool) -> bool:
+        """Update user verification status"""
+        try:
+            await self.db.execute(
+                update(User)
+                .where(User.id == user_id)
+                .values(is_verified=is_verified)
+            )
+            await self.db.commit()
+            return True
+        except Exception:
+            await self.db.rollback()
+            return False
+    
+    async def get_all_users(self, skip: int = 0, limit: int = 100) -> List[User]:
         """Get all users with pagination"""
         try:
-            return self.db.query(User).offset(skip).limit(limit).all()
-        except Exception as e:
-            logger.error(f"Error getting all users: {str(e)}")
+            result = await self.db.execute(
+                select(User)
+                .offset(skip)
+                .limit(limit)
+            )
+            return result.scalars().all()
+        except Exception:
             return []
     
-    def get_active_users(self) -> List[User]:
-        """Get all active users"""
+    async def delete_user(self, user_id: str) -> bool:
+        """Delete user by ID"""
         try:
-            return self.db.query(User).filter(User.status == "Active").all()
-        except Exception as e:
-            logger.error(f"Error getting active users: {str(e)}")
-            return []
-    
-    def delete_user(self, user: User) -> bool:
-        """Delete user from database"""
-        try:
-            self.db.delete(user)
-            self.db.commit()
-            logger.info(f"Deleted user {user.id}")
-            return True
-        except Exception as e:
-            logger.error(f"Error deleting user {user.id}: {str(e)}")
-            self.db.rollback()
+            user = await self.get_by_id(user_id)
+            if user:
+                await self.db.delete(user)
+                await self.db.commit()
+                return True
+            return False
+        except Exception:
+            await self.db.rollback()
             return False
