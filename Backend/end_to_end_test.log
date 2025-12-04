@@ -1,0 +1,263 @@
+2025-11-30 15:29:36,092 - __main__ - INFO - Starting End-to-End Resume Processing Pipeline Test
+2025-11-30 15:29:36,092 - __main__ - INFO - ============================================================
+2025-11-30 15:29:36,093 - __main__ - INFO - Created directory: text_extract
+2025-11-30 15:29:36,095 - __main__ - INFO - Created directory: llm_responses
+2025-11-30 15:29:36,096 - __main__ - INFO - Created directory: logs
+2025-11-30 15:29:36,096 - __main__ - INFO - ============================================================
+2025-11-30 15:29:36,097 - __main__ - INFO - STEP 1: TESTING TEXT EXTRACTION
+2025-11-30 15:29:36,097 - __main__ - INFO - ============================================================
+2025-11-30 15:29:40,212 - __main__ - INFO - Found 6 resume files:
+2025-11-30 15:29:40,213 - __main__ - INFO -   - C:\Users\maheshpattar\Desktop\test2\Resumes\Anushya - Updated (1).pdf
+2025-11-30 15:29:40,213 - __main__ - INFO -   - C:\Users\maheshpattar\Desktop\test2\Resumes\Arijita Ghosh_Resume.pdf
+2025-11-30 15:29:40,213 - __main__ - INFO -   - C:\Users\maheshpattar\Desktop\test2\Resumes\ARUN.pdf
+2025-11-30 15:29:40,213 - __main__ - INFO -   - C:\Users\maheshpattar\Desktop\test2\Resumes\ARYA 1234 (1).pdf
+2025-11-30 15:29:40,213 - __main__ - INFO -   - C:\Users\maheshpattar\Desktop\test2\Resumes\Ashwin_Kumar.pdf
+2025-11-30 15:29:40,213 - __main__ - INFO -   - C:\Users\maheshpattar\Desktop\test2\Resumes\Bhavika HR1.docx
+2025-11-30 15:29:40,214 - __main__ - INFO - 
+Processing: Anushya - Updated (1).pdf
+2025-11-30 15:29:40,493 - backend_app.text_extraction.consolidated_extractor - INFO - Attempt 1: Unstructured (primary) via final_97_percent_extractor
+2025-11-30 15:29:40,494 - backend_app.text_extraction.consolidated_extractor - ERROR - Unstructured primary raised exception
+Traceback (most recent call last):
+  File "c:\Users\maheshpattar\Desktop\test2\Backend\backend_app\text_extraction\consolidated_extractor.py", line 301, in extract_with_logging
+    text = extractor97.extract_text_from_file(file_path, conf, mode="local")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'backend_app.text_extraction.final_97_percent_extractor' has no attribute 'extract_text_from_file'
+2025-11-30 15:29:40,496 - backend_app.text_extraction.consolidated_extractor - INFO - Attempt 2: Unstructured alternate / inference path
+2025-11-30 15:29:40,499 - backend_app.text_extraction.consolidated_extractor - INFO - Unstructured alternate quality score: 0.0
+2025-11-30 15:29:40,499 - backend_app.text_extraction.consolidated_extractor - INFO - Unstructured alternate failed or low quality.
+2025-11-30 15:29:40,499 - backend_app.text_extraction.consolidated_extractor - INFO - Attempt 4: PyPDF2 fallback
+2025-11-30 15:29:40,742 - backend_app.text_extraction.consolidated_extractor - INFO - PyPDF2 quality score: 95.0
+2025-11-30 15:29:40,768 - __main__ - INFO -   Quality score: 95.0
+2025-11-30 15:29:40,768 - __main__ - INFO -   Text length: 4872
+2025-11-30 15:29:40,773 - __main__ - INFO - 
+Processing: Arijita Ghosh_Resume.pdf
+2025-11-30 15:29:40,795 - backend_app.text_extraction.consolidated_extractor - INFO - Attempt 1: Unstructured (primary) via final_97_percent_extractor
+2025-11-30 15:29:40,795 - backend_app.text_extraction.consolidated_extractor - ERROR - Unstructured primary raised exception
+Traceback (most recent call last):
+  File "c:\Users\maheshpattar\Desktop\test2\Backend\backend_app\text_extraction\consolidated_extractor.py", line 301, in extract_with_logging
+    text = extractor97.extract_text_from_file(file_path, conf, mode="local")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'backend_app.text_extraction.final_97_percent_extractor' has no attribute 'extract_text_from_file'
+2025-11-30 15:29:40,796 - backend_app.text_extraction.consolidated_extractor - INFO - Attempt 2: Unstructured alternate / inference path
+2025-11-30 15:29:40,800 - backend_app.text_extraction.consolidated_extractor - INFO - Unstructured alternate quality score: 0.0
+2025-11-30 15:29:40,800 - backend_app.text_extraction.consolidated_extractor - INFO - Unstructured alternate failed or low quality.
+2025-11-30 15:29:40,800 - backend_app.text_extraction.consolidated_extractor - INFO - Attempt 4: PyPDF2 fallback
+2025-11-30 15:29:40,827 - backend_app.text_extraction.consolidated_extractor - INFO - PyPDF2 quality score: 89.8
+2025-11-30 15:29:40,852 - __main__ - INFO -   Quality score: 89.8
+2025-11-30 15:29:40,852 - __main__ - INFO -   Text length: 1500
+2025-11-30 15:29:40,856 - __main__ - INFO - 
+Processing: ARUN.pdf
+2025-11-30 15:29:40,876 - backend_app.text_extraction.consolidated_extractor - INFO - Attempt 1: Unstructured (primary) via final_97_percent_extractor
+2025-11-30 15:29:40,876 - backend_app.text_extraction.consolidated_extractor - ERROR - Unstructured primary raised exception
+Traceback (most recent call last):
+  File "c:\Users\maheshpattar\Desktop\test2\Backend\backend_app\text_extraction\consolidated_extractor.py", line 301, in extract_with_logging
+    text = extractor97.extract_text_from_file(file_path, conf, mode="local")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'backend_app.text_extraction.final_97_percent_extractor' has no attribute 'extract_text_from_file'
+2025-11-30 15:29:40,877 - backend_app.text_extraction.consolidated_extractor - INFO - Attempt 2: Unstructured alternate / inference path
+2025-11-30 15:29:40,878 - backend_app.text_extraction.consolidated_extractor - INFO - Unstructured alternate quality score: 0.0
+2025-11-30 15:29:40,878 - backend_app.text_extraction.consolidated_extractor - INFO - Unstructured alternate failed or low quality.
+2025-11-30 15:29:40,878 - backend_app.text_extraction.consolidated_extractor - INFO - Attempt 4: PyPDF2 fallback
+2025-11-30 15:29:40,980 - backend_app.text_extraction.consolidated_extractor - INFO - PyPDF2 quality score: 95.0
+2025-11-30 15:29:41,133 - __main__ - INFO -   Quality score: 95.0
+2025-11-30 15:29:41,134 - __main__ - INFO -   Text length: 2201
+2025-11-30 15:29:41,153 - __main__ - INFO - 
+Processing: ARYA 1234 (1).pdf
+2025-11-30 15:29:41,175 - backend_app.text_extraction.consolidated_extractor - INFO - Attempt 1: Unstructured (primary) via final_97_percent_extractor
+2025-11-30 15:29:41,175 - backend_app.text_extraction.consolidated_extractor - ERROR - Unstructured primary raised exception
+Traceback (most recent call last):
+  File "c:\Users\maheshpattar\Desktop\test2\Backend\backend_app\text_extraction\consolidated_extractor.py", line 301, in extract_with_logging
+    text = extractor97.extract_text_from_file(file_path, conf, mode="local")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'backend_app.text_extraction.final_97_percent_extractor' has no attribute 'extract_text_from_file'
+2025-11-30 15:29:41,176 - backend_app.text_extraction.consolidated_extractor - INFO - Attempt 2: Unstructured alternate / inference path
+2025-11-30 15:29:41,180 - backend_app.text_extraction.consolidated_extractor - INFO - Unstructured alternate quality score: 0.0
+2025-11-30 15:29:41,180 - backend_app.text_extraction.consolidated_extractor - INFO - Unstructured alternate failed or low quality.
+2025-11-30 15:29:41,180 - backend_app.text_extraction.consolidated_extractor - INFO - Attempt 4: PyPDF2 fallback
+2025-11-30 15:29:41,334 - backend_app.text_extraction.consolidated_extractor - INFO - PyPDF2 quality score: 95.0
+2025-11-30 15:29:41,359 - __main__ - INFO -   Quality score: 95.0
+2025-11-30 15:29:41,359 - __main__ - INFO -   Text length: 3222
+2025-11-30 15:29:41,364 - __main__ - INFO - 
+Processing: Ashwin_Kumar.pdf
+2025-11-30 15:29:41,383 - PyPDF2._reader - WARNING - incorrect startxref pointer(3)
+2025-11-30 15:29:41,390 - backend_app.text_extraction.consolidated_extractor - INFO - Attempt 1: Unstructured (primary) via final_97_percent_extractor
+2025-11-30 15:29:41,390 - backend_app.text_extraction.consolidated_extractor - ERROR - Unstructured primary raised exception
+Traceback (most recent call last):
+  File "c:\Users\maheshpattar\Desktop\test2\Backend\backend_app\text_extraction\consolidated_extractor.py", line 301, in extract_with_logging
+    text = extractor97.extract_text_from_file(file_path, conf, mode="local")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'backend_app.text_extraction.final_97_percent_extractor' has no attribute 'extract_text_from_file'
+2025-11-30 15:29:41,391 - backend_app.text_extraction.consolidated_extractor - INFO - Attempt 2: Unstructured alternate / inference path
+2025-11-30 15:29:41,392 - PyPDF2._reader - WARNING - incorrect startxref pointer(3)
+2025-11-30 15:29:41,397 - backend_app.text_extraction.consolidated_extractor - INFO - Unstructured alternate quality score: 0.0
+2025-11-30 15:29:41,397 - backend_app.text_extraction.consolidated_extractor - INFO - Unstructured alternate failed or low quality.
+2025-11-30 15:29:41,397 - backend_app.text_extraction.consolidated_extractor - INFO - Attempt 4: PyPDF2 fallback
+2025-11-30 15:29:41,398 - PyPDF2._reader - WARNING - incorrect startxref pointer(3)
+2025-11-30 15:29:41,532 - PyPDF2._reader - WARNING - incorrect startxref pointer(3)
+2025-11-30 15:29:41,537 - backend_app.text_extraction.consolidated_extractor - INFO - PyPDF2 quality score: 95.0
+2025-11-30 15:29:41,540 - PyPDF2._reader - WARNING - incorrect startxref pointer(3)
+2025-11-30 15:29:41,612 - __main__ - INFO -   Quality score: 95.0
+2025-11-30 15:29:41,613 - __main__ - INFO -   Text length: 5890
+2025-11-30 15:29:41,626 - __main__ - INFO - 
+Processing: Bhavika HR1.docx
+2025-11-30 15:29:41,657 - backend_app.text_extraction.consolidated_extractor - INFO - Attempt 1: Unstructured (primary) via final_97_percent_extractor
+2025-11-30 15:29:41,658 - backend_app.text_extraction.consolidated_extractor - ERROR - Unstructured primary raised exception
+Traceback (most recent call last):
+  File "c:\Users\maheshpattar\Desktop\test2\Backend\backend_app\text_extraction\consolidated_extractor.py", line 301, in extract_with_logging
+    text = extractor97.extract_text_from_file(file_path, conf, mode="local")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'backend_app.text_extraction.final_97_percent_extractor' has no attribute 'extract_text_from_file'
+2025-11-30 15:29:41,658 - backend_app.text_extraction.consolidated_extractor - INFO - Attempt 2: Unstructured alternate / inference path
+2025-11-30 15:29:41,667 - backend_app.text_extraction.consolidated_extractor - INFO - Unstructured alternate quality score: 0.0
+2025-11-30 15:29:41,667 - backend_app.text_extraction.consolidated_extractor - INFO - Unstructured alternate failed or low quality.
+2025-11-30 15:29:41,667 - backend_app.text_extraction.consolidated_extractor - INFO - Attempt 3: DOCX direct extractor
+2025-11-30 15:29:41,675 - backend_app.text_extraction.consolidated_extractor - INFO - DOCX extractor quality score: 0.0
+2025-11-30 15:29:41,675 - backend_app.text_extraction.consolidated_extractor - INFO - DOCX extractor failed or low quality.
+2025-11-30 15:29:41,726 - __main__ - ERROR -   Error: Unknown error
+2025-11-30 15:29:41,726 - __main__ - INFO - 
+Extraction Summary: 5/6 successful
+2025-11-30 15:29:41,726 - __main__ - INFO - ============================================================
+2025-11-30 15:29:41,726 - __main__ - INFO - STEP 2: TESTING LLM PROCESSING
+2025-11-30 15:29:41,727 - __main__ - INFO - ============================================================
+2025-11-30 15:29:41,790 - backend_app.brain_module.brain_core - INFO - Loaded .env from c:\Users\maheshpattar\Desktop\test2\.env
+2025-11-30 15:29:42,104 - __main__ - INFO - 
+Processing: Anushya - Updated (1).pdf
+2025-11-30 15:29:42,105 - backend_app.brain_module.brain_core - INFO - DEBUG: BrainCore initialization started with config: config/providers.yaml
+2025-11-30 15:29:42,105 - backend_app.brain_module.brain_core - INFO - DEBUG: Config file exists: False
+2025-11-30 15:29:42,105 - backend_app.brain_module.brain_core - INFO - DEBUG: Initializing config manager...
+2025-11-30 15:29:42,105 - backend_app.brain_module.providers.config_manager - INFO - ProviderConfigManager initialized
+2025-11-30 15:29:42,106 - backend_app.brain_module.brain_core - INFO - DEBUG: Config manager initialized successfully
+2025-11-30 15:29:42,106 - backend_app.brain_module.brain_core - INFO - DEBUG: Initializing provider manager...
+2025-11-30 15:29:42,108 - backend_app.brain_module.providers.api_key_manager.openrouter - INFO - API Key Manager initialized for provider 'openrouter'
+2025-11-30 15:29:42,108 - backend_app.brain_module.providers.circuit_breaker_manager.openrouter - INFO - Circuit breaker 'openrouter' initialized in CLOSED state
+2025-11-30 15:29:42,108 - providers.openrouter - INFO - OpenRouter provider initialized
+2025-11-30 15:29:42,108 - backend_app.brain_module.providers.api_key_manager.grok - INFO - API Key Manager initialized for provider 'grok'
+2025-11-30 15:29:42,109 - backend_app.brain_module.providers.circuit_breaker_manager.grok - INFO - Circuit breaker 'grok' initialized in CLOSED state
+2025-11-30 15:29:42,109 - providers.grok - INFO - Grok provider initialized
+2025-11-30 15:29:42,109 - backend_app.brain_module.providers.api_key_manager.gemini - INFO - API Key Manager initialized for provider 'gemini'
+2025-11-30 15:29:42,109 - backend_app.brain_module.providers.circuit_breaker_manager.gemini - INFO - Circuit breaker 'gemini' initialized in CLOSED state
+2025-11-30 15:29:42,109 - providers.gemini - INFO - Gemini provider initialized
+2025-11-30 15:29:42,109 - backend_app.brain_module.providers.provider_manager - INFO - All providers initialized successfully
+2025-11-30 15:29:42,111 - backend_app.brain_module.providers.provider_manager - INFO - Started provider monitoring thread
+2025-11-30 15:29:42,111 - backend_app.brain_module.providers.circuit_breaker_manager.openrouter - INFO - Circuit breaker 'openrouter' initialized in CLOSED state
+2025-11-30 15:29:42,111 - backend_app.brain_module.providers.provider_manager - INFO - ProviderManager initialized with intelligent fallback system
+2025-11-30 15:29:42,112 - backend_app.brain_module.providers.circuit_breaker_manager.grok - INFO - Circuit breaker 'grok' initialized in CLOSED state
+2025-11-30 15:29:42,112 - backend_app.brain_module.providers.provider_manager - INFO - Provider priority order: ['openrouter', 'grok', 'gemini']
+2025-11-30 15:29:42,112 - backend_app.brain_module.providers.circuit_breaker_manager.gemini - INFO - Circuit breaker 'gemini' initialized in CLOSED state
+2025-11-30 15:29:42,113 - backend_app.brain_module.brain_core - INFO - DEBUG: Provider manager initialized successfully
+2025-11-30 15:29:42,114 - backend_app.brain_module.brain_core - INFO - Initialized Brain Core with enhanced fallback system
+2025-11-30 15:29:42,114 - backend_app.services.brain_service - INFO - Parsing resume: text_extract\Anushya - Updated (1)_extracted.txt
+2025-11-30 15:29:42,114 - backend_app.brain_module.brain_core - INFO - Processing file input for resume_parsing task
+2025-11-30 15:29:42,114 - backend_app.brain_module.brain_core - INFO - DEBUG: Starting input processing pipeline - input_type=file, task_type=resume_parsing
+2025-11-30 15:29:42,114 - backend_app.brain_module.brain_core - INFO - DEBUG: File input detected, extracting text from text_extract\Anushya - Updated (1)_extracted.txt
+2025-11-30 15:29:42,128 - backend_app.text_extraction.final_97_percent_extractor - INFO - Starting text extraction for Anushya - Updated (1)_extracted.txt
+2025-11-30 15:29:42,128 - backend_app.brain_module.brain_core - INFO - Successfully extracted text from text_extract\Anushya - Updated (1)_extracted.txt
+2025-11-30 15:29:42,128 - backend_app.brain_module.brain_core - INFO - DEBUG: Text extraction successful, length=5024 chars
+2025-11-30 15:29:42,133 - backend_app.brain_module.brain_core - INFO - DEBUG: Prompt built successfully, length=6882 chars
+2025-11-30 15:29:42,133 - backend_app.brain_module.brain_core - INFO - DEBUG: Sending request to provider manager with preferred_provider=None
+2025-11-30 15:29:42,133 - backend_app.brain_module.providers.provider_manager - INFO - Generating completion with model=None, provider_preference=['openrouter', 'grok', 'gemini']
+2025-11-30 15:29:42,133 - backend_app.brain_module.providers.provider_manager - ERROR - All providers failed. Tried: openrouter, grok, gemini
+2025-11-30 15:29:42,134 - backend_app.brain_module.brain_core - INFO - DEBUG: Provider manager response received - success=False
+2025-11-30 15:29:42,134 - backend_app.services.brain_service - INFO - Resume parsing completed: success=False, provider=unknown
+2025-11-30 15:29:42,137 - __main__ - ERROR -   Error: All providers failed. Tried: openrouter, grok, gemini
+2025-11-30 15:29:42,138 - __main__ - INFO - 
+Processing: Arijita Ghosh_Resume.pdf
+2025-11-30 15:29:42,138 - backend_app.services.brain_service - INFO - Parsing resume: text_extract\Arijita Ghosh_Resume_extracted.txt
+2025-11-30 15:29:42,138 - backend_app.brain_module.brain_core - INFO - Processing file input for resume_parsing task
+2025-11-30 15:29:42,138 - backend_app.brain_module.brain_core - INFO - DEBUG: Starting input processing pipeline - input_type=file, task_type=resume_parsing
+2025-11-30 15:29:42,138 - backend_app.brain_module.brain_core - INFO - DEBUG: File input detected, extracting text from text_extract\Arijita Ghosh_Resume_extracted.txt
+2025-11-30 15:29:42,153 - backend_app.text_extraction.final_97_percent_extractor - INFO - Starting text extraction for Arijita Ghosh_Resume_extracted.txt
+2025-11-30 15:29:42,153 - backend_app.brain_module.brain_core - INFO - Successfully extracted text from text_extract\Arijita Ghosh_Resume_extracted.txt
+2025-11-30 15:29:42,153 - backend_app.brain_module.brain_core - INFO - DEBUG: Text extraction successful, length=1562 chars
+2025-11-30 15:29:42,154 - backend_app.brain_module.brain_core - INFO - DEBUG: Prompt built successfully, length=3420 chars
+2025-11-30 15:29:42,154 - backend_app.brain_module.brain_core - INFO - DEBUG: Sending request to provider manager with preferred_provider=None
+2025-11-30 15:29:42,154 - backend_app.brain_module.providers.provider_manager - INFO - Generating completion with model=None, provider_preference=['openrouter', 'grok', 'gemini']
+2025-11-30 15:29:42,155 - backend_app.brain_module.providers.provider_manager - ERROR - All providers failed. Tried: openrouter, grok, gemini
+2025-11-30 15:29:42,155 - backend_app.brain_module.brain_core - INFO - DEBUG: Provider manager response received - success=False
+2025-11-30 15:29:42,155 - backend_app.services.brain_service - INFO - Resume parsing completed: success=False, provider=unknown
+2025-11-30 15:29:42,158 - __main__ - ERROR -   Error: All providers failed. Tried: openrouter, grok, gemini
+2025-11-30 15:29:42,158 - __main__ - INFO - 
+Processing: ARUN.pdf
+2025-11-30 15:29:42,158 - backend_app.services.brain_service - INFO - Parsing resume: text_extract\ARUN_extracted.txt
+2025-11-30 15:29:42,158 - backend_app.brain_module.brain_core - INFO - Processing file input for resume_parsing task
+2025-11-30 15:29:42,158 - backend_app.brain_module.brain_core - INFO - DEBUG: Starting input processing pipeline - input_type=file, task_type=resume_parsing
+2025-11-30 15:29:42,158 - backend_app.brain_module.brain_core - INFO - DEBUG: File input detected, extracting text from text_extract\ARUN_extracted.txt
+2025-11-30 15:29:42,175 - backend_app.text_extraction.final_97_percent_extractor - INFO - Starting text extraction for ARUN_extracted.txt
+2025-11-30 15:29:42,175 - backend_app.brain_module.brain_core - INFO - Successfully extracted text from text_extract\ARUN_extracted.txt
+2025-11-30 15:29:42,175 - backend_app.brain_module.brain_core - INFO - DEBUG: Text extraction successful, length=2256 chars
+2025-11-30 15:29:42,176 - backend_app.brain_module.brain_core - INFO - DEBUG: Prompt built successfully, length=4114 chars
+2025-11-30 15:29:42,176 - backend_app.brain_module.brain_core - INFO - DEBUG: Sending request to provider manager with preferred_provider=None
+2025-11-30 15:29:42,176 - backend_app.brain_module.providers.provider_manager - INFO - Generating completion with model=None, provider_preference=['openrouter', 'grok', 'gemini']
+2025-11-30 15:29:42,176 - backend_app.brain_module.providers.provider_manager - ERROR - All providers failed. Tried: openrouter, grok, gemini
+2025-11-30 15:29:42,177 - backend_app.brain_module.brain_core - INFO - DEBUG: Provider manager response received - success=False
+2025-11-30 15:29:42,177 - backend_app.services.brain_service - INFO - Resume parsing completed: success=False, provider=unknown
+2025-11-30 15:29:42,180 - __main__ - ERROR -   Error: All providers failed. Tried: openrouter, grok, gemini
+2025-11-30 15:29:42,180 - __main__ - INFO - 
+Processing: ARYA 1234 (1).pdf
+2025-11-30 15:29:42,180 - backend_app.services.brain_service - INFO - Parsing resume: text_extract\ARYA 1234 (1)_extracted.txt
+2025-11-30 15:29:42,180 - backend_app.brain_module.brain_core - INFO - Processing file input for resume_parsing task
+2025-11-30 15:29:42,181 - backend_app.brain_module.brain_core - INFO - DEBUG: Starting input processing pipeline - input_type=file, task_type=resume_parsing
+2025-11-30 15:29:42,181 - backend_app.brain_module.brain_core - INFO - DEBUG: File input detected, extracting text from text_extract\ARYA 1234 (1)_extracted.txt
+2025-11-30 15:29:42,199 - backend_app.text_extraction.final_97_percent_extractor - INFO - Starting text extraction for ARYA 1234 (1)_extracted.txt
+2025-11-30 15:29:42,199 - backend_app.brain_module.brain_core - INFO - Successfully extracted text from text_extract\ARYA 1234 (1)_extracted.txt
+2025-11-30 15:29:42,199 - backend_app.brain_module.brain_core - INFO - DEBUG: Text extraction successful, length=3340 chars
+2025-11-30 15:29:42,201 - backend_app.brain_module.brain_core - INFO - DEBUG: Prompt built successfully, length=5198 chars
+2025-11-30 15:29:42,201 - backend_app.brain_module.brain_core - INFO - DEBUG: Sending request to provider manager with preferred_provider=None
+2025-11-30 15:29:42,201 - backend_app.brain_module.providers.provider_manager - INFO - Generating completion with model=None, provider_preference=['openrouter', 'grok', 'gemini']
+2025-11-30 15:29:42,201 - backend_app.brain_module.providers.provider_manager - ERROR - All providers failed. Tried: openrouter, grok, gemini
+2025-11-30 15:29:42,202 - backend_app.brain_module.brain_core - INFO - DEBUG: Provider manager response received - success=False
+2025-11-30 15:29:42,202 - backend_app.services.brain_service - INFO - Resume parsing completed: success=False, provider=unknown
+2025-11-30 15:29:42,205 - __main__ - ERROR -   Error: All providers failed. Tried: openrouter, grok, gemini
+2025-11-30 15:29:42,206 - __main__ - INFO - 
+Processing: Ashwin_Kumar.pdf
+2025-11-30 15:29:42,206 - backend_app.services.brain_service - INFO - Parsing resume: text_extract\Ashwin_Kumar_extracted.txt
+2025-11-30 15:29:42,206 - backend_app.brain_module.brain_core - INFO - Processing file input for resume_parsing task
+2025-11-30 15:29:42,206 - backend_app.brain_module.brain_core - INFO - DEBUG: Starting input processing pipeline - input_type=file, task_type=resume_parsing
+2025-11-30 15:29:42,206 - backend_app.brain_module.brain_core - INFO - DEBUG: File input detected, extracting text from text_extract\Ashwin_Kumar_extracted.txt
+2025-11-30 15:29:42,228 - backend_app.text_extraction.final_97_percent_extractor - INFO - Starting text extraction for Ashwin_Kumar_extracted.txt
+2025-11-30 15:29:42,228 - backend_app.brain_module.brain_core - INFO - Successfully extracted text from text_extract\Ashwin_Kumar_extracted.txt
+2025-11-30 15:29:42,228 - backend_app.brain_module.brain_core - INFO - DEBUG: Text extraction successful, length=6002 chars
+2025-11-30 15:29:42,231 - backend_app.brain_module.brain_core - INFO - DEBUG: Prompt built successfully, length=7860 chars
+2025-11-30 15:29:42,232 - backend_app.brain_module.brain_core - INFO - DEBUG: Sending request to provider manager with preferred_provider=None
+2025-11-30 15:29:42,232 - backend_app.brain_module.providers.provider_manager - INFO - Generating completion with model=None, provider_preference=['openrouter', 'grok', 'gemini']
+2025-11-30 15:29:42,233 - backend_app.brain_module.providers.provider_manager - ERROR - All providers failed. Tried: openrouter, grok, gemini
+2025-11-30 15:29:42,234 - backend_app.brain_module.brain_core - INFO - DEBUG: Provider manager response received - success=False
+2025-11-30 15:29:42,234 - backend_app.services.brain_service - INFO - Resume parsing completed: success=False, provider=unknown
+2025-11-30 15:29:42,245 - __main__ - ERROR -   Error: All providers failed. Tried: openrouter, grok, gemini
+2025-11-30 15:29:42,247 - __main__ - INFO - 
+LLM Processing Summary: 0/5 successful
+2025-11-30 15:29:42,253 - __main__ - INFO - ============================================================
+2025-11-30 15:29:42,253 - __main__ - INFO - STEP 3: TESTING CANDIDATE CREATION
+2025-11-30 15:29:42,253 - __main__ - INFO - ============================================================
+2025-11-30 15:29:42,339 - __main__ - INFO - 
+Creating candidate profile: Anushya - Updated (1).pdf
+2025-11-30 15:29:42,339 - backend_app.services.candidate_creation_service - INFO - Created candidate profile: CAND-20251130-C839780E from end_to_end_test
+2025-11-30 15:29:42,343 - __main__ - INFO - 
+Creating candidate profile: Arijita Ghosh_Resume.pdf
+2025-11-30 15:29:42,344 - backend_app.services.candidate_creation_service - INFO - Created candidate profile: CAND-20251130-B3FC0D22 from end_to_end_test
+2025-11-30 15:29:42,347 - __main__ - INFO - 
+Creating candidate profile: ARUN.pdf
+2025-11-30 15:29:42,347 - backend_app.services.candidate_creation_service - INFO - Created candidate profile: CAND-20251130-1A6FAA1B from end_to_end_test
+2025-11-30 15:29:42,351 - __main__ - INFO - 
+Creating candidate profile: ARYA 1234 (1).pdf
+2025-11-30 15:29:42,354 - backend_app.services.candidate_creation_service - INFO - Created candidate profile: CAND-20251130-A51FDBC3 from end_to_end_test
+2025-11-30 15:29:42,358 - __main__ - INFO - 
+Creating candidate profile: Ashwin_Kumar.pdf
+2025-11-30 15:29:42,358 - backend_app.services.candidate_creation_service - INFO - Created candidate profile: CAND-20251130-61C994C1 from end_to_end_test
+2025-11-30 15:29:42,361 - __main__ - INFO - 
+Candidate Creation Summary: 5/5 successful
+2025-11-30 15:29:42,362 - __main__ - INFO - ============================================================
+2025-11-30 15:29:42,362 - __main__ - INFO - FINAL TEST REPORT
+2025-11-30 15:29:42,362 - __main__ - INFO - ============================================================
+2025-11-30 15:29:42,362 - __main__ - INFO - Total files processed: 6
+2025-11-30 15:29:42,362 - __main__ - INFO - Text extraction: 5/6 successful
+2025-11-30 15:29:42,362 - __main__ - INFO - LLM processing: 0/5 successful
+2025-11-30 15:29:42,363 - __main__ - INFO - Candidate creation: 5/5 successful
+2025-11-30 15:29:42,375 - __main__ - ERROR - Traceback (most recent call last):
+  File "c:\Users\maheshpattar\Desktop\test2\Backend\test_end_to_end_pipeline.py", line 378, in main
+    overall_success = generate_final_report(extraction_results, llm_results, candidate_results)
+  File "c:\Users\maheshpattar\Desktop\test2\Backend\test_end_to_end_pipeline.py", line 346, in generate_final_report
+    json.dump(report_data, f, indent=2, default=str)
+    ^^^^
+NameError: name 'json' is not defined. Did you forget to import 'json'?
+

@@ -1,0 +1,74 @@
+{
+  "scan_time": "2025-11-30T16:06:23.076706",
+  "project_root": "C:\\Users\\maheshpattar\\Desktop\\test2",
+  "total_files": 2,
+  "total_variables": 20,
+  "total_sensitive": 6,
+  "security_issues": [],
+  "files": [
+    {
+      "name": ".env",
+      "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\.env",
+      "relative_path": ".env",
+      "size": 1227,
+      "modified": "2025-11-30T14:54:42.254616",
+      "permissions": "666",
+      "variables_count": 19,
+      "sensitive_count": 5,
+      "sensitive_variables": [
+        "OPENROUTER_API_KEY",
+        "GROQ_API_KEY",
+        "GEMINI_API_KEY",
+        "SECRET_KEY",
+        "ACCESS_TOKEN_EXPIRE_MINUTES"
+      ],
+      "categories": {
+        "API Keys": [
+          "OPENROUTER_API_KEY",
+          "GROQ_API_KEY",
+          "GEMINI_API_KEY",
+          "SECRET_KEY",
+          "ACCESS_TOKEN_EXPIRE_MINUTES"
+        ],
+        "Database Credentials": [
+          "DATABASE_URL"
+        ],
+        "Other": [
+          "LOG_LEVEL",
+          "LOG_FILE",
+          "HOST",
+          "PORT",
+          "ALGORITHM",
+          "ALLOWED_ORIGINS",
+          "RATE_LIMIT_REQUESTS_PER_MINUTE",
+          "RATE_LIMIT_REQUESTS_PER_HOUR",
+          "DEFAULT_PROVIDER",
+          "MAX_CONCURRENT_REQUESTS",
+          "REQUEST_TIMEOUT_SECONDS",
+          "MAX_FILE_SIZE",
+          "ALLOWED_FILE_TYPES"
+        ]
+      },
+      "git_tracked": false
+    },
+    {
+      "name": ".env.local",
+      "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Frontend\\.env.local",
+      "relative_path": "Frontend\\.env.local",
+      "size": 55,
+      "modified": "2025-11-29T01:40:04.561897",
+      "permissions": "666",
+      "variables_count": 1,
+      "sensitive_count": 1,
+      "sensitive_variables": [
+        "GEMINI_API_KEY"
+      ],
+      "categories": {
+        "API Keys": [
+          "GEMINI_API_KEY"
+        ]
+      },
+      "git_tracked": false
+    }
+  ]
+}

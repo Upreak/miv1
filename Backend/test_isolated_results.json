@@ -1,0 +1,34 @@
+{
+  "test_summary": {
+    "date": "2025-12-02T15:18:55.794547",
+    "total_tests": 5,
+    "passed": 4,
+    "failed": 1,
+    "success_rate": 80.0
+  },
+  "test_results": [
+    [
+      "JWT Token Logic",
+      true
+    ],
+    [
+      "OTP Generation Logic",
+      true
+    ],
+    [
+      "Phone Validation Logic",
+      true
+    ],
+    [
+      "User Security Logic",
+      true
+    ],
+    [
+      "Authentication Flow",
+      false
+    ]
+  ],
+  "recommendations": [
+    "1 tests failed. Please review the output above."
+  ]
+}

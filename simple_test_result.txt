@@ -1,0 +1,153 @@
+============================================================
+RESUME PROCESSING TEST RESULT
+============================================================
+
+Filename: Anushya - Updated (1).pdf
+QID: test-a9600155-4903-4afa-b950-52bbe96bc2ea
+Provider: provider2_gemini
+Model: gemini-2.5-flash-lite
+Success: True
+Response Length: 4557 characters
+
+============================================================
+BRAIN MODULE RESPONSE
+============================================================
+
+```json
+{
+  "Identity Basics": {
+    "Full Name": "Anushya Nataraj",
+    "Email Address": "nkanumba2016@gmail.com",
+    "Mobile Number": "+91 - 9698881600",
+    "Professional Summary": "To use my knowledge and skills in Industry and I contribute with full involvement, passion & dedication for the growth of the Company.",
+    "LinkedIn URL": "",
+    "Portfolio URL": ""
+  },
+  "Education & Skills": {
+    "Highest Education (PhD/Doctorate)": "",
+    "Second Highest Education (Masters)": "MBA - Sree Saraswathi Thyagaraja College, Pollachi, 2016 (76%)",
+    "Third Highest Education (Bachelor)": "B. Com - Sree Saradha Nikedhan College, Salem, 2013 (71%)",
+    "DIPLOMA": "",
+    "ITI": "",
+    "PUC": "",
+    "SSLC": "S.S.L.C - NGNG Hr Sec School, Reddiarur, 2008 (66%)",
+    "Certificates": [],
+    "Skills": [
+      ".Net",
+      "ASP.Net",
+      "C#",
+      "VB.Net",
+      ".net",
+      "Share Point",
+      "Python",
+      "C ++",
+      "PHP",
+      "ETL",
+      "Informatica",
+      "Hadoop",
+      "Azure",
+      "Big data",
+      "Core java",
+      "J2EE",
+      "EJB",
+      "JSP",
+      "WCF",
+      "WPF",
+      "TDD",
+      "Entity Framework",
+      "MVC",
+      "Web Services",
+      "Xml",
+      "spring",
+      "Hibernate",
+      "struts",
+      "Ajax",
+      "Json",
+      "XML",
+      "HTML",
+      "XSLT",
+      "CSS",
+      "Spring boot",
+      "Micro service",
+      "SAP -Technical/Functional",
+      "SAP ABAP",
+      "FICO",
+      "Oracle SOA",
+      "PL/SQL",
+      "SQL Server",
+      "MySQL",
+      "MS-Office",
+      "Tally"
+    ],
+    "Field of Study": [
+      "HR",
+      "Finance"
+    ],
+    "Projects / Profile": [
+      "A Study on Cash Management at ROOTS MULTICLEAN LIMITED, Coimbatore."
+    ],
+    "GitHub / Behance / Kaggle URL": ""
+  },
+  "Job Preferences": {
+    "Total Experience (Years)": "",
+    "Current Role": "Talent Acquisition",
+    "Expected Role": "",
+    "Job Type": "",
+    "Current Locations": [
+      "Chennai"
+    ],
+    "Ready to Relocate": "",
+    "Notice Period": "",
+    "Work Authorization / Visa": ""
+  },
+  "Salary Info": {
+    "Current CTC (LPA)": "",
+    "Expected CTC (LPA)": ""
+  },
+  "Broader Preferences & Personal Details": {
+    "Preferred Industries": [],
+    "Gender": "Female",
+    "Marital Status": "Married",
+    "Date of Birth": "04/01/1993",
+    "Languages Known": [
+      "Tamil",
+      "English",
+      "Malayalam"
+    ]
+  },
+  "Work History": [
+    {
+      "Job Title/Role": "Talent Acquisition",
+      "Company Name": "Teamware Solution, Chennai",
+      "Start Date": "04/2021",
+      "End Date": "06/2023",
+      "Key Responsibilities": [
+        "Involved in End -to-End recruitment Process.",
+        "Closing entry, middle and senior level positions within given time duration",
+        "Maintaining good relations with clients and acting as a client coordinator.",
+        "Taking regular feedback from clients with regards to quality of profiles sent new openings and status of current openings.",
+        "Sourcing the candidates in portal as per the Client requirement.",
+        "Screening the resources by posting few queries matching with the job descriptions.",
+        "Getting the acknowledgements from the resources for further interview levels.",
+        "Submitting the profile to the account managers for client reviewal.",
+        "Doing cross checks ensuring candidates interest on the same.",
+        "Arranging for the telephonic interviews/in -person interviews/Skype interviews of the candidates & scheduling their interview as per the availability of the Technical Panel.",
+        "Initiating the HR Discussions to be done for the candidates by the Client.",
+        "Initiating Document submissions by the candidates to HR Panel.",
+        "Offering the candidate and following up wit h the offered candidate till he/she joins the organization , handling issues, in getting him/her relieved from his/her current organization as well as having an open discussion with the candidates in keeping them interested, to ensure not losing the candida te and to make him/her join.",
+        "Preparing daily trackers /submission trackers and sending across to the general manager.",
+        "Maintaining and Developing Database for Future Requirements."
+      ],
+      "Tools Used": []
+    },
+    {
+      "Job Title/Role": "Associate Consultant",
+      "Company Name": "Talent21 Management & Shared Service Pvt Ltd, Chennai",
+      "Start Date": "06/2019",
+      "End Date": "02/2021",
+      "Key Responsibilities": [],
+      "Tools Used": []
+    }
+  ]
+}
+```

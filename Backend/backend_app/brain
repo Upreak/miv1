@@ -1,0 +1,30 @@
+"""
+Factory that builds provider adapter instances given a "type" and key.
+Supported types: "gemini", "groq", "openai"
+"""
+
+import os
+from typing import Dict, Any
+from .gemini_provider import GeminiProvider
+from .groq_provider import GroqProvider
+from .openai_provider import OpenAIProvider
+
+_PROVIDER_MAP = {
+    "gemini": GeminiProvider,
+    "groq": GroqProvider,
+    "openai": OpenAIProvider,
+}
+
+def create_provider_from_env(slot_index: int):
+    """
+    Reads PROVIDER{n}_TYPE, PROVIDER{n}_KEY, PROVIDER{n}_MODEL from env, returns adapter or None
+    """
+    t = os.getenv(f"PROVIDER{slot_index}_TYPE", "").strip().lower()
+    key = os.getenv(f"PROVIDER{slot_index}_KEY", "").strip()
+    model = os.getenv(f"PROVIDER{slot_index}_MODEL", "").strip() or None
+    if not t or not key:
+        return None
+    cls = _PROVIDER_MAP.get(t)
+    if not cls:
+        raise ValueError(f"Unsupported provider type '{t}' for slot {slot_index}")
+    return cls(api_key=key, model=model)

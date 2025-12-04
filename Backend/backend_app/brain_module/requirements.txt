@@ -1,0 +1,12 @@
+# Core requirements for Brain Module LLM Gateway
+requests
+python-dotenv
+
+# LLM Provider SDKs
+google-generativeai   # Gemini SDK
+openai                # OpenAI SDK
+groq                  # Groq SDK
+
+# Optional helpers
+pytz
+jinja2

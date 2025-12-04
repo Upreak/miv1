@@ -1,0 +1,14 @@
+# New fallbacks & preprocessing
+opencv-python-headless>=4.7.0
+paddleocr>=2.6.1
+paddlepaddle>=2.5.0   # choose the correct paddlepaddle for your platform (cpu/cuda)
+
+# Existing needed libs (repeat to be sure)
+unstructured[local-inference]==0.10.27
+unstructured-inference
+PyPDF2
+python-magic
+pytesseract
+pdf2image
+Pillow
+lxml

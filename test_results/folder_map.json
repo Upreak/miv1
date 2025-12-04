@@ -1,0 +1,1366 @@
+{
+  "type": "directory",
+  "path": "C:\\Users\\maheshpattar\\Desktop\\test2",
+  "files": [
+    {
+      "name": "api_test_results.txt",
+      "size": 15403,
+      "modified": "2025-11-30T20:36:11.682547"
+    },
+    {
+      "name": "env_files_scan_report.json",
+      "size": 1974,
+      "modified": "2025-11-30T16:06:23.197256"
+    },
+    {
+      "name": "PROVIDER_REFACTORING_SUMMARY.md",
+      "size": 8398,
+      "modified": "2025-11-30T21:11:58.657625"
+    },
+    {
+      "name": "scan_env_files.py",
+      "size": 11829,
+      "modified": "2025-11-30T16:04:41.784549"
+    },
+    {
+      "name": "scan_env_files_simple.py",
+      "size": 11699,
+      "modified": "2025-11-30T16:06:02.141902"
+    },
+    {
+      "name": "sree---ai-recruitment-112 (3).zip",
+      "size": 321263,
+      "modified": "2025-11-29T01:32:38.888501"
+    },
+    {
+      "name": "test_all_apis.py",
+      "size": 11742,
+      "modified": "2025-11-30T20:34:53.334406"
+    },
+    {
+      "name": "test_refactored_providers.py",
+      "size": 7808,
+      "modified": "2025-11-30T21:11:09.484856"
+    },
+    {
+      "name": "test_resume_parser.py",
+      "size": 11593,
+      "modified": "2025-11-30T20:22:02.006096"
+    },
+    {
+      "name": "test_resume_processing_workflow.py",
+      "size": 22314,
+      "modified": "2025-11-30T21:18:29.229402"
+    },
+    {
+      "name": "test_workflow.log",
+      "size": 576,
+      "modified": "2025-11-30T21:22:07.588626"
+    }
+  ],
+  "subdirectories": {
+    "Backend": {
+      "type": "directory",
+      "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Backend",
+      "files": [
+        {
+          "name": "docker-compose.yml",
+          "size": 0,
+          "modified": "2025-11-29T23:51:03.826904"
+        },
+        {
+          "name": "Dockerfile",
+          "size": 0,
+          "modified": "2025-11-29T23:51:03.777241"
+        },
+        {
+          "name": "end_to_end_test.log",
+          "size": 27791,
+          "modified": "2025-11-30T15:29:42.362796"
+        },
+        {
+          "name": "end_to_end_test_fixed.log",
+          "size": 29921,
+          "modified": "2025-11-30T15:32:06.933896"
+        },
+        {
+          "name": "manage.py",
+          "size": 0,
+          "modified": "2025-11-29T23:51:03.834902"
+        },
+        {
+          "name": "test_end_to_end_pipeline.py",
+          "size": 15927,
+          "modified": "2025-11-30T15:30:07.748906"
+        },
+        {
+          "name": "test_end_to_end_pipeline_fixed.py",
+          "size": 18476,
+          "modified": "2025-11-30T15:31:45.031466"
+        }
+      ],
+      "subdirectories": {
+        "backend_app": {
+          "type": "directory",
+          "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Backend\\backend_app",
+          "files": [
+            {
+              "name": "__init__.py",
+              "size": 0,
+              "modified": "2025-11-29T23:51:16.127604"
+            },
+            {
+              "name": "config.py",
+              "size": 0,
+              "modified": "2025-11-29T23:51:16.191972"
+            },
+            {
+              "name": "logging_cfg.py",
+              "size": 0,
+              "modified": "2025-11-29T23:51:16.200621"
+            }
+          ],
+          "subdirectories": {
+            "api": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "brain_module": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "db": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "file_intake": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "models": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "plugins": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "repositories": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "rulebook": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "security": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "services": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "shared": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "text_extraction": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            }
+          }
+        },
+        "llm_responses": {
+          "type": "directory",
+          "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Backend\\llm_responses",
+          "files": [
+            {
+              "name": "Anushya - Updated (1)_metadata.json",
+              "size": 391,
+              "modified": "2025-11-30T15:32:06.859712"
+            },
+            {
+              "name": "Anushya - Updated (1)_response.txt",
+              "size": 616,
+              "modified": "2025-11-30T15:32:06.858397"
+            },
+            {
+              "name": "Arijita Ghosh_Resume_metadata.json",
+              "size": 389,
+              "modified": "2025-11-30T15:32:06.870404"
+            },
+            {
+              "name": "Arijita Ghosh_Resume_response.txt",
+              "size": 615,
+              "modified": "2025-11-30T15:32:06.869401"
+            },
+            {
+              "name": "ARUN_metadata.json",
+              "size": 357,
+              "modified": "2025-11-30T15:32:06.879108"
+            },
+            {
+              "name": "ARUN_response.txt",
+              "size": 599,
+              "modified": "2025-11-30T15:32:06.878113"
+            },
+            {
+              "name": "ARYA 1234 (1)_metadata.json",
+              "size": 375,
+              "modified": "2025-11-30T15:32:06.898995"
+            },
+            {
+              "name": "ARYA 1234 (1)_response.txt",
+              "size": 608,
+              "modified": "2025-11-30T15:32:06.897996"
+            },
+            {
+              "name": "Ashwin_Kumar_metadata.json",
+              "size": 373,
+              "modified": "2025-11-30T15:32:06.907978"
+            },
+            {
+              "name": "Ashwin_Kumar_response.txt",
+              "size": 607,
+              "modified": "2025-11-30T15:32:06.906975"
+            },
+            {
+              "name": "Bhavika HR1_metadata.json",
+              "size": 372,
+              "modified": "2025-11-30T15:32:06.932302"
+            },
+            {
+              "name": "Bhavika HR1_response.txt",
+              "size": 607,
+              "modified": "2025-11-30T15:32:06.931300"
+            }
+          ],
+          "subdirectories": {}
+        },
+        "logs": {
+          "type": "directory",
+          "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Backend\\logs",
+          "files": [
+            {
+              "name": "end_to_end_test_report.json",
+              "size": 0,
+              "modified": "2025-11-30T15:29:42.362796"
+            },
+            {
+              "name": "end_to_end_test_report_fixed.json",
+              "size": 5649,
+              "modified": "2025-11-30T15:32:06.933896"
+            },
+            {
+              "name": "extraction_logbook.db",
+              "size": 20480,
+              "modified": "2025-11-30T15:32:06.673199"
+            },
+            {
+              "name": "provider_manager.log",
+              "size": 0,
+              "modified": "2025-11-30T01:12:03.771101"
+            }
+          ],
+          "subdirectories": {}
+        },
+        "scripts": {
+          "type": "directory",
+          "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Backend\\scripts",
+          "files": [
+            {
+              "name": "init_db.py",
+              "size": 0,
+              "modified": "2025-11-29T23:51:10.542946"
+            },
+            {
+              "name": "migrate.sh",
+              "size": 0,
+              "modified": "2025-11-29T23:51:10.597932"
+            },
+            {
+              "name": "process_email_resumes.py",
+              "size": 0,
+              "modified": "2025-11-29T23:51:10.610385"
+            },
+            {
+              "name": "seed_data.py",
+              "size": 0,
+              "modified": "2025-11-29T23:51:10.602939"
+            }
+          ],
+          "subdirectories": {}
+        },
+        "tests": {
+          "type": "directory",
+          "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Backend\\tests",
+          "files": [
+            {
+              "name": "__init__.py",
+              "size": 0,
+              "modified": "2025-11-29T23:52:49.892447"
+            }
+          ],
+          "subdirectories": {}
+        },
+        "text_extract": {
+          "type": "directory",
+          "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Backend\\text_extract",
+          "files": [
+            {
+              "name": "Anushya - Updated (1)_extracted.txt",
+              "size": 5113,
+              "modified": "2025-11-30T17:46:28.016941"
+            },
+            {
+              "name": "Arijita Ghosh_Resume_extracted.txt",
+              "size": 1574,
+              "modified": "2025-11-30T15:32:05.631025"
+            },
+            {
+              "name": "ARUN_extracted.txt",
+              "size": 2256,
+              "modified": "2025-11-30T15:32:05.759935"
+            },
+            {
+              "name": "ARYA 1234 (1)_extracted.txt",
+              "size": 3388,
+              "modified": "2025-11-30T15:32:05.975354"
+            },
+            {
+              "name": "Ashwin_Kumar_extracted.txt",
+              "size": 6328,
+              "modified": "2025-11-30T15:32:06.142170"
+            },
+            {
+              "name": "Bhavika HR1_extracted.txt",
+              "size": 8871,
+              "modified": "2025-11-30T15:32:06.673199"
+            }
+          ],
+          "subdirectories": {}
+        }
+      }
+    },
+    "CbDOC": {
+      "type": "directory",
+      "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\CbDOC",
+      "files": [
+        {
+          "name": "RuleBook_v1.0_FULL (1).md",
+          "size": 5595,
+          "modified": "2025-11-29T20:04:36.513256"
+        },
+        {
+          "name": "RuleBook_v1.0_FULL (2).md",
+          "size": 11148,
+          "modified": "2025-11-29T20:07:53.296486"
+        },
+        {
+          "name": "RuleBook_v1.0_FULL (3).md",
+          "size": 14541,
+          "modified": "2025-11-29T20:09:54.194873"
+        },
+        {
+          "name": "RuleBook_v1.0_FULL (4).md",
+          "size": 19904,
+          "modified": "2025-11-29T20:11:01.453597"
+        },
+        {
+          "name": "RuleBook_v1.0_FULL (5).md",
+          "size": 25553,
+          "modified": "2025-11-29T20:12:02.485665"
+        },
+        {
+          "name": "RuleBook_v1.0_FULL (6).md",
+          "size": 30556,
+          "modified": "2025-11-29T20:13:32.369416"
+        },
+        {
+          "name": "RuleBook_v1.0_FULL (7).md",
+          "size": 36171,
+          "modified": "2025-11-29T20:15:02.702273"
+        },
+        {
+          "name": "RuleBook_v1.0_FULL (8).md",
+          "size": 43934,
+          "modified": "2025-11-29T20:17:02.835268"
+        },
+        {
+          "name": "RuleBook_v1.0_FULL (9).md",
+          "size": 51531,
+          "modified": "2025-11-29T20:19:48.686972"
+        }
+      ],
+      "subdirectories": {}
+    },
+    "Doc": {
+      "type": "directory",
+      "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Doc",
+      "files": [
+        {
+          "name": "# Complete System-Wide Unified Brain Wor.md",
+          "size": 42291,
+          "modified": "2025-11-28T21:10:40.908389"
+        },
+        {
+          "name": "97_PERCENT_EXTRACTOR_GUIDE.md",
+          "size": 7142,
+          "modified": "2025-11-28T21:10:40.916386"
+        },
+        {
+          "name": "ARCHITECTURE.md",
+          "size": 1799,
+          "modified": "2025-11-28T21:10:40.924387"
+        },
+        {
+          "name": "ENHANCED_FEATURES.md",
+          "size": 13953,
+          "modified": "2025-11-28T21:10:40.932388"
+        },
+        {
+          "name": "FINAL_CHECKLIST.md",
+          "size": 10910,
+          "modified": "2025-11-28T21:10:40.940387"
+        },
+        {
+          "name": "IMPLEMENTATION_FINAL_REPORT.md",
+          "size": 12649,
+          "modified": "2025-11-28T21:10:40.948387"
+        },
+        {
+          "name": "Int.py",
+          "size": 1,
+          "modified": "2025-11-28T21:10:40.956386"
+        },
+        {
+          "name": "KEYS_AND_MODELS_SETUP.md",
+          "size": 16617,
+          "modified": "2025-11-28T21:10:40.964385"
+        },
+        {
+          "name": "LLM_PROVIDER_SETUP.md",
+          "size": 12453,
+          "modified": "2025-11-28T21:10:40.972385"
+        },
+        {
+          "name": "PRACTICAL_TEST_RESULTS.md",
+          "size": 5994,
+          "modified": "2025-11-28T21:10:40.980386"
+        },
+        {
+          "name": "PROJECT_CLEANUP_SUMMARY.md",
+          "size": 6052,
+          "modified": "2025-11-28T21:10:40.988388"
+        },
+        {
+          "name": "PROVIDER_DEBUG_LOG.md",
+          "size": 14950,
+          "modified": "2025-11-28T21:10:40.996386"
+        },
+        {
+          "name": "README.md",
+          "size": 10609,
+          "modified": "2025-11-28T21:10:41.004386"
+        },
+        {
+          "name": "SYSTEM_AUDIT_REPORT.md",
+          "size": 5852,
+          "modified": "2025-11-28T21:10:41.012388"
+        },
+        {
+          "name": "VSCODE_SETUP.md",
+          "size": 10407,
+          "modified": "2025-11-28T21:10:41.020385"
+        }
+      ],
+      "subdirectories": {}
+    },
+    "documents": {
+      "type": "directory",
+      "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\documents",
+      "files": [
+        {
+          "name": "api_endpoints.md",
+          "size": 1750,
+          "modified": "2025-11-29T01:35:01.118262"
+        },
+        {
+          "name": "brain_module.md",
+          "size": 1522,
+          "modified": "2025-11-29T01:35:01.118262"
+        },
+        {
+          "name": "business_logic_rules.md",
+          "size": 8264,
+          "modified": "2025-11-29T01:35:01.133883"
+        },
+        {
+          "name": "database_schema.md",
+          "size": 9767,
+          "modified": "2025-11-29T01:35:01.133883"
+        },
+        {
+          "name": "migration_guide.md",
+          "size": 6149,
+          "modified": "2025-11-29T01:35:01.149510"
+        },
+        {
+          "name": "workflows.md",
+          "size": 1855,
+          "modified": "2025-11-29T01:35:01.149510"
+        }
+      ],
+      "subdirectories": {}
+    },
+    "Frontend": {
+      "type": "directory",
+      "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Frontend",
+      "files": [
+        {
+          "name": "App.tsx",
+          "size": 6912,
+          "modified": "2025-11-29T01:34:05.371408"
+        },
+        {
+          "name": "index.html",
+          "size": 1367,
+          "modified": "2025-11-29T01:34:05.387030"
+        },
+        {
+          "name": "index.tsx",
+          "size": 451,
+          "modified": "2025-11-29T01:34:05.402653"
+        },
+        {
+          "name": "INTERACTIVE_ELEMENTS_INVENTORY.json",
+          "size": 43308,
+          "modified": "2025-11-29T13:52:22.774079"
+        },
+        {
+          "name": "metadata.json",
+          "size": 236,
+          "modified": "2025-11-29T01:34:05.402653"
+        },
+        {
+          "name": "package-lock.json",
+          "size": 104283,
+          "modified": "2025-11-29T01:39:53.744883"
+        },
+        {
+          "name": "package.json",
+          "size": 511,
+          "modified": "2025-11-29T01:34:05.418275"
+        },
+        {
+          "name": "README.md",
+          "size": 553,
+          "modified": "2025-11-29T01:34:05.418275"
+        },
+        {
+          "name": "tsconfig.json",
+          "size": 542,
+          "modified": "2025-11-29T01:34:05.433906"
+        },
+        {
+          "name": "types.ts",
+          "size": 7800,
+          "modified": "2025-11-30T14:32:09.849536"
+        },
+        {
+          "name": "vite.config.ts",
+          "size": 1186,
+          "modified": "2025-11-30T14:32:06.083660"
+        }
+      ],
+      "subdirectories": {
+        "examples": {
+          "type": "directory",
+          "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Frontend\\examples",
+          "files": [
+            {
+              "name": "resume-upload.html",
+              "size": 10969,
+              "modified": "2025-11-30T00:09:21.278374"
+            }
+          ],
+          "subdirectories": {}
+        },
+        "modules": {
+          "type": "directory",
+          "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Frontend\\modules",
+          "files": [],
+          "subdirectories": {
+            "admin": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "auth": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "candidate": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "dashboard": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "docs": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "public": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "recruiter": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "sales": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "ui": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            }
+          }
+        },
+        "node_modules": {
+          "type": "directory",
+          "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Frontend\\node_modules",
+          "files": [],
+          "subdirectories": {
+            "@babel": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "@esbuild": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "@google": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "@isaacs": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "@jridgewell": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "@pkgjs": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "@reduxjs": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "@rolldown": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "@rollup": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "@standard-schema": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "@types": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "@vitejs": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "agent-base": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "ansi-regex": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "ansi-styles": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "balanced-match": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "base64-js": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "baseline-browser-mapping": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "bignumber.js": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "brace-expansion": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "browserslist": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "buffer-equal-constant-time": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "caniuse-lite": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "clsx": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "color-convert": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "color-name": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "convert-source-map": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "cross-spawn": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "d3-array": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "d3-color": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "d3-ease": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "d3-format": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "d3-interpolate": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "d3-path": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "d3-scale": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "d3-shape": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "d3-time": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "d3-time-format": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "d3-timer": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "data-uri-to-buffer": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "debug": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "decimal.js-light": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "eastasianwidth": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "ecdsa-sig-formatter": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "electron-to-chromium": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "emoji-regex": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "es-toolkit": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "esbuild": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "escalade": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "eventemitter3": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "extend": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "fdir": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "fetch-blob": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "foreground-child": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "formdata-polyfill": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "gaxios": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "gcp-metadata": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "gensync": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "glob": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "google-auth-library": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "google-logging-utils": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "gtoken": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "https-proxy-agent": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "immer": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "internmap": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "is-fullwidth-code-point": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "isexe": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "jackspeak": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "js-tokens": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "jsesc": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "json-bigint": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "json5": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "jwa": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "jws": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "lru-cache": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "lucide-react": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "minimatch": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "minipass": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "ms": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "nanoid": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "node-domexception": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "node-fetch": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "node-releases": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "package-json-from-dist": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "path-key": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "path-scurry": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "picocolors": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "picomatch": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "postcss": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "react": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "react-dom": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "react-is": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "react-redux": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "react-refresh": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "recharts": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "redux": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "redux-thunk": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "reselect": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "rimraf": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "rollup": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "safe-buffer": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "scheduler": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "semver": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "shebang-command": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "shebang-regex": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "signal-exit": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "source-map-js": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "string-width": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "string-width-cjs": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "strip-ansi": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "strip-ansi-cjs": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "tiny-invariant": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "tinyglobby": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "typescript": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "undici-types": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "update-browserslist-db": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "use-sync-external-store": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "victory-vendor": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "vite": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "web-streams-polyfill": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "which": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "wrap-ansi": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "wrap-ansi-cjs": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "ws": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            },
+            "yallist": {
+              "type": "directory",
+              "files": [],
+              "subdirectories": []
+            }
+          }
+        },
+        "services": {
+          "type": "directory",
+          "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Frontend\\services",
+          "files": [
+            {
+              "name": "geminiService.ts",
+              "size": 8079,
+              "modified": "2025-11-29T01:34:05.340150"
+            },
+            {
+              "name": "publicJobService.ts",
+              "size": 3546,
+              "modified": "2025-11-29T01:34:05.340150"
+            },
+            {
+              "name": "storageService.ts",
+              "size": 10675,
+              "modified": "2025-11-30T14:32:08.056785"
+            }
+          ],
+          "subdirectories": {}
+        }
+      }
+    },
+    "logs": {
+      "type": "directory",
+      "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\logs",
+      "files": [
+        {
+          "name": "provider_manager.log",
+          "size": 39865,
+          "modified": "2025-11-30T02:19:54.113396"
+        }
+      ],
+      "subdirectories": {}
+    },
+    "Resumes": {
+      "type": "directory",
+      "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Resumes",
+      "files": [
+        {
+          "name": "Anushya - Updated (1).pdf",
+          "size": 172049,
+          "modified": "2024-07-06T16:26:18"
+        },
+        {
+          "name": "Arijita Ghosh_Resume.pdf",
+          "size": 57184,
+          "modified": "2024-07-06T16:37:42"
+        },
+        {
+          "name": "ARUN.pdf",
+          "size": 61697,
+          "modified": "2024-07-06T16:13:46"
+        },
+        {
+          "name": "ARYA 1234 (1).pdf",
+          "size": 28559,
+          "modified": "2024-07-06T15:56:36"
+        },
+        {
+          "name": "Ashwin_Kumar.pdf",
+          "size": 48203,
+          "modified": "2024-07-06T16:07:00"
+        },
+        {
+          "name": "Bhavika HR1.docx",
+          "size": 27730,
+          "modified": "2024-07-06T16:31:54"
+        }
+      ],
+      "subdirectories": {}
+    },
+    "test_results": {
+      "type": "directory",
+      "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\test_results",
+      "files": [],
+      "subdirectories": {}
+    }
+  }
+}

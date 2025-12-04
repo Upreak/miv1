@@ -1,0 +1,34 @@
+{
+  "test_summary": {
+    "date": "2025-12-02T15:14:21.113285",
+    "total_tests": 5,
+    "passed": 3,
+    "failed": 2,
+    "success_rate": 60.0
+  },
+  "test_results": [
+    [
+      "Token Manager",
+      false
+    ],
+    [
+      "OTP Logic",
+      true
+    ],
+    [
+      "Schema Validation",
+      true
+    ],
+    [
+      "User Logic",
+      true
+    ],
+    [
+      "Authentication Flow",
+      false
+    ]
+  ],
+  "recommendations": [
+    "2 tests failed. Please review the output above."
+  ]
+}

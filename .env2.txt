@@ -1,0 +1,56 @@
+# Provider Management System - Environment Variables
+# Copy this file to .env and fill in your actual API keys
+
+
+
+
+# OpenRouter API Keys (Primary provider)
+OPENROUTER_API_KEY=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
+
+# Groq/Grok API Keys (Secondary provider)
+GROQ_API_KEY=your_groq_api_key_here
+
+# Google Gemini API Keys (Tertiary provider)
+GEMINI_API_KEY=AIzaSyCe_Rncf5t6X6sF0e8qo1eVXSpBxnpzOV8
+
+# Optional: For OpenRouter site identification
+SITE_URL=https://your-domain.com
+SITE_NAME=Your Application Name
+
+# Provider Configuration
+PROVIDER_LOG_LEVEL=INFO
+PROVIDER_MONITORING_ENABLED=true
+PROVIDER_MONITORING_INTERVAL=60
+
+# Token Limits (1000 calls per provider)
+OPENROUTER_DAILY_LIMIT=1000
+GROQ_DAILY_LIMIT=1000
+GEMINI_DAILY_LIMIT=1000
+
+# Database configuration
+DATABASE_URL=sqlite:///./brain_state.sqlite
+
+# Server configuration
+HOST=0.0.0.0
+PORT=8000
+
+# Security
+SECRET_KEY=your_secret_key_here
+ALGORITHM=HS256
+ACCESS_TOKEN_EXPIRE_MINUTES=30
+
+# CORS settings
+ALLOWED_ORIGINS=["http://localhost:3000", "http://localhost:8080"]
+
+# Rate limiting
+RATE_LIMIT_REQUESTS_PER_MINUTE=60
+RATE_LIMIT_REQUESTS_PER_HOUR=1000
+
+# Provider settings
+DEFAULT_PROVIDER=openrouter
+MAX_CONCURRENT_REQUESTS=4
+REQUEST_TIMEOUT_SECONDS=30
+
+# File upload settings
+MAX_FILE_SIZE=10485760  # 10MB
+ALLOWED_FILE_TYPES=["pdf", "docx", "txt", "jpg", "jpeg", "png"]

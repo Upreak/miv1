@@ -1,0 +1,1281 @@
+{
+  "scan_info": {
+    "timestamp": "2025-11-30T21:45:12.800320",
+    "root_path": "C:\\Users\\maheshpattar\\Desktop\\test2",
+    "root_name": "test2",
+    "max_depth": 3,
+    "excluded_patterns": [
+      ".git",
+      ".svn",
+      ".hg",
+      "__pycache__",
+      ".vscode",
+      ".idea",
+      "node_modules",
+      "target",
+      "build",
+      "dist",
+      ".venv",
+      "venv",
+      ".env",
+      ".env.local",
+      "*.log",
+      "*.tmp",
+      "*.bak",
+      ".gitignore",
+      ".env",
+      ".DS_Store",
+      "Thumbs.db"
+    ],
+    "scanner_version": "1.0"
+  },
+  "folder_map": {
+    "type": "directory",
+    "path": "C:\\Users\\maheshpattar\\Desktop\\test2",
+    "files": [
+      {
+        "name": "api_test_results.txt",
+        "size": 15403,
+        "size_formatted": "15.04 KB",
+        "modified": "2025-11-30T20:36:11.682547",
+        "created": "2025-11-30T20:35:58.483746",
+        "extension": ".txt",
+        "is_hidden": false
+      },
+      {
+        "name": "env_files_scan_report.json",
+        "size": 1974,
+        "size_formatted": "1.93 KB",
+        "modified": "2025-11-30T16:06:23.197256",
+        "created": "2025-11-30T16:06:23.196259",
+        "extension": ".json",
+        "is_hidden": false
+      },
+      {
+        "name": "folder_map_scanner.py",
+        "size": 10797,
+        "size_formatted": "10.54 KB",
+        "modified": "2025-11-30T21:44:54.234011",
+        "created": "2025-11-30T21:36:58.623259",
+        "extension": ".py",
+        "is_hidden": false
+      },
+      {
+        "name": "FOLDER_MAP_USAGE_GUIDE.md",
+        "size": 8047,
+        "size_formatted": "7.86 KB",
+        "modified": "2025-11-30T21:38:19.897364",
+        "created": "2025-11-30T21:37:50.540972",
+        "extension": ".md",
+        "is_hidden": false
+      },
+      {
+        "name": "project_folder_map.json",
+        "size": 45286,
+        "size_formatted": "44.22 KB",
+        "modified": "2025-11-30T21:44:34.757386",
+        "created": "2025-11-30T21:42:39.819030",
+        "extension": ".json",
+        "is_hidden": false
+      },
+      {
+        "name": "PROVIDER_REFACTORING_SUMMARY.md",
+        "size": 8398,
+        "size_formatted": "8.2 KB",
+        "modified": "2025-11-30T21:11:58.657625",
+        "created": "2025-11-30T21:11:35.489844",
+        "extension": ".md",
+        "is_hidden": false
+      },
+      {
+        "name": "scan_env_files.py",
+        "size": 11829,
+        "size_formatted": "11.55 KB",
+        "modified": "2025-11-30T16:04:41.784549",
+        "created": "2025-11-30T16:03:57.810869",
+        "extension": ".py",
+        "is_hidden": false
+      },
+      {
+        "name": "scan_env_files_simple.py",
+        "size": 11699,
+        "size_formatted": "11.42 KB",
+        "modified": "2025-11-30T16:06:02.141902",
+        "created": "2025-11-30T16:05:21.061347",
+        "extension": ".py",
+        "is_hidden": false
+      },
+      {
+        "name": "sree---ai-recruitment-112 (3).zip",
+        "size": 321263,
+        "size_formatted": "313.73 KB",
+        "modified": "2025-11-29T01:32:38.888501",
+        "created": "2025-11-29T01:36:03.743404",
+        "extension": ".zip",
+        "is_hidden": false
+      },
+      {
+        "name": "test_all_apis.py",
+        "size": 11742,
+        "size_formatted": "11.47 KB",
+        "modified": "2025-11-30T20:34:53.334406",
+        "created": "2025-11-30T16:20:15.804720",
+        "extension": ".py",
+        "is_hidden": false
+      },
+      {
+        "name": "TEST_EXECUTION_SUMMARY.md",
+        "size": 17169,
+        "size_formatted": "16.77 KB",
+        "modified": "2025-11-30T21:31:45.437012",
+        "created": "2025-11-30T21:30:36.292717",
+        "extension": ".md",
+        "is_hidden": false
+      },
+      {
+        "name": "test_refactored_providers.py",
+        "size": 7808,
+        "size_formatted": "7.62 KB",
+        "modified": "2025-11-30T21:11:09.484856",
+        "created": "2025-11-30T21:10:44.536479",
+        "extension": ".py",
+        "is_hidden": false
+      },
+      {
+        "name": "test_resume_parser.py",
+        "size": 11593,
+        "size_formatted": "11.32 KB",
+        "modified": "2025-11-30T20:22:02.006096",
+        "created": "2025-11-30T18:12:39.020177",
+        "extension": ".py",
+        "is_hidden": false
+      },
+      {
+        "name": "test_resume_processing_workflow.py",
+        "size": 23033,
+        "size_formatted": "22.49 KB",
+        "modified": "2025-11-30T21:29:53.215633",
+        "created": "2025-11-30T21:17:14.414234",
+        "extension": ".py",
+        "is_hidden": false
+      },
+      {
+        "name": "test_runner.py",
+        "size": 3649,
+        "size_formatted": "3.56 KB",
+        "modified": "2025-11-30T21:30:20.000625",
+        "created": "2025-11-30T21:30:09.680296",
+        "extension": ".py",
+        "is_hidden": false
+      },
+      {
+        "name": "test_workflow.log",
+        "size": 6535,
+        "size_formatted": "6.38 KB",
+        "modified": "2025-11-30T21:22:07.908462",
+        "created": "2025-11-30T21:22:07.583419",
+        "extension": ".log",
+        "is_hidden": false
+      }
+    ],
+    "subdirectories": {
+      "Backend": {
+        "type": "directory",
+        "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Backend",
+        "files": [
+          {
+            "name": "docker-compose.yml",
+            "size": 0,
+            "size_formatted": "0 B",
+            "modified": "2025-11-29T23:51:03.826904",
+            "created": "2025-11-29T23:51:03.826904",
+            "extension": ".yml",
+            "is_hidden": false
+          },
+          {
+            "name": "Dockerfile",
+            "size": 0,
+            "size_formatted": "0 B",
+            "modified": "2025-11-29T23:51:03.777241",
+            "created": "2025-11-29T23:51:03.777241",
+            "extension": "",
+            "is_hidden": false
+          },
+          {
+            "name": "end_to_end_test.log",
+            "size": 27791,
+            "size_formatted": "27.14 KB",
+            "modified": "2025-11-30T15:29:42.362796",
+            "created": "2025-11-30T15:29:36.090514",
+            "extension": ".log",
+            "is_hidden": false
+          },
+          {
+            "name": "end_to_end_test_fixed.log",
+            "size": 29921,
+            "size_formatted": "29.22 KB",
+            "modified": "2025-11-30T15:32:06.933896",
+            "created": "2025-11-30T15:32:04.171847",
+            "extension": ".log",
+            "is_hidden": false
+          },
+          {
+            "name": "manage.py",
+            "size": 0,
+            "size_formatted": "0 B",
+            "modified": "2025-11-29T23:51:03.834902",
+            "created": "2025-11-29T23:51:03.834902",
+            "extension": ".py",
+            "is_hidden": false
+          },
+          {
+            "name": "test_end_to_end_pipeline.py",
+            "size": 15927,
+            "size_formatted": "15.55 KB",
+            "modified": "2025-11-30T15:30:07.748906",
+            "created": "2025-11-30T15:28:34.469700",
+            "extension": ".py",
+            "is_hidden": false
+          },
+          {
+            "name": "test_end_to_end_pipeline_fixed.py",
+            "size": 18476,
+            "size_formatted": "18.04 KB",
+            "modified": "2025-11-30T15:31:45.031466",
+            "created": "2025-11-30T15:30:54.043919",
+            "extension": ".py",
+            "is_hidden": false
+          }
+        ],
+        "subdirectories": {
+          "backend_app": {
+            "type": "directory",
+            "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Backend\\backend_app",
+            "files": [
+              {
+                "name": "__init__.py",
+                "size": 0,
+                "size_formatted": "0 B",
+                "modified": "2025-11-29T23:51:16.127604",
+                "created": "2025-11-29T23:51:16.127604",
+                "extension": ".py",
+                "is_hidden": false
+              },
+              {
+                "name": "config.py",
+                "size": 0,
+                "size_formatted": "0 B",
+                "modified": "2025-11-29T23:51:16.191972",
+                "created": "2025-11-29T23:51:16.191972",
+                "extension": ".py",
+                "is_hidden": false
+              },
+              {
+                "name": "logging_cfg.py",
+                "size": 0,
+                "size_formatted": "0 B",
+                "modified": "2025-11-29T23:51:16.200621",
+                "created": "2025-11-29T23:51:16.200621",
+                "extension": ".py",
+                "is_hidden": false
+              }
+            ],
+            "subdirectories": {
+              "api": {
+                "type": "directory",
+                "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Backend\\backend_app\\api",
+                "files": [],
+                "subdirectories": [],
+                "note": "Scan depth limit reached"
+              },
+              "brain_module": {
+                "type": "directory",
+                "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Backend\\backend_app\\brain_module",
+                "files": [],
+                "subdirectories": [],
+                "note": "Scan depth limit reached"
+              },
+              "db": {
+                "type": "directory",
+                "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Backend\\backend_app\\db",
+                "files": [],
+                "subdirectories": [],
+                "note": "Scan depth limit reached"
+              },
+              "file_intake": {
+                "type": "directory",
+                "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Backend\\backend_app\\file_intake",
+                "files": [],
+                "subdirectories": [],
+                "note": "Scan depth limit reached"
+              },
+              "models": {
+                "type": "directory",
+                "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Backend\\backend_app\\models",
+                "files": [],
+                "subdirectories": [],
+                "note": "Scan depth limit reached"
+              },
+              "plugins": {
+                "type": "directory",
+                "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Backend\\backend_app\\plugins",
+                "files": [],
+                "subdirectories": [],
+                "note": "Scan depth limit reached"
+              },
+              "repositories": {
+                "type": "directory",
+                "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Backend\\backend_app\\repositories",
+                "files": [],
+                "subdirectories": [],
+                "note": "Scan depth limit reached"
+              },
+              "rulebook": {
+                "type": "directory",
+                "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Backend\\backend_app\\rulebook",
+                "files": [],
+                "subdirectories": [],
+                "note": "Scan depth limit reached"
+              },
+              "security": {
+                "type": "directory",
+                "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Backend\\backend_app\\security",
+                "files": [],
+                "subdirectories": [],
+                "note": "Scan depth limit reached"
+              },
+              "services": {
+                "type": "directory",
+                "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Backend\\backend_app\\services",
+                "files": [],
+                "subdirectories": [],
+                "note": "Scan depth limit reached"
+              },
+              "shared": {
+                "type": "directory",
+                "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Backend\\backend_app\\shared",
+                "files": [],
+                "subdirectories": [],
+                "note": "Scan depth limit reached"
+              },
+              "text_extraction": {
+                "type": "directory",
+                "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Backend\\backend_app\\text_extraction",
+                "files": [],
+                "subdirectories": [],
+                "note": "Scan depth limit reached"
+              }
+            }
+          },
+          "llm_responses": {
+            "type": "directory",
+            "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Backend\\llm_responses",
+            "files": [
+              {
+                "name": "Anushya - Updated (1)_metadata.json",
+                "size": 391,
+                "size_formatted": "391.0 B",
+                "modified": "2025-11-30T15:32:06.859712",
+                "created": "2025-11-30T15:32:06.858671",
+                "extension": ".json",
+                "is_hidden": false
+              },
+              {
+                "name": "Anushya - Updated (1)_response.txt",
+                "size": 616,
+                "size_formatted": "616.0 B",
+                "modified": "2025-11-30T15:32:06.858397",
+                "created": "2025-11-30T15:32:06.857392",
+                "extension": ".txt",
+                "is_hidden": false
+              },
+              {
+                "name": "Arijita Ghosh_Resume_metadata.json",
+                "size": 389,
+                "size_formatted": "389.0 B",
+                "modified": "2025-11-30T15:32:06.870404",
+                "created": "2025-11-30T15:32:06.870404",
+                "extension": ".json",
+                "is_hidden": false
+              },
+              {
+                "name": "Arijita Ghosh_Resume_response.txt",
+                "size": 615,
+                "size_formatted": "615.0 B",
+                "modified": "2025-11-30T15:32:06.869401",
+                "created": "2025-11-30T15:32:06.866243",
+                "extension": ".txt",
+                "is_hidden": false
+              },
+              {
+                "name": "ARUN_metadata.json",
+                "size": 357,
+                "size_formatted": "357.0 B",
+                "modified": "2025-11-30T15:32:06.879108",
+                "created": "2025-11-30T15:32:06.879108",
+                "extension": ".json",
+                "is_hidden": false
+              },
+              {
+                "name": "ARUN_response.txt",
+                "size": 599,
+                "size_formatted": "599.0 B",
+                "modified": "2025-11-30T15:32:06.878113",
+                "created": "2025-11-30T15:32:06.877117",
+                "extension": ".txt",
+                "is_hidden": false
+              },
+              {
+                "name": "ARYA 1234 (1)_metadata.json",
+                "size": 375,
+                "size_formatted": "375.0 B",
+                "modified": "2025-11-30T15:32:06.898995",
+                "created": "2025-11-30T15:32:06.898995",
+                "extension": ".json",
+                "is_hidden": false
+              },
+              {
+                "name": "ARYA 1234 (1)_response.txt",
+                "size": 608,
+                "size_formatted": "608.0 B",
+                "modified": "2025-11-30T15:32:06.897996",
+                "created": "2025-11-30T15:32:06.896996",
+                "extension": ".txt",
+                "is_hidden": false
+              },
+              {
+                "name": "Ashwin_Kumar_metadata.json",
+                "size": 373,
+                "size_formatted": "373.0 B",
+                "modified": "2025-11-30T15:32:06.907978",
+                "created": "2025-11-30T15:32:06.906975",
+                "extension": ".json",
+                "is_hidden": false
+              },
+              {
+                "name": "Ashwin_Kumar_response.txt",
+                "size": 607,
+                "size_formatted": "607.0 B",
+                "modified": "2025-11-30T15:32:06.906975",
+                "created": "2025-11-30T15:32:06.905980",
+                "extension": ".txt",
+                "is_hidden": false
+              },
+              {
+                "name": "Bhavika HR1_metadata.json",
+                "size": 372,
+                "size_formatted": "372.0 B",
+                "modified": "2025-11-30T15:32:06.932302",
+                "created": "2025-11-30T15:32:06.932302",
+                "extension": ".json",
+                "is_hidden": false
+              },
+              {
+                "name": "Bhavika HR1_response.txt",
+                "size": 607,
+                "size_formatted": "607.0 B",
+                "modified": "2025-11-30T15:32:06.931300",
+                "created": "2025-11-30T15:32:06.930304",
+                "extension": ".txt",
+                "is_hidden": false
+              }
+            ],
+            "subdirectories": {}
+          },
+          "logs": {
+            "type": "directory",
+            "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Backend\\logs",
+            "files": [
+              {
+                "name": "end_to_end_test_report.json",
+                "size": 0,
+                "size_formatted": "0 B",
+                "modified": "2025-11-30T15:29:42.362796",
+                "created": "2025-11-30T15:29:42.362796",
+                "extension": ".json",
+                "is_hidden": false
+              },
+              {
+                "name": "end_to_end_test_report_fixed.json",
+                "size": 5649,
+                "size_formatted": "5.52 KB",
+                "modified": "2025-11-30T15:32:06.933896",
+                "created": "2025-11-30T15:32:06.933896",
+                "extension": ".json",
+                "is_hidden": false
+              },
+              {
+                "name": "extraction_logbook.db",
+                "size": 20480,
+                "size_formatted": "20.0 KB",
+                "modified": "2025-11-30T15:32:06.673199",
+                "created": "2025-11-30T15:29:40.112860",
+                "extension": ".db",
+                "is_hidden": false
+              },
+              {
+                "name": "provider_manager.log",
+                "size": 0,
+                "size_formatted": "0 B",
+                "modified": "2025-11-30T01:12:03.771101",
+                "created": "2025-11-30T01:12:03.771101",
+                "extension": ".log",
+                "is_hidden": false
+              }
+            ],
+            "subdirectories": {}
+          },
+          "scripts": {
+            "type": "directory",
+            "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Backend\\scripts",
+            "files": [
+              {
+                "name": "init_db.py",
+                "size": 0,
+                "size_formatted": "0 B",
+                "modified": "2025-11-29T23:51:10.542946",
+                "created": "2025-11-29T23:51:10.542946",
+                "extension": ".py",
+                "is_hidden": false
+              },
+              {
+                "name": "migrate.sh",
+                "size": 0,
+                "size_formatted": "0 B",
+                "modified": "2025-11-29T23:51:10.597932",
+                "created": "2025-11-29T23:51:10.597932",
+                "extension": ".sh",
+                "is_hidden": false
+              },
+              {
+                "name": "process_email_resumes.py",
+                "size": 0,
+                "size_formatted": "0 B",
+                "modified": "2025-11-29T23:51:10.610385",
+                "created": "2025-11-29T23:51:10.610385",
+                "extension": ".py",
+                "is_hidden": false
+              },
+              {
+                "name": "seed_data.py",
+                "size": 0,
+                "size_formatted": "0 B",
+                "modified": "2025-11-29T23:51:10.602939",
+                "created": "2025-11-29T23:51:10.602939",
+                "extension": ".py",
+                "is_hidden": false
+              }
+            ],
+            "subdirectories": {}
+          },
+          "tests": {
+            "type": "directory",
+            "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Backend\\tests",
+            "files": [
+              {
+                "name": "__init__.py",
+                "size": 0,
+                "size_formatted": "0 B",
+                "modified": "2025-11-29T23:52:49.892447",
+                "created": "2025-11-29T23:52:49.892447",
+                "extension": ".py",
+                "is_hidden": false
+              }
+            ],
+            "subdirectories": {}
+          },
+          "text_extract": {
+            "type": "directory",
+            "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Backend\\text_extract",
+            "files": [
+              {
+                "name": "Anushya - Updated (1)_extracted.txt",
+                "size": 5113,
+                "size_formatted": "4.99 KB",
+                "modified": "2025-11-30T17:46:28.016941",
+                "created": "2025-11-30T15:29:40.768968",
+                "extension": ".txt",
+                "is_hidden": false
+              },
+              {
+                "name": "Arijita Ghosh_Resume_extracted.txt",
+                "size": 1574,
+                "size_formatted": "1.54 KB",
+                "modified": "2025-11-30T15:32:05.631025",
+                "created": "2025-11-30T15:29:40.852180",
+                "extension": ".txt",
+                "is_hidden": false
+              },
+              {
+                "name": "ARUN_extracted.txt",
+                "size": 2256,
+                "size_formatted": "2.2 KB",
+                "modified": "2025-11-30T15:32:05.759935",
+                "created": "2025-11-30T15:29:41.131552",
+                "extension": ".txt",
+                "is_hidden": false
+              },
+              {
+                "name": "ARYA 1234 (1)_extracted.txt",
+                "size": 3388,
+                "size_formatted": "3.31 KB",
+                "modified": "2025-11-30T15:32:05.975354",
+                "created": "2025-11-30T15:29:41.359812",
+                "extension": ".txt",
+                "is_hidden": false
+              },
+              {
+                "name": "Ashwin_Kumar_extracted.txt",
+                "size": 6328,
+                "size_formatted": "6.18 KB",
+                "modified": "2025-11-30T15:32:06.142170",
+                "created": "2025-11-30T15:29:41.615522",
+                "extension": ".txt",
+                "is_hidden": false
+              },
+              {
+                "name": "Bhavika HR1_extracted.txt",
+                "size": 8871,
+                "size_formatted": "8.66 KB",
+                "modified": "2025-11-30T15:32:06.673199",
+                "created": "2025-11-30T15:32:06.673199",
+                "extension": ".txt",
+                "is_hidden": false
+              }
+            ],
+            "subdirectories": {}
+          }
+        }
+      },
+      "CbDOC": {
+        "type": "directory",
+        "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\CbDOC",
+        "files": [
+          {
+            "name": "RuleBook_v1.0_FULL (1).md",
+            "size": 5595,
+            "size_formatted": "5.46 KB",
+            "modified": "2025-11-29T20:04:36.513256",
+            "created": "2025-11-29T20:04:36.034614",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "RuleBook_v1.0_FULL (2).md",
+            "size": 11148,
+            "size_formatted": "10.89 KB",
+            "modified": "2025-11-29T20:07:53.296486",
+            "created": "2025-11-29T20:09:18.921369",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "RuleBook_v1.0_FULL (3).md",
+            "size": 14541,
+            "size_formatted": "14.2 KB",
+            "modified": "2025-11-29T20:09:54.194873",
+            "created": "2025-11-29T20:09:53.687368",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "RuleBook_v1.0_FULL (4).md",
+            "size": 19904,
+            "size_formatted": "19.44 KB",
+            "modified": "2025-11-29T20:11:01.453597",
+            "created": "2025-11-29T20:11:00.887734",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "RuleBook_v1.0_FULL (5).md",
+            "size": 25553,
+            "size_formatted": "24.95 KB",
+            "modified": "2025-11-29T20:12:02.485665",
+            "created": "2025-11-29T20:12:01.813659",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "RuleBook_v1.0_FULL (6).md",
+            "size": 30556,
+            "size_formatted": "29.84 KB",
+            "modified": "2025-11-29T20:13:32.369416",
+            "created": "2025-11-29T20:13:31.702412",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "RuleBook_v1.0_FULL (7).md",
+            "size": 36171,
+            "size_formatted": "35.32 KB",
+            "modified": "2025-11-29T20:15:02.702273",
+            "created": "2025-11-29T20:15:02.111384",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "RuleBook_v1.0_FULL (8).md",
+            "size": 43934,
+            "size_formatted": "42.9 KB",
+            "modified": "2025-11-29T20:17:02.835268",
+            "created": "2025-11-29T20:17:01.998379",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "RuleBook_v1.0_FULL (9).md",
+            "size": 51531,
+            "size_formatted": "50.32 KB",
+            "modified": "2025-11-29T20:19:48.686972",
+            "created": "2025-11-29T20:19:47.951861",
+            "extension": ".md",
+            "is_hidden": false
+          }
+        ],
+        "subdirectories": {}
+      },
+      "Doc": {
+        "type": "directory",
+        "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Doc",
+        "files": [
+          {
+            "name": "# Complete System-Wide Unified Brain Wor.md",
+            "size": 42291,
+            "size_formatted": "41.3 KB",
+            "modified": "2025-11-28T21:10:40.908389",
+            "created": "2025-11-27T07:06:42",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "97_PERCENT_EXTRACTOR_GUIDE.md",
+            "size": 7142,
+            "size_formatted": "6.97 KB",
+            "modified": "2025-11-28T21:10:40.916386",
+            "created": "2025-11-27T07:06:42",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "ARCHITECTURE.md",
+            "size": 1799,
+            "size_formatted": "1.76 KB",
+            "modified": "2025-11-28T21:10:40.924387",
+            "created": "2025-11-27T07:06:42",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "ENHANCED_FEATURES.md",
+            "size": 13953,
+            "size_formatted": "13.63 KB",
+            "modified": "2025-11-28T21:10:40.932388",
+            "created": "2025-11-27T07:06:42",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "FINAL_CHECKLIST.md",
+            "size": 10910,
+            "size_formatted": "10.65 KB",
+            "modified": "2025-11-28T21:10:40.940387",
+            "created": "2025-11-27T07:06:42",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "IMPLEMENTATION_FINAL_REPORT.md",
+            "size": 12649,
+            "size_formatted": "12.35 KB",
+            "modified": "2025-11-28T21:10:40.948387",
+            "created": "2025-11-27T07:06:42",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "Int.py",
+            "size": 1,
+            "size_formatted": "1.0 B",
+            "modified": "2025-11-28T21:10:40.956386",
+            "created": "2025-11-27T07:06:42",
+            "extension": ".py",
+            "is_hidden": false
+          },
+          {
+            "name": "KEYS_AND_MODELS_SETUP.md",
+            "size": 16617,
+            "size_formatted": "16.23 KB",
+            "modified": "2025-11-28T21:10:40.964385",
+            "created": "2025-11-27T07:06:42",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "LLM_PROVIDER_SETUP.md",
+            "size": 12453,
+            "size_formatted": "12.16 KB",
+            "modified": "2025-11-28T21:10:40.972385",
+            "created": "2025-11-27T07:06:42",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "PRACTICAL_TEST_RESULTS.md",
+            "size": 5994,
+            "size_formatted": "5.85 KB",
+            "modified": "2025-11-28T21:10:40.980386",
+            "created": "2025-11-27T07:06:42",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "PROJECT_CLEANUP_SUMMARY.md",
+            "size": 6052,
+            "size_formatted": "5.91 KB",
+            "modified": "2025-11-28T21:10:40.988388",
+            "created": "2025-11-27T07:06:42",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "PROVIDER_DEBUG_LOG.md",
+            "size": 14950,
+            "size_formatted": "14.6 KB",
+            "modified": "2025-11-28T21:10:40.996386",
+            "created": "2025-11-27T07:06:42",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "README.md",
+            "size": 10609,
+            "size_formatted": "10.36 KB",
+            "modified": "2025-11-28T21:10:41.004386",
+            "created": "2025-11-27T07:06:42",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "SYSTEM_AUDIT_REPORT.md",
+            "size": 5852,
+            "size_formatted": "5.71 KB",
+            "modified": "2025-11-28T21:10:41.012388",
+            "created": "2025-11-27T07:06:42",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "VSCODE_SETUP.md",
+            "size": 10407,
+            "size_formatted": "10.16 KB",
+            "modified": "2025-11-28T21:10:41.020385",
+            "created": "2025-11-27T07:06:42",
+            "extension": ".md",
+            "is_hidden": false
+          }
+        ],
+        "subdirectories": {}
+      },
+      "documents": {
+        "type": "directory",
+        "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\documents",
+        "files": [
+          {
+            "name": "api_endpoints.md",
+            "size": 1750,
+            "size_formatted": "1.71 KB",
+            "modified": "2025-11-29T01:35:01.118262",
+            "created": "2025-11-28T20:02:34",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "brain_module.md",
+            "size": 1522,
+            "size_formatted": "1.49 KB",
+            "modified": "2025-11-29T01:35:01.118262",
+            "created": "2025-11-28T20:02:34",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "business_logic_rules.md",
+            "size": 8264,
+            "size_formatted": "8.07 KB",
+            "modified": "2025-11-29T01:35:01.133883",
+            "created": "2025-11-28T20:02:34",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "database_schema.md",
+            "size": 9767,
+            "size_formatted": "9.54 KB",
+            "modified": "2025-11-29T01:35:01.133883",
+            "created": "2025-11-28T20:02:34",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "migration_guide.md",
+            "size": 6149,
+            "size_formatted": "6.0 KB",
+            "modified": "2025-11-29T01:35:01.149510",
+            "created": "2025-11-28T20:02:34",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "workflows.md",
+            "size": 1855,
+            "size_formatted": "1.81 KB",
+            "modified": "2025-11-29T01:35:01.149510",
+            "created": "2025-11-28T20:02:34",
+            "extension": ".md",
+            "is_hidden": false
+          }
+        ],
+        "subdirectories": {}
+      },
+      "Frontend": {
+        "type": "directory",
+        "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Frontend",
+        "files": [
+          {
+            "name": "App.tsx",
+            "size": 6912,
+            "size_formatted": "6.75 KB",
+            "modified": "2025-11-29T01:34:05.371408",
+            "created": "2025-11-28T20:02:34",
+            "extension": ".tsx",
+            "is_hidden": false
+          },
+          {
+            "name": "index.html",
+            "size": 1367,
+            "size_formatted": "1.33 KB",
+            "modified": "2025-11-29T01:34:05.387030",
+            "created": "2025-11-28T20:02:34",
+            "extension": ".html",
+            "is_hidden": false
+          },
+          {
+            "name": "index.tsx",
+            "size": 451,
+            "size_formatted": "451.0 B",
+            "modified": "2025-11-29T01:34:05.402653",
+            "created": "2025-11-28T20:02:34",
+            "extension": ".tsx",
+            "is_hidden": false
+          },
+          {
+            "name": "INTERACTIVE_ELEMENTS_INVENTORY.json",
+            "size": 43308,
+            "size_formatted": "42.29 KB",
+            "modified": "2025-11-29T13:52:22.774079",
+            "created": "2025-11-29T13:49:46.377053",
+            "extension": ".json",
+            "is_hidden": false
+          },
+          {
+            "name": "metadata.json",
+            "size": 236,
+            "size_formatted": "236.0 B",
+            "modified": "2025-11-29T01:34:05.402653",
+            "created": "2025-11-28T20:02:34",
+            "extension": ".json",
+            "is_hidden": false
+          },
+          {
+            "name": "package-lock.json",
+            "size": 104283,
+            "size_formatted": "101.84 KB",
+            "modified": "2025-11-29T01:39:53.744883",
+            "created": "2025-11-29T01:39:53.743896",
+            "extension": ".json",
+            "is_hidden": false
+          },
+          {
+            "name": "package.json",
+            "size": 511,
+            "size_formatted": "511.0 B",
+            "modified": "2025-11-29T01:34:05.418275",
+            "created": "2025-11-28T20:02:34",
+            "extension": ".json",
+            "is_hidden": false
+          },
+          {
+            "name": "README.md",
+            "size": 553,
+            "size_formatted": "553.0 B",
+            "modified": "2025-11-29T01:34:05.418275",
+            "created": "2025-11-28T20:02:34",
+            "extension": ".md",
+            "is_hidden": false
+          },
+          {
+            "name": "tsconfig.json",
+            "size": 542,
+            "size_formatted": "542.0 B",
+            "modified": "2025-11-29T01:34:05.433906",
+            "created": "2025-11-28T20:02:34",
+            "extension": ".json",
+            "is_hidden": false
+          },
+          {
+            "name": "types.ts",
+            "size": 7800,
+            "size_formatted": "7.62 KB",
+            "modified": "2025-11-30T14:32:09.849536",
+            "created": "2025-11-28T20:02:34",
+            "extension": ".ts",
+            "is_hidden": false
+          },
+          {
+            "name": "vite.config.ts",
+            "size": 1186,
+            "size_formatted": "1.16 KB",
+            "modified": "2025-11-30T14:32:06.083660",
+            "created": "2025-11-28T20:02:34",
+            "extension": ".ts",
+            "is_hidden": false
+          }
+        ],
+        "subdirectories": {
+          "examples": {
+            "type": "directory",
+            "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Frontend\\examples",
+            "files": [
+              {
+                "name": "resume-upload.html",
+                "size": 10969,
+                "size_formatted": "10.71 KB",
+                "modified": "2025-11-30T00:09:21.278374",
+                "created": "2025-11-30T00:08:43.670695",
+                "extension": ".html",
+                "is_hidden": false
+              }
+            ],
+            "subdirectories": {}
+          },
+          "modules": {
+            "type": "directory",
+            "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Frontend\\modules",
+            "files": [],
+            "subdirectories": {
+              "admin": {
+                "type": "directory",
+                "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Frontend\\modules\\admin",
+                "files": [],
+                "subdirectories": [],
+                "note": "Scan depth limit reached"
+              },
+              "auth": {
+                "type": "directory",
+                "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Frontend\\modules\\auth",
+                "files": [],
+                "subdirectories": [],
+                "note": "Scan depth limit reached"
+              },
+              "candidate": {
+                "type": "directory",
+                "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Frontend\\modules\\candidate",
+                "files": [],
+                "subdirectories": [],
+                "note": "Scan depth limit reached"
+              },
+              "dashboard": {
+                "type": "directory",
+                "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Frontend\\modules\\dashboard",
+                "files": [],
+                "subdirectories": [],
+                "note": "Scan depth limit reached"
+              },
+              "docs": {
+                "type": "directory",
+                "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Frontend\\modules\\docs",
+                "files": [],
+                "subdirectories": [],
+                "note": "Scan depth limit reached"
+              },
+              "public": {
+                "type": "directory",
+                "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Frontend\\modules\\public",
+                "files": [],
+                "subdirectories": [],
+                "note": "Scan depth limit reached"
+              },
+              "recruiter": {
+                "type": "directory",
+                "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Frontend\\modules\\recruiter",
+                "files": [],
+                "subdirectories": [],
+                "note": "Scan depth limit reached"
+              },
+              "sales": {
+                "type": "directory",
+                "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Frontend\\modules\\sales",
+                "files": [],
+                "subdirectories": [],
+                "note": "Scan depth limit reached"
+              },
+              "ui": {
+                "type": "directory",
+                "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Frontend\\modules\\ui",
+                "files": [],
+                "subdirectories": [],
+                "note": "Scan depth limit reached"
+              }
+            }
+          },
+          "services": {
+            "type": "directory",
+            "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Frontend\\services",
+            "files": [
+              {
+                "name": "geminiService.ts",
+                "size": 8079,
+                "size_formatted": "7.89 KB",
+                "modified": "2025-11-29T01:34:05.340150",
+                "created": "2025-11-28T20:02:34",
+                "extension": ".ts",
+                "is_hidden": false
+              },
+              {
+                "name": "publicJobService.ts",
+                "size": 3546,
+                "size_formatted": "3.46 KB",
+                "modified": "2025-11-29T01:34:05.340150",
+                "created": "2025-11-28T20:02:34",
+                "extension": ".ts",
+                "is_hidden": false
+              },
+              {
+                "name": "storageService.ts",
+                "size": 10675,
+                "size_formatted": "10.42 KB",
+                "modified": "2025-11-30T14:32:08.056785",
+                "created": "2025-11-28T20:02:34",
+                "extension": ".ts",
+                "is_hidden": false
+              }
+            ],
+            "subdirectories": {}
+          }
+        }
+      },
+      "logs": {
+        "type": "directory",
+        "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\logs",
+        "files": [
+          {
+            "name": "provider_manager.log",
+            "size": 39865,
+            "size_formatted": "38.93 KB",
+            "modified": "2025-11-30T02:19:54.113396",
+            "created": "2025-11-30T01:44:53.478436",
+            "extension": ".log",
+            "is_hidden": false
+          }
+        ],
+        "subdirectories": {}
+      },
+      "Resumes": {
+        "type": "directory",
+        "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Resumes",
+        "files": [
+          {
+            "name": "Anushya - Updated (1).pdf",
+            "size": 172049,
+            "size_formatted": "168.02 KB",
+            "modified": "2024-07-06T16:26:18",
+            "created": "2025-11-30T15:26:23.159284",
+            "extension": ".pdf",
+            "is_hidden": false
+          },
+          {
+            "name": "Arijita Ghosh_Resume.pdf",
+            "size": 57184,
+            "size_formatted": "55.84 KB",
+            "modified": "2024-07-06T16:37:42",
+            "created": "2025-11-30T15:26:23.164277",
+            "extension": ".pdf",
+            "is_hidden": false
+          },
+          {
+            "name": "ARUN.pdf",
+            "size": 61697,
+            "size_formatted": "60.25 KB",
+            "modified": "2024-07-06T16:13:46",
+            "created": "2025-11-30T15:26:23.169526",
+            "extension": ".pdf",
+            "is_hidden": false
+          },
+          {
+            "name": "ARYA 1234 (1).pdf",
+            "size": 28559,
+            "size_formatted": "27.89 KB",
+            "modified": "2024-07-06T15:56:36",
+            "created": "2025-11-30T15:26:23.176071",
+            "extension": ".pdf",
+            "is_hidden": false
+          },
+          {
+            "name": "Ashwin_Kumar.pdf",
+            "size": 48203,
+            "size_formatted": "47.07 KB",
+            "modified": "2024-07-06T16:07:00",
+            "created": "2025-11-30T15:26:23.180801",
+            "extension": ".pdf",
+            "is_hidden": false
+          },
+          {
+            "name": "Bhavika HR1.docx",
+            "size": 27730,
+            "size_formatted": "27.08 KB",
+            "modified": "2024-07-06T16:31:54",
+            "created": "2025-11-30T15:26:23.185802",
+            "extension": ".docx",
+            "is_hidden": false
+          }
+        ],
+        "subdirectories": {}
+      },
+      "test_results": {
+        "type": "directory",
+        "path": "C:\\Users\\maheshpattar\\Desktop\\test2\\test_results",
+        "files": [
+          {
+            "name": "folder_map.json",
+            "size": 39692,
+            "size_formatted": "38.76 KB",
+            "modified": "2025-11-30T21:22:07.653719",
+            "created": "2025-11-30T21:22:07.646592",
+            "extension": ".json",
+            "is_hidden": false
+          },
+          {
+            "name": "test_results.json",
+            "size": 47147,
+            "size_formatted": "46.04 KB",
+            "modified": "2025-11-30T21:22:07.894878",
+            "created": "2025-11-30T21:22:07.879332",
+            "extension": ".json",
+            "is_hidden": false
+          },
+          {
+            "name": "test_summary_report.txt",
+            "size": 463,
+            "size_formatted": "463.0 B",
+            "modified": "2025-11-30T21:22:07.898399",
+            "created": "2025-11-30T21:22:07.896386",
+            "extension": ".txt",
+            "is_hidden": false
+          }
+        ],
+        "subdirectories": {}
+      }
+    }
+  }
+}

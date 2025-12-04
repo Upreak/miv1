@@ -1,0 +1,154 @@
+{
+  "timestamp": "2025-11-30T15:32:06.944322",
+  "summary": {
+    "total_files": 6,
+    "extraction_success": 6,
+    "llm_success": 0,
+    "candidate_success": 6,
+    "overall_success": true
+  },
+  "extraction_results": [
+    {
+      "file_path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Resumes\\Anushya - Updated (1).pdf",
+      "text_path": "text_extract\\Anushya - Updated (1)_extracted.txt",
+      "success": true,
+      "module": "unstructured_primary",
+      "score": 95.0,
+      "length": 4865
+    },
+    {
+      "file_path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Resumes\\Arijita Ghosh_Resume.pdf",
+      "text_path": "text_extract\\Arijita Ghosh_Resume_extracted.txt",
+      "success": true,
+      "module": "unstructured_primary",
+      "score": 89.75,
+      "length": 1500
+    },
+    {
+      "file_path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Resumes\\ARUN.pdf",
+      "text_path": "text_extract\\ARUN_extracted.txt",
+      "success": true,
+      "module": "unstructured_primary",
+      "score": 95.0,
+      "length": 2201
+    },
+    {
+      "file_path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Resumes\\ARYA 1234 (1).pdf",
+      "text_path": "text_extract\\ARYA 1234 (1)_extracted.txt",
+      "success": true,
+      "module": "unstructured_primary",
+      "score": 95.0,
+      "length": 3212
+    },
+    {
+      "file_path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Resumes\\Ashwin_Kumar.pdf",
+      "text_path": "text_extract\\Ashwin_Kumar_extracted.txt",
+      "success": true,
+      "module": "unstructured_primary",
+      "score": 95.0,
+      "length": 5890
+    },
+    {
+      "file_path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Resumes\\Bhavika HR1.docx",
+      "text_path": "text_extract\\Bhavika HR1_extracted.txt",
+      "success": true,
+      "module": "unstructured_primary",
+      "score": 95.0,
+      "length": 8509
+    }
+  ],
+  "llm_results": [
+    {
+      "file_path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Resumes\\Anushya - Updated (1).pdf",
+      "response_path": "llm_responses\\Anushya - Updated (1)_response.txt",
+      "metadata_path": "llm_responses\\Anushya - Updated (1)_metadata.json",
+      "success": false,
+      "provider": "mock",
+      "model": "mock",
+      "response_time": 0.0,
+      "original_error": "All providers failed. Tried: openrouter, grok, gemini"
+    },
+    {
+      "file_path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Resumes\\Arijita Ghosh_Resume.pdf",
+      "response_path": "llm_responses\\Arijita Ghosh_Resume_response.txt",
+      "metadata_path": "llm_responses\\Arijita Ghosh_Resume_metadata.json",
+      "success": false,
+      "provider": "mock",
+      "model": "mock",
+      "response_time": 0.0,
+      "original_error": "All providers failed. Tried: openrouter, grok, gemini"
+    },
+    {
+      "file_path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Resumes\\ARUN.pdf",
+      "response_path": "llm_responses\\ARUN_response.txt",
+      "metadata_path": "llm_responses\\ARUN_metadata.json",
+      "success": false,
+      "provider": "mock",
+      "model": "mock",
+      "response_time": 0.0,
+      "original_error": "All providers failed. Tried: openrouter, grok, gemini"
+    },
+    {
+      "file_path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Resumes\\ARYA 1234 (1).pdf",
+      "response_path": "llm_responses\\ARYA 1234 (1)_response.txt",
+      "metadata_path": "llm_responses\\ARYA 1234 (1)_metadata.json",
+      "success": false,
+      "provider": "mock",
+      "model": "mock",
+      "response_time": 0.0,
+      "original_error": "All providers failed. Tried: openrouter, grok, gemini"
+    },
+    {
+      "file_path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Resumes\\Ashwin_Kumar.pdf",
+      "response_path": "llm_responses\\Ashwin_Kumar_response.txt",
+      "metadata_path": "llm_responses\\Ashwin_Kumar_metadata.json",
+      "success": false,
+      "provider": "mock",
+      "model": "mock",
+      "response_time": 0.0,
+      "original_error": "All providers failed. Tried: openrouter, grok, gemini"
+    },
+    {
+      "file_path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Resumes\\Bhavika HR1.docx",
+      "response_path": "llm_responses\\Bhavika HR1_response.txt",
+      "metadata_path": "llm_responses\\Bhavika HR1_metadata.json",
+      "success": false,
+      "provider": "mock",
+      "model": "mock",
+      "response_time": 0.0,
+      "original_error": "All providers failed. Tried: openrouter, grok, gemini"
+    }
+  ],
+  "candidate_results": [
+    {
+      "file_path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Resumes\\Anushya - Updated (1).pdf",
+      "candidate_id": "CAND-20251130-82D630DB",
+      "success": true
+    },
+    {
+      "file_path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Resumes\\Arijita Ghosh_Resume.pdf",
+      "candidate_id": "CAND-20251130-4027C1E6",
+      "success": true
+    },
+    {
+      "file_path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Resumes\\ARUN.pdf",
+      "candidate_id": "CAND-20251130-FD7BDDC0",
+      "success": true
+    },
+    {
+      "file_path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Resumes\\ARYA 1234 (1).pdf",
+      "candidate_id": "CAND-20251130-64C654A5",
+      "success": true
+    },
+    {
+      "file_path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Resumes\\Ashwin_Kumar.pdf",
+      "candidate_id": "CAND-20251130-3FE77CD4",
+      "success": true
+    },
+    {
+      "file_path": "C:\\Users\\maheshpattar\\Desktop\\test2\\Resumes\\Bhavika HR1.docx",
+      "candidate_id": "CAND-20251130-56008A19",
+      "success": true
+    }
+  ]
+}

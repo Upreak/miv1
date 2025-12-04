@@ -1,0 +1,67 @@
+2025-12-03 18:18:47,317 - __main__ - INFO - Starting comprehensive chat bot test suite...
+2025-12-03 18:18:47,318 - __main__ - INFO - Setting up test environment...
+2025-12-03 18:18:47,319 - __main__ - INFO - Test environment setup completed successfully
+2025-12-03 18:18:47,320 - __main__ - INFO - Running individual skill tests...
+2025-12-03 18:18:47,320 - __main__ - INFO - Testing onboarding skill...
+2025-12-03 18:18:48,292 - provider_orchestrator - INFO - No provider configured at slot 1
+2025-12-03 18:18:48,293 - provider_orchestrator - INFO - No provider configured at slot 2
+2025-12-03 18:18:48,293 - provider_orchestrator - INFO - No provider configured at slot 3
+2025-12-03 18:18:48,378 - provider_orchestrator - INFO - No provider configured at slot 4
+2025-12-03 18:18:48,378 - provider_orchestrator - INFO - No provider configured at slot 5
+2025-12-03 18:18:48,388 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: onboarding_skill with priority 20
+2025-12-03 18:18:48,389 - backend_app.chatbot.services.skills.onboarding_skill - INFO - Skill execution: {'timestamp': '2025-12-03T12:48:48.389038', 'skill': 'onboarding_skill', 'sid': 'test_session_123', 'message': 'hello', 'success': True, 'response': None, 'error': None}
+2025-12-03 18:18:48,389 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: onboarding_skill with priority 20
+2025-12-03 18:18:48,389 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: onboarding_skill with priority 20
+2025-12-03 18:18:48,390 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: onboarding_skill with priority 20
+2025-12-03 18:18:48,390 - __main__ - INFO - Testing resume intake skill...
+2025-12-03 18:18:48,390 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: resume_intake_skill with priority 15
+2025-12-03 18:18:48,391 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: resume_intake_skill with priority 15
+2025-12-03 18:18:48,391 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: resume_intake_skill with priority 15
+2025-12-03 18:18:48,392 - __main__ - INFO - Testing job creation skill...
+2025-12-03 18:18:48,392 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: job_creation_skill with priority 13
+2025-12-03 18:18:48,392 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: job_creation_skill with priority 13
+2025-12-03 18:18:48,393 - __main__ - INFO - Testing candidate matching skill...
+2025-12-03 18:18:48,393 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: candidate_matching_skill with priority 12
+2025-12-03 18:18:48,393 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: candidate_matching_skill with priority 12
+2025-12-03 18:18:48,393 - __main__ - INFO - Testing application status skill...
+2025-12-03 18:18:48,394 - __main__ - INFO - Running service tests...
+2025-12-03 18:18:48,394 - __main__ - INFO - Testing message router...
+2025-12-03 18:18:48,394 - __main__ - INFO - Testing copilot service...
+2025-12-03 18:18:48,394 - __main__ - INFO - Running error handling tests...
+2025-12-03 18:18:48,394 - __main__ - INFO - Testing error handling...
+2025-12-03 18:18:48,394 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: onboarding_skill with priority 20
+2025-12-03 18:18:48,395 - backend_app.chatbot.services.skills.onboarding_skill - INFO - Skill execution: {'timestamp': '2025-12-03T12:48:48.395036', 'skill': 'onboarding_skill', 'sid': 'test_session_123', 'message': '', 'success': True, 'response': None, 'error': None}
+2025-12-03 18:18:48,395 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: onboarding_skill with priority 20
+2025-12-03 18:18:48,395 - backend_app.chatbot.services.skills.onboarding_skill - INFO - Skill execution: {'timestamp': '2025-12-03T12:48:48.395683', 'skill': 'onboarding_skill', 'sid': 'test_session_123', 'message': '   ', 'success': True, 'response': None, 'error': None}
+2025-12-03 18:18:48,396 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: onboarding_skill with priority 20
+2025-12-03 18:18:48,396 - backend_app.chatbot.services.skills.onboarding_skill - INFO - Skill execution: {'timestamp': '2025-12-03T12:48:48.396277', 'skill': 'onboarding_skill', 'sid': 'test_session_123', 'message': "I'm an alien", 'success': True, 'response': None, 'error': None}
+2025-12-03 18:18:48,396 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: onboarding_skill with priority 20
+2025-12-03 18:18:48,396 - backend_app.chatbot.services.skills.onboarding_skill - INFO - Skill execution: {'timestamp': '2025-12-03T12:48:48.396651', 'skill': 'onboarding_skill', 'sid': 'test_session_123', 'message': 'not_an_email', 'success': True, 'response': None, 'error': None}
+2025-12-03 18:18:48,396 - __main__ - INFO - Running integration tests...
+2025-12-03 18:18:48,397 - __main__ - INFO - Testing integration scenarios...
+2025-12-03 18:18:48,397 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: onboarding_skill with priority 20
+2025-12-03 18:18:48,397 - backend_app.chatbot.services.skills.onboarding_skill - INFO - Skill execution: {'timestamp': '2025-12-03T12:48:48.397298', 'skill': 'onboarding_skill', 'sid': 'test_session_Complete candidate onboarding', 'message': 'hello', 'success': True, 'response': None, 'error': None}
+2025-12-03 18:18:48,397 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: onboarding_skill with priority 20
+2025-12-03 18:18:48,397 - backend_app.chatbot.services.skills.onboarding_skill - INFO - Skill execution: {'timestamp': '2025-12-03T12:48:48.397653', 'skill': 'onboarding_skill', 'sid': 'test_session_Complete candidate onboarding', 'message': "I'm a candidate", 'success': True, 'response': None, 'error': None}
+2025-12-03 18:18:48,397 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: onboarding_skill with priority 20
+2025-12-03 18:18:48,398 - backend_app.chatbot.services.skills.onboarding_skill - INFO - Skill execution: {'timestamp': '2025-12-03T12:48:48.398074', 'skill': 'onboarding_skill', 'sid': 'test_session_Complete candidate onboarding', 'message': 'John Doe', 'success': True, 'response': None, 'error': None}
+2025-12-03 18:18:48,398 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: onboarding_skill with priority 20
+2025-12-03 18:18:48,398 - backend_app.chatbot.services.skills.onboarding_skill - INFO - Skill execution: {'timestamp': '2025-12-03T12:48:48.398499', 'skill': 'onboarding_skill', 'sid': 'test_session_Complete candidate onboarding', 'message': 'john.doe@example.com', 'success': True, 'response': None, 'error': None}
+2025-12-03 18:18:48,398 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: onboarding_skill with priority 20
+2025-12-03 18:18:48,398 - backend_app.chatbot.services.skills.onboarding_skill - INFO - Skill execution: {'timestamp': '2025-12-03T12:48:48.398831', 'skill': 'onboarding_skill', 'sid': 'test_session_Complete candidate onboarding', 'message': 'I want to upload my resume', 'success': True, 'response': None, 'error': None}
+2025-12-03 18:18:48,399 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: onboarding_skill with priority 20
+2025-12-03 18:18:48,399 - backend_app.chatbot.services.skills.onboarding_skill - INFO - Skill execution: {'timestamp': '2025-12-03T12:48:48.399272', 'skill': 'onboarding_skill', 'sid': 'test_session_Complete recruiter workflow', 'message': 'hi', 'success': True, 'response': None, 'error': None}
+2025-12-03 18:18:48,399 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: onboarding_skill with priority 20
+2025-12-03 18:18:48,399 - backend_app.chatbot.services.skills.onboarding_skill - INFO - Skill execution: {'timestamp': '2025-12-03T12:48:48.399652', 'skill': 'onboarding_skill', 'sid': 'test_session_Complete recruiter workflow', 'message': "I'm a recruiter", 'success': True, 'response': None, 'error': None}
+2025-12-03 18:18:48,399 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: onboarding_skill with priority 20
+2025-12-03 18:18:48,400 - backend_app.chatbot.services.skills.onboarding_skill - INFO - Skill execution: {'timestamp': '2025-12-03T12:48:48.400105', 'skill': 'onboarding_skill', 'sid': 'test_session_Complete recruiter workflow', 'message': 'I want to post a job', 'success': True, 'response': None, 'error': None}
+2025-12-03 18:18:48,400 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: onboarding_skill with priority 20
+2025-12-03 18:18:48,400 - backend_app.chatbot.services.skills.onboarding_skill - INFO - Skill execution: {'timestamp': '2025-12-03T12:48:48.400455', 'skill': 'onboarding_skill', 'sid': 'test_session_Complete recruiter workflow', 'message': 'Software Engineer', 'success': True, 'response': None, 'error': None}
+2025-12-03 18:18:48,400 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: onboarding_skill with priority 20
+2025-12-03 18:18:48,400 - backend_app.chatbot.services.skills.onboarding_skill - INFO - Skill execution: {'timestamp': '2025-12-03T12:48:48.400819', 'skill': 'onboarding_skill', 'sid': 'test_session_Complete recruiter workflow', 'message': 'find candidates', 'success': True, 'response': None, 'error': None}
+2025-12-03 18:18:48,401 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: onboarding_skill with priority 20
+2025-12-03 18:18:48,401 - backend_app.chatbot.services.skills.onboarding_skill - INFO - Skill execution: {'timestamp': '2025-12-03T12:48:48.401204', 'skill': 'onboarding_skill', 'sid': 'test_session_Mixed conversation flow', 'message': 'help', 'success': True, 'response': None, 'error': None}
+2025-12-03 18:18:48,401 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: onboarding_skill with priority 20
+2025-12-03 18:18:48,401 - backend_app.chatbot.services.skills.onboarding_skill - INFO - Skill execution: {'timestamp': '2025-12-03T12:48:48.401579', 'skill': 'onboarding_skill', 'sid': 'test_session_Mixed conversation flow', 'message': "I'm a candidate", 'success': True, 'response': None, 'error': None}
+2025-12-03 18:18:48,401 - backend_app.chatbot.services.skills.base_skill - INFO - Initialized skill: onboarding_skill with priority 20
+2025-12-03 18:18:48,402 - backend_app.chatbot.services.skills.onboarding_skill - INFO - Skill execution: {'timestamp': '2025-12-03T12:48:48.401985', 'skill': 'onboarding_skill', 'sid': 'test_session_Mixed conversation flow', 'message': "what's my application status", 'success': True, 'response': None, 'error': None}

@@ -1,0 +1,289 @@
+{
+  "executive_summary": {
+    "total_tests": 7,
+    "passed_tests": 0,
+    "failed_tests": 3,
+    "error_tests": 4,
+    "success_rate": 0.0,
+    "execution_time": "2.97 seconds",
+    "overall_status": "PARTIAL_SUCCESS"
+  },
+  "detailed_results": {
+    "test_timestamp": "2025-12-03T16:13:32.733068",
+    "test_environment": "development",
+    "skills": {
+      "onboarding_skill": [
+        {
+          "test": "Welcome message",
+          "status": "ERROR",
+          "details": "Class <class 'sqlalchemy.sql.elements.SQLCoreOperations'> directly inherits TypingOnly but has additional attributes {'__static_attributes__', '__firstlineno__'}."
+        },
+        {
+          "test": "Role selection - candidate",
+          "status": "ERROR",
+          "details": "'backend_app.chatbot'"
+        },
+        {
+          "test": "Role selection - recruiter",
+          "status": "ERROR",
+          "details": "'backend_app.chatbot'"
+        },
+        {
+          "test": "Invalid role",
+          "status": "ERROR",
+          "details": "'backend_app.chatbot'"
+        }
+      ],
+      "resume_intake_skill": [
+        {
+          "test": "Resume upload request",
+          "status": "ERROR",
+          "details": "'backend_app.chatbot'"
+        },
+        {
+          "test": "CV upload request",
+          "status": "ERROR",
+          "details": "'backend_app.chatbot'"
+        },
+        {
+          "test": "File validation success",
+          "status": "ERROR",
+          "details": "'backend_app.chatbot'"
+        }
+      ],
+      "job_creation_skill": [
+        {
+          "test": "Job creation start",
+          "status": "ERROR",
+          "details": "'backend_app.chatbot'"
+        },
+        {
+          "test": "Job title collection",
+          "status": "ERROR",
+          "details": "'backend_app.chatbot'"
+        }
+      ],
+      "candidate_matching_skill": [
+        {
+          "test": "Candidate search start",
+          "status": "ERROR",
+          "details": "'backend_app.chatbot'"
+        },
+        {
+          "test": "Skill-based matching",
+          "status": "ERROR",
+          "details": "'backend_app.chatbot'"
+        }
+      ],
+      "application_status_skill": [
+        {
+          "test": "Application status check",
+          "status": "ERROR",
+          "details": "'backend_app.chatbot'"
+        },
+        {
+          "test": "Interview scheduling",
+          "status": "ERROR",
+          "details": "'backend_app.chatbot'"
+        }
+      ]
+    },
+    "services": {
+      "message_router": [
+        {
+          "test": "Message Router Test",
+          "status": "ERROR",
+          "details": "'backend_app.chatbot'"
+        }
+      ],
+      "copilot_service": [
+        {
+          "test": "Copilot Service Test",
+          "status": "ERROR",
+          "details": "'backend_app.chatbot'"
+        }
+      ]
+    },
+    "error_handling": [
+      {
+        "test": "Empty message",
+        "status": "ERROR",
+        "details": "'backend_app.chatbot'"
+      },
+      {
+        "test": "Whitespace only message",
+        "status": "ERROR",
+        "details": "'backend_app.chatbot'"
+      },
+      {
+        "test": "Invalid role",
+        "status": "ERROR",
+        "details": "'backend_app.chatbot'"
+      },
+      {
+        "test": "Invalid email",
+        "status": "ERROR",
+        "details": "'backend_app.chatbot'"
+      }
+    ],
+    "integration_scenarios": [
+      {
+        "test": "Complete candidate onboarding",
+        "status": "FAILED",
+        "success_rate": "0.0%",
+        "details": "0/5 messages processed correctly",
+        "conversation": [
+          {
+            "message": "hello",
+            "status": "ERROR",
+            "details": "'backend_app.chatbot'"
+          },
+          {
+            "message": "I'm a candidate",
+            "status": "ERROR",
+            "details": "'backend_app.chatbot'"
+          },
+          {
+            "message": "John Doe",
+            "status": "ERROR",
+            "details": "'backend_app.chatbot'"
+          },
+          {
+            "message": "john.doe@example.com",
+            "status": "ERROR",
+            "details": "'backend_app.chatbot'"
+          },
+          {
+            "message": "I want to upload my resume",
+            "status": "ERROR",
+            "details": "'backend_app.chatbot'"
+          }
+        ]
+      },
+      {
+        "test": "Complete recruiter workflow",
+        "status": "FAILED",
+        "success_rate": "0.0%",
+        "details": "0/5 messages processed correctly",
+        "conversation": [
+          {
+            "message": "hi",
+            "status": "ERROR",
+            "details": "'backend_app.chatbot'"
+          },
+          {
+            "message": "I'm a recruiter",
+            "status": "ERROR",
+            "details": "'backend_app.chatbot'"
+          },
+          {
+            "message": "I want to post a job",
+            "status": "ERROR",
+            "details": "'backend_app.chatbot'"
+          },
+          {
+            "message": "Software Engineer",
+            "status": "ERROR",
+            "details": "'backend_app.chatbot'"
+          },
+          {
+            "message": "find candidates",
+            "status": "ERROR",
+            "details": "'backend_app.chatbot'"
+          }
+        ]
+      },
+      {
+        "test": "Mixed conversation flow",
+        "status": "FAILED",
+        "success_rate": "0.0%",
+        "details": "0/3 messages processed correctly",
+        "conversation": [
+          {
+            "message": "help",
+            "status": "ERROR",
+            "details": "'backend_app.chatbot'"
+          },
+          {
+            "message": "I'm a candidate",
+            "status": "ERROR",
+            "details": "'backend_app.chatbot'"
+          },
+          {
+            "message": "what's my application status",
+            "status": "ERROR",
+            "details": "'backend_app.chatbot'"
+          }
+        ]
+      }
+    ]
+  },
+  "recommendations": [
+    {
+      "priority": "HIGH",
+      "category": "Skill Performance",
+      "issue": "onboarding_skill has low success rate (0.0%)",
+      "recommendation": "Review and improve onboarding_skill implementation"
+    },
+    {
+      "priority": "HIGH",
+      "category": "Skill Performance",
+      "issue": "resume_intake_skill has low success rate (0.0%)",
+      "recommendation": "Review and improve resume_intake_skill implementation"
+    },
+    {
+      "priority": "HIGH",
+      "category": "Skill Performance",
+      "issue": "job_creation_skill has low success rate (0.0%)",
+      "recommendation": "Review and improve job_creation_skill implementation"
+    },
+    {
+      "priority": "HIGH",
+      "category": "Skill Performance",
+      "issue": "candidate_matching_skill has low success rate (0.0%)",
+      "recommendation": "Review and improve candidate_matching_skill implementation"
+    },
+    {
+      "priority": "HIGH",
+      "category": "Skill Performance",
+      "issue": "application_status_skill has low success rate (0.0%)",
+      "recommendation": "Review and improve application_status_skill implementation"
+    },
+    {
+      "priority": "HIGH",
+      "category": "Service Performance",
+      "issue": "message_router has low success rate (0.0%)",
+      "recommendation": "Review and improve message_router implementation"
+    },
+    {
+      "priority": "HIGH",
+      "category": "Service Performance",
+      "issue": "copilot_service has low success rate (0.0%)",
+      "recommendation": "Review and improve copilot_service implementation"
+    },
+    {
+      "priority": "MEDIUM",
+      "category": "Error Handling",
+      "issue": "Error handling needs improvement",
+      "recommendation": "Enhance error handling and validation"
+    },
+    {
+      "priority": "MEDIUM",
+      "category": "Integration",
+      "issue": "Integration scenarios need improvement",
+      "recommendation": "Improve conversation flow and context management"
+    },
+    {
+      "priority": "LOW",
+      "category": "Testing",
+      "issue": "Limited test coverage",
+      "recommendation": "Add more comprehensive unit tests"
+    },
+    {
+      "priority": "LOW",
+      "category": "Performance",
+      "issue": "Performance optimization needed",
+      "recommendation": "Optimize database queries and caching"
+    }
+  ]
+}

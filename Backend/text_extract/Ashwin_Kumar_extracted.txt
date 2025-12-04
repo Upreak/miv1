@@ -1,0 +1,113 @@
+ASHWIN KUMAR S
+Chennai, India 600039
++91 9789901276
+ashwink340@gmail.com
+I have 4+ years of experience as a Software Quality analyst.
+Has around 3 years experience of working in SAP HCM applications from End to end product integrations
+and interfaces, including Payroll module testing.
+Have Experience in mobile testing (Android and IOS) using device and browser stack, Web application and
+verify browser compatibility in various browsers
+Having 2 years of experience in testing hospitality products, focusing on booking applications and hotel
+management applications. Working on integration testing with respect to housekeeping applications, Gift
+points and loyalty systems, Payment gateways (Freedom pay, Shift4, Adyen).
+Also has knowledge of Interface testing using Json and XML languages.
+Have experience on manual testing both web applications, ON-Premise environment, mobile testing (IOS
+and Android), Device testing, API testing using soap UI and postman, SQL testing, Regression testing, Putty
+deployment, CI/CD deployments in azure Kubernetes services using YAML files.
+Troubleshooting the build related issues while checking the logs from linux applications during deployment
+and functional testing.
+Creating and maintaining test cases, coordinating with a cross-functional team, requirement gathering from
+client, requirement analysis, documentation, UAT testing with client.
+Have experience of showing demos to clients and stakeholders.
+Knowledge on Cypress automation testing.
+05/2022  to CurrentAGILYSYS INDIA
+Chennai , India
+Quality Analyst
+Project:
+Agilysy Versa (May 2022 - Present)
+DateBase: SQL
+Versa, a Property management system used in hotels and hospitality for maintaining the Hotel property and
+booking managements. Also working on Addons products like, Spa booking application, Golf booking
+applications, Hotel dining booking applications with respect to Versa
+Worked on both Web application and on premise application. Follows CI/CD method for deploy SaaS web
+application (Azure kubernetes service) and Putty for On-premise deployment
+Maintained the On-premise environment on deployment, creating business context, YAML, setup new fresh
+environment during regression phase and stability phase.
+Have done the integration testing on versa with Retail POS testing, Retail inventory management, Loyalty
+and gift card management systems, Offers management, payment gateways like Freedom-pay, Shift4, Adyen
+Preparing manual test cases, maintaining the test case, executing the test cases for functional testing,
+Penetration testing, Load testing, regression testing
+Have worked in interfaces testing with third party applications with respect to Versa.
+Have knowledge on API testing using Postman and Soap UI
+Have knowledge on XML and Json validations for interface testing.
+Have knowledge on SQL
+Worked with cross functional team, BA team and clients for requirement gathering, requirement analysis and
+gave UAT and demo for Clients and stakeholders
+Conducted performance tests, assessing features including functionality, reliability, performance and quality.
+Worked with Agile and Scrum methodologies to accomplish project milestones and meet demanding
+timelines.
+Performed extensive user interface testing on Windows, Android and IOS mobile devices.
+Trained junior team members of quality standards and testing procedures.
+Followed both Agile methodology and waterfall methodology for completing the project on time and
+supported over weekend and stretching working hours for quality QA sign-off to the customer.
+Attended Scrum call, Bug triage call, retrospective meeting for quick and quality delivery
+worked on many quick deliveries (Hot fixes) within deadline of 2 to 3 daysSUMMARY
+EXPERIENCE
+
+08/2019  to 05/2022PAY ASIA MANAGEMENT PVT. LTD
+Chennai , India
+Junior quality assurance engineer
+Project:
+Talentoz - HCM software (Aug 2019 - May 2022)
+worked as the SME for Organization module Recruitment, Employee, Learning and Development, Staff
+concession module and Time and Attendance module,Payroll module(Indian statutory). Also tested the
+mobile application (Both android and IOS) using both browser stack and devices
+Have Worked with Integration and API testing with collaboration of various third party HRMS software with
+respect to Talentoz.
+Have knowledge of testing the Fingerprint detector and Access card reader for Attendance tracking module.
+Apollo - Singapore Payroll (July 2021 - May 2022)
+working as quality assurance engineer and done testing like, Smoke testing, System testing, Regression
+testing, integration testing, API testing, Sanity testing, black box testing, white box testing, User acceptance
+testing
+SQL
+Test planning
+Test designing
+Project tracking
+Automation testing
+Product troubleshooting
+Root Cause Analysis
+Functional testing
+Jira
+Non-functional testingData migration
+Putty
+SAP HCM
+Cypress
+Java script
+CI/CD
+Postman API testing
+Integration and Interface testing
+Client handling
+2021 MASTER OF BUSINESS ADMINISTRATION :SYSTEMS MANAGEMENT
+University of Madras , Chennai, TN
+CGPA - 7.3
+2019 BACHELOR OF ENGINEERING :COMPUTER SCIENCE AND ENGINEERING
+Anand Institute of Higher Technology , Chennai, TN
+CGPA - 6.3
+2015 XII:STATE BOARD
+Velankani Metric Higher Secondary school , Chennai, TN
+Percentage - 76%
+2013 X:CBSE
+Vivekanda Vidyalaya , Chennai, TN
+CGPA - 8.8
+Tamil :First Language
+C2 English :
+ProficientB1 Hindi :
+Intermediate
+The information presented in this resume accurately reflects my qualifications and experience.
+PLACE:
+Date:                                                                                                        
+                                                                                                                   Signature
+                                                                                                            (Ashwin Kumar S)SKILLS
+EDUCATION
+LANGUAGES
+DECLARATION

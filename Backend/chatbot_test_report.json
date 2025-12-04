@@ -1,0 +1,27 @@
+{
+  "executive_summary": {
+    "total_tests": 7,
+    "passed_tests": 0,
+    "failed_tests": 7,
+    "error_tests": 0,
+    "success_rate": 0.0,
+    "execution_time": "1.08 seconds",
+    "overall_status": "PARTIAL_SUCCESS"
+  },
+  "detailed_results": {
+    "test_timestamp": "2025-12-03T18:18:48.402217",
+    "test_environment": "development",
+    "skills": {
+      "onboarding_skill": [
+        {
+          "test": "Welcome message",
+          "status": "PASSED",
+          "details": "All validations passed",
+          "response": {
+            "text": "\ud83d\udc4b Welcome to the AI Recruitment Assistant! I'm here to help you find your dream job or the perfect candidate.\n\nAre you a **Candidate** looking for a job or a **Recruiter** looking to hire?",
+            "intent": "welcome",
+            "confidence": 0.9,
+            "timestamp": "2025-12-03T12:48:48.389212",
+            "skill_used": "onboarding_skill",
+            "metadata": {
+              "next_state": 

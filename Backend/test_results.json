@@ -1,0 +1,42 @@
+{
+  "test_summary": {
+    "date": "2025-12-02T15:12:42.195218",
+    "total_tests": 7,
+    "passed": 1,
+    "failed": 6,
+    "success_rate": 14.285714285714285
+  },
+  "test_results": [
+    [
+      "User Model",
+      false
+    ],
+    [
+      "User Repository",
+      false
+    ],
+    [
+      "Data Schemas",
+      true
+    ],
+    [
+      "OTP Service",
+      false
+    ],
+    [
+      "Token Manager",
+      false
+    ],
+    [
+      "API Endpoints",
+      false
+    ],
+    [
+      "Authentication Flow",
+      false
+    ]
+  ],
+  "recommendations": [
+    "6 tests failed. Please review the output above."
+  ]
+}
