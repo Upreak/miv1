@@ -3,7 +3,7 @@ API v1 module initialization
 """
 
 # Import all API routers
-from . import auth, whatsapp, telegram, extraction
+from . import auth, whatsapp, telegram, extraction, brain
 
 # Export routers for easy inclusion in main app
-__all__ = ["auth", "whatsapp", "telegram", "extraction"]
+__all__ = ["auth", "whatsapp", "telegram", "extraction", "brain"]

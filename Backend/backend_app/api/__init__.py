@@ -7,7 +7,8 @@ from backend_app.api.v1 import (
     candidates,
     jobs,
     applications,
-    extraction
+    extraction,
+    brain
 )
 
 # Create main API router
@@ -19,3 +20,4 @@ api_router.include_router(candidates.router, prefix="/candidates", tags=["Candid
 api_router.include_router(jobs.router, prefix="/jobs", tags=["Jobs"])
 api_router.include_router(applications.router, prefix="/applications", tags=["Applications"])
 api_router.include_router(extraction.router, prefix="/extraction", tags=["Extraction"])
+api_router.include_router(brain.router, prefix="/brain", tags=["Brain"])
