@@ -9,15 +9,34 @@ from backend_app.chatbot.services.sid_service import SIDService
 from backend_app.chatbot.services.message_router import MessageRouter
 from backend_app.chatbot.services.llm_service import LLMService
 from backend_app.chatbot.models.session_model import UserRole
+from backend_app.chatbot.skill_registry import (
+    get_skill_registry,
+    get_message_router,
+    get_sid_service,
+    get_llm_service,
+    initialize_chatbot_system
+)
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class ChatbotController:
     """Main controller for chatbot operations"""
     
-    def __init__(self):
-        self.sid_service = SIDService()
-        self.message_router = MessageRouter()
-        self.llm_service = LLMService()
+    def __init__(self, db_session=None):
+        # Initialize the chatbot system if not already done
+        initialize_chatbot_system(db_session)
+        
+        # Get services from the global registry
+        self.sid_service = get_sid_service()
+        self.message_router = get_message_router()
+        self.llm_service = get_llm_service()
+        self.skill_registry = get_skill_registry()
+        
+        if not all([self.sid_service, self.message_router, self.llm_service, self.skill_registry]):
+            logger.error("Failed to initialize chatbot controller services")
+            raise HTTPException(status_code=500, detail="Chatbot system initialization failed")
     
     async def start_session(
         self, 

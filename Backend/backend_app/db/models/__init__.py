@@ -19,6 +19,9 @@ from backend_app.db.models.sales_tasks import SalesTask
 from backend_app.db.models.job_prescreen_questions import JobPrescreenQuestion
 from backend_app.db.models.prescreen_answers import PrescreenAnswer
 from backend_app.db.models.job_faq import JobFAQ
+# Chatbot models
+from backend_app.chatbot.models.session_model import Session
+from backend_app.chatbot.models.message_log_model import MessageLog
 
 __all__ = [
     "User",
@@ -37,5 +40,8 @@ __all__ = [
     "SalesTask",
     "JobPrescreenQuestion",
     "PrescreenAnswer",
-    "JobFAQ"
+    "JobFAQ",
+    # Chatbot models
+    "Session",
+    "MessageLog"
 ]
