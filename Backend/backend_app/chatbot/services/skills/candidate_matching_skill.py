@@ -27,13 +27,15 @@ class CandidateMatchingSkill(BaseSkill):
     - Application suggestions
     """
     
-    def __init__(self):
+    
+    def __init__(self, jdkb_service=None):
         """Initialize candidate matching skill."""
         super().__init__(
             name="candidate_matching_skill",
             description="Handles job matching, recommendations, and search for candidates",
             priority=12
         )
+        self.jdkb_service = jdkb_service
         
         # Define response templates
         self.templates = {
@@ -110,7 +112,7 @@ class CandidateMatchingSkill(BaseSkill):
             logger.error(f"Error checking if candidate matching skill can handle: {e}")
             return False
     
-    def handle(self, sid: str, message: str, 
+    async def handle(self, sid: str, message: str, 
               context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """
         Handle the message and return response.
@@ -364,9 +366,10 @@ class CandidateMatchingSkill(BaseSkill):
             Dict[str, Any]: Search results
         """
         try:
-            # This would integrate with the existing job search system
-            # For now, return mock results
+            if self.jdkb_service:
+                return self.jdkb_service.search_jobs(criteria)
             
+            # Fallback to mock if service not available
             mock_jobs = [
                 {
                     'id': 'job_1',

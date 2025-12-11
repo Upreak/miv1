@@ -1,7 +1,7 @@
 """
 Leads Model
 """
-from sqlalchemy import Column, String, Text, DATE, DECIMAL, TIMESTAMP, Enum, ForeignKey
+from sqlalchemy import Column, String, Text, DATE, DECIMAL, TIMESTAMP, Enum, ForeignKey, Integer
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql import func
 import uuid

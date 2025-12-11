@@ -9,7 +9,7 @@ import bcrypt
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
-from backend_app.config import settings
+from backend_app.config_settings import settings
 from backend_app.db.connection import get_db
 from backend_app.models.users import User
 from backend_app.repositories.user_repo import UserRepository

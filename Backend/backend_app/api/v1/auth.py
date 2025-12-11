@@ -10,6 +10,7 @@ from backend_app.db.connection import get_db
 from backend_app.schemas.auth import LoginRequest, LoginResponse, SignupRequest, RefreshTokenRequest
 from backend_app.services.auth import AuthService
 from backend_app.models.users import User
+from pydantic import BaseModel
 
 router = APIRouter()
 
@@ -103,6 +104,15 @@ async def refresh_token(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail=str(e)
         )
+
+
+class CurrentUserResponse(BaseModel):
+    """Response model for current user information"""
+    id: str
+    email: str
+    full_name: str
+    role: str
+    status: str
 
 
 @router.get("/me")

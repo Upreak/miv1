@@ -11,6 +11,8 @@ from typing import Optional, Dict, Any
 
 from ..models.session_model import Session, UserRole, ConversationState
 from ..repositories.session_repository import SessionRepository
+from ..repositories.message_repository import MessageRepository
+from ..models.message_log_model import MessageLog, MessageType, MessageDirection
 from ..utils.sid_generator import SIDGenerator
 from datetime import timedelta
 
@@ -36,6 +38,7 @@ class SIDService:
             db: Database session
         """
         self.repo = SessionRepository(db)
+        self.message_repo = MessageRepository(db)
     
     def get_or_create(self, channel: str, channel_user_id: str, 
                      user_id: Optional[str] = None) -> Session:
@@ -421,12 +424,59 @@ class SIDService:
             list: List of message logs
         """
         try:
-            # This would typically query the message repository
-            # For now, return empty list
-            return []
+            return self.message_repo.get_conversation_history(sid, limit)
         except Exception as e:
             logger.error(f"Error getting session history: {e}")
             return []
+            
+    def log_message(self, sid: str, content: str, direction: str, 
+                   message_type: str = "text", metadata: Dict[str, Any] = None) -> Optional[MessageLog]:
+        """
+        Log a message to the repository.
+        
+        Args:
+            sid: Session ID
+            content: Message content
+            direction: Message direction (inbound/outbound/system)
+            message_type: Type of message
+            metadata: Additional metadata
+            
+        Returns:
+            Optional[MessageLog]: Created message log
+        """
+        try:
+            # Convert string direction to enum if needed
+            dir_enum = MessageDirection.INBOUND
+            if isinstance(direction, str):
+                if direction.lower() == 'outbound':
+                    dir_enum = MessageDirection.OUTBOUND
+                elif direction.lower() == 'system':
+                    dir_enum = MessageDirection.SYSTEM
+            elif isinstance(direction, MessageDirection):
+                dir_enum = direction
+                
+            # Convert string type to enum if needed
+            type_enum = MessageType.TEXT
+            if isinstance(message_type, str):
+                try:
+                    type_enum = MessageType(message_type.lower())
+                except ValueError:
+                    type_enum = MessageType.TEXT
+            elif isinstance(message_type, MessageType):
+                type_enum = message_type
+                
+            return self.message_repo.create(
+                sid=sid,
+                message_id=None,  # Auto-generated or provided by platform
+                message_type=type_enum,
+                direction=dir_enum,
+                content=content,
+                platform=metadata.get('platform', 'unknown') if metadata else 'unknown',
+                metadata=metadata
+            )
+        except Exception as e:
+            logger.error(f"Error logging message: {e}")
+            return None
     
     def export_session_data(self, sid: str) -> Dict[str, Any]:
         """

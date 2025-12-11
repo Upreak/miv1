@@ -41,7 +41,7 @@ async def shutdown_event():
         logger.error(f"Error during Telegram bot service shutdown: {e}")
 
 
-@router.post("/webhooks/telegram")
+@router.post("/webhook")
 async def telegram_webhook(
     background_tasks: BackgroundTasks,
     request: Request,
@@ -82,7 +82,7 @@ async def telegram_webhook(
         raise HTTPException(status_code=500, detail="Internal server error")
 
 
-@router.get("/telegram/health")
+@router.get("/health")
 async def telegram_health_check():
     """
     Health check endpoint for Telegram bot service
@@ -116,7 +116,7 @@ async def telegram_health_check():
         }
 
 
-@router.post("/telegram/set-webhook")
+@router.post("/set-webhook")
 async def set_telegram_webhook(
     webhook_url: Optional[str] = None,
     secret_token: Optional[str] = None
@@ -150,7 +150,7 @@ async def set_telegram_webhook(
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/telegram/get-webhook-info")
+@router.get("/get-webhook-info")
 async def get_telegram_webhook_info():
     """
     Get Telegram bot webhook information
@@ -174,7 +174,7 @@ async def get_telegram_webhook_info():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/telegram/get-bot-info")
+@router.get("/get-bot-info")
 async def get_telegram_bot_info():
     """
     Get Telegram bot information
@@ -198,7 +198,7 @@ async def get_telegram_bot_info():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.delete("/telegram/delete-webhook")
+@router.delete("/delete-webhook")
 async def delete_telegram_webhook(drop_pending_updates: bool = False):
     """
     Delete Telegram bot webhook
@@ -235,7 +235,7 @@ async def delete_telegram_webhook(drop_pending_updates: bool = False):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.post("/telegram/send-message")
+@router.post("/send-message")
 async def send_telegram_message(
     chat_id: int,
     text: str,
@@ -271,7 +271,7 @@ async def send_telegram_message(
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/telegram/configuration")
+@router.get("/configuration")
 async def get_telegram_configuration():
     """
     Get current Telegram configuration (for debugging)
@@ -303,7 +303,7 @@ async def get_telegram_configuration():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.post("/telegram/test-integration")
+@router.post("/test-integration")
 async def test_telegram_integration():
     """
     Test Telegram bot integration

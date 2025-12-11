@@ -12,6 +12,9 @@ from backend_app.chatbot.services.skills.job_creation_skill import JobCreationSk
 from backend_app.chatbot.services.skills.onboarding_skill import OnboardingSkill
 # from backend_app.chatbot.services.skills.profile_update_skill import ProfileUpdateSkill  # Commented out - not available
 from backend_app.chatbot.services.skills.base_skill import BaseSkill
+from backend_app.chatbot.services.jdkb_service import JDKBService
+from backend_app.repositories.jobs_repo import JobsRepository
+from backend_app.services.profile_writer import ProfileWriter
 import logging
 
 logger = logging.getLogger(__name__)
@@ -25,18 +28,24 @@ message_router = None
 # Global services
 llm_service = None
 sid_service = None
+jdkb_service = None
+profile_writer = None
+jobs_repo = None
 
 
 def initialize_chatbot_system(db_session=None):
     """
     Initialize the chatbot system with all skills and services
     """
-    global skill_registry, message_router, llm_service, sid_service
+    global skill_registry, message_router, llm_service, sid_service, jobs_repo
     
     try:
         # Initialize services
         if db_session:
             sid_service = SIDService(db_session)
+            jobs_repo = JobsRepository(db_session)
+            jdkb_service = JDKBService(jobs_repo)
+            profile_writer = ProfileWriter(db_session)
         else:
             # Create a mock SID service for now
             class MockSIDService:
@@ -51,6 +60,7 @@ def initialize_chatbot_system(db_session=None):
                     self.user_id = user_id
             
             sid_service = MockSIDService()
+            # jdkb_service remains None or we could mock it
         
         llm_service = LLMService()
         message_router = MessageRouter(skill_registry, sid_service)
@@ -74,9 +84,9 @@ def register_all_skills():
         # List of skills to register with their priorities
         skills_to_register = [
             (OnboardingSkill(), 20),  # Highest priority for onboarding
-            (ResumeIntakeSkill(), 15),  # High priority for resume intake
-            (CandidateMatchingSkill(), 12),  # Medium-high priority for matching
-            (JobCreationSkill(), 10),  # Medium priority for job creation
+            (ResumeIntakeSkill(profile_writer), 15),  # High priority for resume intake
+            (CandidateMatchingSkill(jdkb_service), 12),  # Medium-high priority for matching
+            (JobCreationSkill(jobs_repo), 10),  # Medium priority for job creation
             # (ProfileUpdateSkill(), 8),  # Commented out - not available
         ]
         

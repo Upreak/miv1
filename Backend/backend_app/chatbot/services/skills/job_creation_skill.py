@@ -27,13 +27,14 @@ class JobCreationSkill(BaseSkill):
     - Job publishing
     """
     
-    def __init__(self):
+    def __init__(self, jobs_repo=None):
         """Initialize job creation skill."""
         super().__init__(
             name="job_creation_skill",
             description="Handles job posting creation and management for recruiters",
             priority=13
         )
+        self.jobs_repo = jobs_repo
         
         # Define response templates
         self.templates = {
@@ -116,7 +117,7 @@ class JobCreationSkill(BaseSkill):
             logger.error(f"Error checking if job creation skill can handle: {e}")
             return False
     
-    def handle(self, sid: str, message: str, 
+    async def handle(self, sid: str, message: str, 
               context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """
         Handle the message and return response.
@@ -845,29 +846,40 @@ class JobCreationSkill(BaseSkill):
             # This would integrate with the existing job posting system
             # For now, simulate posting
             
-            # Generate mock job ID
-            import uuid
-            job_id = f"job_{uuid.uuid4().hex[:8]}"
-            
-            # Store job data (mock)
+            # Store job data (mock default)
             job_data = {
-                'id': job_id,
+                'id': f"job_{datetime.utcnow().timestamp()}",
                 'title': context.get('job_title', ''),
                 'company': context.get('company_name', ''),
-                'location': context.get('job_location', ''),
-                'type': context.get('job_type', ''),
-                'salary': context.get('salary_range', ''),
-                'experience': context.get('experience_level', ''),
-                'description': context.get('job_description', ''),
-                'requirements': context.get('job_requirements', ''),
-                'benefits': context.get('job_benefits', ''),
-                'posted_date': datetime.utcnow().isoformat(),
-                'status': 'active',
-                'created_by': sid
             }
-            
-            # Log job posting
-            logger.info(f"Job posted: {job_id}")
+
+            if self.jobs_repo:
+                job = self.jobs_repo.create_job(
+                    title=context.get('job_title', ''),
+                    company=context.get('company_name', ''),
+                    location=context.get('job_location', ''),
+                    description=context.get('job_description', ''),
+                    job_type=context.get('job_type', 'Full-time'),
+                    salary_range=context.get('salary_range'),
+                    experience_level=context.get('experience_level'),
+                    requirements=context.get('job_requirements'),
+                    benefits=context.get('job_benefits'),
+                    recruiter_id=sid # or context.get('user_id') if available
+                )
+                job_id = str(job.id)
+                job_data = {
+                    'id': job_id,
+                    'title': job.title,
+                    'company': job.company,
+                    'location': job.location,
+                    'status': 'active'
+                }
+                logger.info(f"Persisted job {job_id} to DB")
+            else:
+                # Fallback to mock
+                import uuid
+                job_id = f"job_{uuid.uuid4().hex[:8]}"
+                job_data['id'] = job_id
             
             return {
                 'success': True,

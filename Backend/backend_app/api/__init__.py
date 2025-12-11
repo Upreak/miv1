@@ -9,7 +9,8 @@ from backend_app.api.v1 import (
     applications,
     extraction,
     brain,
-    chatbot  # Add chatbot routes
+    chatbot,  # Add chatbot routes
+    telegram  # Add telegram routes
 )
 
 # Create main API router
@@ -23,3 +24,4 @@ api_router.include_router(applications.router, prefix="/applications", tags=["Ap
 api_router.include_router(extraction.router, prefix="/extraction", tags=["Extraction"])
 api_router.include_router(brain.router, prefix="/brain", tags=["Brain"])
 api_router.include_router(chatbot.router, prefix="/chatbot", tags=["Chatbot"])  # Add chatbot routes
+api_router.include_router(telegram.router, prefix="/telegram", tags=["Telegram"])  # Add telegram routes

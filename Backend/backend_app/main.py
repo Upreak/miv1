@@ -9,7 +9,7 @@ import logging
 import os
 from typing import AsyncGenerator
 
-from backend_app.config import settings
+from backend_app.config_settings import settings
 from backend_app.api import api_router
 from backend_app.db.connection import init_db
 

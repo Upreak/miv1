@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from typing import Optional
 from ..models.users import User
 from ..repositories.user_repo import UserRepository
-from ..config import settings
+from ..config_settings import settings
 import logging
 import os
 from dotenv import load_dotenv

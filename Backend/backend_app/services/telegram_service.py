@@ -234,10 +234,73 @@ class TelegramBotService:
     async def _handle_text_message(self, message: TelegramMessage) -> TelegramResponse:
         """Handle regular text messages"""
         try:
-            # For now, implement intelligent responses
-            # In production, this would integrate with your chatbot controller
+            # --- LOCAL ROUTING LOGIC (Bypassing AI) ---
+            text = message.text.strip().lower()
+            print(f"DEBUG: Processing message text: '{text}'")
             
-            response_text = self._generate_intelligent_response(message.text)
+            # 1. Greetings / Entry Point
+            if text in ["/start", "hi", "hello", "hey", "start"]:
+                response_text = (
+                    "Hi, this is Sri from April! 👋\n\n"
+                    "Are you looking for a job or looking to hire?\n\n"
+                    "A) Recruiter (I want to hire)\n"
+                    "B) Candidate (I am looking for a job)\n\n"
+                    "Please reply with 'A' or 'B'."
+                )
+                return await self._send_message(message.chat_id, response_text)
+
+            # 2. Option A: Recruiter
+            if text in ["a", "option a", "recruiter", "hiring"]:
+                 response_text = (
+                     "Great! You are a Recruiter. 👔\n"
+                     "I can help you screen candidates and find the best match.\n\n"
+                     "Please tell me what role you are hiring for?"
+                 )
+                 return await self._send_message(message.chat_id, response_text)
+                 
+            # 3. Option B: Candidate
+            if text in ["b", "option b", "candidate", "job"]:
+                 response_text = (
+                     "Awesome! You are a Candidate. 👨‍💻\n"
+                     "I can help you find the perfect job.\n\n"
+                     "Please upload your resume (PDF) or tell me about your key skills."
+                 )
+                 return await self._send_message(message.chat_id, response_text)
+            
+            # --- END LOCAL LOGIC ---
+
+            # Integrate with chatbot controller
+            if not self.chatbot_controller:
+                # Initialize if not already initialized (should be done in startup, but safety check)
+                self.chatbot_controller = ChatbotController()
+
+            # Create a session ID based on Telegram chat ID
+            sid = f"telegram:{message.chat_id}"
+            
+            # Create context with user info
+            context = {
+                "source": "telegram",
+                "telegram_user_id": message.user_id,
+                "telegram_username": message.username,
+                "telegram_chat_id": message.chat_id,
+                "user_role": "candidate", # Default to candidate for now
+                "platform": "telegram"
+            }
+            
+            # Process message via ChatbotController (AI Fallback)
+            try:
+                # Note: process_message is async
+                response_data = await self.chatbot_controller.process_message(
+                    sid=sid,
+                    message=message.text,
+                    context=context
+                )
+                response_text = response_data.get("text", "I'm not sure how to respond to that.")
+            except Exception as e:
+                logger.error(f"Chatbot controller error: {e}")
+                response_text = "I'm set to 'AI Mode' for this query, but my brain isn't connected yet! Please ask your admin to configure the AI Provider."
+
+            # Send response back to Telegram
             return await self._send_message(message.chat_id, response_text)
             
         except Exception as e:

@@ -8,7 +8,7 @@ import jwt
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
-from backend_app.config import settings
+from backend_app.config_settings import settings
 from backend_app.models.users import User
 from backend_app.repositories.user_repo import UserRepository
 from backend_app.schemas.auth import LoginResponse
@@ -127,17 +127,13 @@ class AuthService:
     
     @staticmethod
     async def get_current_user(
-        db: AsyncSession = None,
-        token: str = None
+        token: str
     ) -> User:
         """Get current user from token"""
-        if not token:
-            raise Exception("Authentication required")
-        
         try:
             payload = jwt.decode(
-                token, 
-                settings.SECRET_KEY, 
+                token,
+                settings.SECRET_KEY,
                 algorithms=[settings.ALGORITHM]
             )
             
@@ -146,11 +142,13 @@ class AuthService:
                 raise Exception("Invalid token")
             
             # Get user from database
-            user_repo = UserRepository(db)
-            user = await user_repo.get_by_id(user_id)
-            if not user:
-                raise Exception("User not found")
+            from backend_app.db.connection import get_db
+            async for db in get_db():
+                user_repo = UserRepository(db)
+                user = await user_repo.get_by_id(user_id)
+                if not user:
+                    raise Exception("User not found")
+                return user
             
-            return user
         except jwt.PyJWTError:
             raise Exception("Invalid token")

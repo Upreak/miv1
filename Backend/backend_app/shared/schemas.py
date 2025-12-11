@@ -174,3 +174,28 @@ class OTPVerifyRequest(BaseModel):
 
 # Update forward references
 UserResponse.model_rebuild()
+# Candidate Profile Schemas
+class CandidateProfileCreate(BaseModel):
+    candidate_id: int
+    personal_info: dict
+    work_experience: list = []
+    education: list = []
+    skills: list = []
+    certifications: list = []
+    languages: list = []
+    projects: list = []
+    achievements: list = []
+    metadata: dict = {}
+    source: str = 'manual'
+
+class CandidateProfileUpdate(BaseModel):
+    personal_info: Optional[dict] = None
+    work_experience: Optional[list] = None
+    education: Optional[list] = None
+    skills: Optional[list] = None
+    certifications: Optional[list] = None
+    languages: Optional[list] = None
+    projects: Optional[list] = None
+    achievements: Optional[list] = None
+    metadata: Optional[dict] = None
+

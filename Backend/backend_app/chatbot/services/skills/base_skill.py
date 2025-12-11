@@ -69,7 +69,7 @@ class BaseSkill(ABC):
         pass
     
     @abstractmethod
-    def handle(self, sid: str, message: str, 
+    async def handle(self, sid: str, message: str, 
               context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """
         Handle the message and return response.

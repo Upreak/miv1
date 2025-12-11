@@ -4,9 +4,8 @@ from datetime import datetime
 import logging
 import json
 
-from ..models.candidate_profiles import CandidateProfile
-from ..models.candidates import Candidate
-from ..models.users import User
+from ..db.models.candidate_profiles import CandidateProfile
+from ..db.models.users import User
 from ..repositories.candidate_repo import CandidateRepository
 from ..repositories.user_repo import UserRepository
 from ..shared.schemas import CandidateProfileCreate, CandidateProfileUpdate
@@ -162,16 +161,16 @@ class ProfileWriter:
         
         return profile_data
     
-    def _create_or_get_candidate(self, profile_data: Dict[str, Any], user_id: Optional[int]) -> Candidate:
+    def _create_or_get_candidate(self, profile_data: Dict[str, Any], user_id: Optional[int]) -> User:
         """
-        Create a new candidate or get existing one based on email.
+        Create a new candidate (User) or get existing one based on email.
         
         Args:
             profile_data: Structured profile data
             user_id: Optional user ID
             
         Returns:
-            Candidate: The candidate record
+            User: The candidate user record
         """
         email = profile_data["personal_info"].get("email")
         
@@ -179,10 +178,10 @@ class ProfileWriter:
             # Try to find existing candidate by email
             candidate = self.candidate_repo.get_by_email(email)
             if candidate:
-                logger.info(f"Found existing candidate: {candidate.name}")
+                logger.info(f"Found existing candidate user: {candidate.full_name}")
                 return candidate
         
-        # Create new candidate
+        # Create new candidate user (Note: Password handling needs improvement)
         candidate_data = {
             "name": profile_data["personal_info"].get("name", ""),
             "email": email or "",
@@ -192,15 +191,15 @@ class ProfileWriter:
         }
         
         candidate = self.candidate_repo.create(candidate_data)
-        logger.info(f"Created new candidate: {candidate.name}")
+        logger.info(f"Created new candidate user: {candidate.full_name}")
         return candidate
     
-    def _create_profile(self, candidate: Candidate, profile_data: Dict[str, Any], source: str) -> CandidateProfile:
+    def _create_profile(self, candidate: User, profile_data: Dict[str, Any], source: str) -> CandidateProfile:
         """
         Create a candidate profile.
         
         Args:
-            candidate: Candidate record
+            candidate: Candidate User record
             profile_data: Structured profile data
             source: Source of the profile
             
@@ -222,7 +221,7 @@ class ProfileWriter:
         )
         
         profile = self.candidate_repo.create_profile(profile_create)
-        logger.info(f"Created profile for candidate {candidate.name}")
+        logger.info(f"Created profile for candidate {candidate.full_name}")
         return profile
     
     def _update_profile(self, profile: CandidateProfile, profile_data: Dict[str, Any]) -> CandidateProfile:

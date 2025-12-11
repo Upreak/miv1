@@ -1,42 +1,70 @@
 # FastAPI and Web Framework
-fastapi==0.104.1
-uvicorn[standard]==0.24.0
+fastapi>=0.104.1
+uvicorn[standard]>=0.24.0
 
 # Database
-sqlalchemy==2.0.23
-asyncpg==0.31.0
-alembic==1.13.1
+sqlalchemy>=2.0.23
+asyncpg>=0.31.0
+alembic>=1.13.1
+psycopg2-binary>=2.9.9  # Required for Alembic migrations
 
 # HTTP Client (for Telegram API)
-httpx==0.25.2
-aiohttp==3.9.1
+httpx>=0.25.2
+aiohttp>=3.9.1
 
 # Testing
-pytest==8.3.3
-pytest-asyncio==0.21.1
-pytest-cov==4.1.0
-pytest-mock==3.14.0
+pytest>=8.3.3
+pytest-asyncio>=0.21.1
+pytest-cov>=4.1.0
+pytest-mock>=3.14.0
 
 # Utilities
-python-multipart==0.0.6
-python-dotenv==1.0.0
+python-multipart>=0.0.6
+python-dotenv>=1.0.0
 
 # Authentication
-python-jose[cryptography]==3.3.0
-passlib[bcrypt]==1.7.4
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+PyJWT>=2.8.0  # JSON Web Token implementation
 
 # Pydantic
-pydantic==2.5.0
-pydantic-settings==2.1.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+email-validator>=2.1.0  # Required for EmailStr validation in Pydantic
 
 # Utilities
 python-multipart==0.0.6
 python-dotenv==1.0.0
 
 # File Processing (for extraction integration)
-pdfminer.six==20231228
+# pdfminer.six==20231228
 pdfplumber==0.9.0
 tika==2.6.0
 
 # Optional: For production
 gunicorn==21.2.0
+
+# Brain Module SDKs
+google-generativeai
+openai
+groq
+requests
+pytz
+jinja2
+
+# Text Extraction (Local & Advanced)
+opencv-python
+pytesseract
+pdf2image
+unstructured
+
+# Security & Scanning
+python-magic
+clamd
+chardet      # For Unicode/Encoding detection
+
+# Development & Testing
+faker        # For generating test data
+ftfy         # Fixes broken text/unicode (Recommended)
+black        # Code formatting
+flake8       # Code linting

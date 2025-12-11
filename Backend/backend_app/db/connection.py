@@ -6,13 +6,13 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 from sqlalchemy import MetaData
 import logging
 
-from backend_app.config import settings
+from backend_app.config_settings import settings
 
 logger = logging.getLogger(__name__)
 
 # Create async engine
 engine = create_async_engine(
-    settings.DATABASE_URL,
+    settings.ASYNC_DATABASE_URL,
     echo=settings.DATABASE_ECHO,
     future=True
 )

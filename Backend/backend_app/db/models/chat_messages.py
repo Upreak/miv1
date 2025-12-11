@@ -2,7 +2,7 @@
 Chat Messages Model
 Stores the transcript for the Live Chat Co-Pilot.
 """
-from sqlalchemy import Column, String, Text, TIMESTAMP, Enum, ForeignKey
+from sqlalchemy import Column, String, Text, TIMESTAMP, Enum, ForeignKey, Boolean
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql import func
 import uuid

@@ -39,7 +39,9 @@ class OnboardingSkill(BaseSkill):
         self.templates = {
             'welcome': "👋 Welcome to the AI Recruitment Assistant! I'm here to help you find your dream job or the perfect candidate.",
             'role_request': "Are you a **Candidate** looking for a job or a **Recruiter** looking to hire?",
-            'role_candidate': "Great! I'll help you find the perfect job match. Let's start by creating your profile.",
+            'role_candidate': "Great! I'll help you find the perfect job match. To speed things up, do you have a resume you can upload? (Yes/No)",
+            'resume_request': "Please upload your resume (PDF or Word document).",
+            'manual_setup': "No problem! Let's set up your profile manually. First, I'll need some basic information.",
             'role_recruiter': "Excellent! I'll help you find the best candidates for your open positions.",
             'role_invalid': "I'm sorry, I didn't understand that. Please choose either 'Candidate' or 'Recruiter'.",
             'profile_setup': "Let's set up your profile. First, I'll need some basic information.",
@@ -96,7 +98,7 @@ class OnboardingSkill(BaseSkill):
             logger.error(f"Error checking if onboarding skill can handle: {e}")
             return False
     
-    def handle(self, sid: str, message: str, 
+    async def handle(self, sid: str, message: str, 
               context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """
         Handle the message and return response.
@@ -188,8 +190,9 @@ class OnboardingSkill(BaseSkill):
                     intent="role_selected",
                     metadata={
                         'user_role': 'candidate',
-                        'next_state': ConversationState.CANDIDATE_FLOW,
-                        'requires_profile_setup': True
+                        'next_state': ConversationState.ONBOARDING,
+                        'requires_profile_setup': True,
+                        'setup_step': 'resume_check'
                     }
                 )
                 
@@ -285,7 +288,9 @@ class OnboardingSkill(BaseSkill):
             setup_step = context.get('setup_step', 'name') if context else 'name'
             
             # Handle based on setup step
-            if setup_step == 'name':
+            if setup_step == 'resume_check':
+                return self._handle_resume_check(sid, message, context)
+            elif setup_step == 'name':
                 return self._handle_name_collection(sid, message, context)
             elif setup_step == 'email':
                 return self._handle_email_collection(sid, message, context)
@@ -298,6 +303,51 @@ class OnboardingSkill(BaseSkill):
             logger.error(f"Error handling profile setup: {e}")
             return self._create_error_response(str(e))
     
+    def _handle_resume_check(self, sid: str, message: str, 
+                           context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+        """
+        Handle resume check response.
+        
+        Args:
+            sid: Session ID
+            message: User message
+            context: Additional context
+            
+        Returns:
+            Dict[str, Any]: Response
+        """
+        try:
+            # Check for yes/no
+            message_lower = message.lower()
+            
+            if any(word in message_lower for word in ['yes', 'y', 'sure', 'ok']):
+                # User has resume - transition to resume intake
+                return self._create_success_response(
+                    text=self.templates['resume_request'],
+                    intent="resume_confirmed",
+                    metadata={
+                        'next_state': ConversationState.AWAITING_RESUME,
+                        'requires_resume_upload': True
+                    }
+                )
+            else:
+                # User has no resume - proceed to manual setup
+                if context:
+                    context['setup_step'] = 'name'
+                
+                return self._create_success_response(
+                    text=self.templates['manual_setup'],
+                    intent="resume_declined",
+                    metadata={
+                        'next_state': ConversationState.ONBOARDING,
+                        'setup_step': 'name'
+                    }
+                )
+                
+        except Exception as e:
+            logger.error(f"Error handling resume check: {e}")
+            return self._create_error_response(str(e))
+
     def _handle_name_collection(self, sid: str, message: str, 
                               context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """

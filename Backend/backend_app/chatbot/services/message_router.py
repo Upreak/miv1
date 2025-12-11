@@ -43,7 +43,7 @@ class MessageRouter:
         self.error_count = 0
         self.total_messages = 0
     
-    def route(self, channel: str, channel_user_id: str, message: str, 
+    async def route(self, channel: str, channel_user_id: str, message: str, 
              message_type: str = "text", metadata: Dict[str, Any] = None) -> Dict[str, Any]:
         """
         Route a message to the appropriate skill.
@@ -80,7 +80,7 @@ class MessageRouter:
                 logger.warning(f"No skill found for message: {message}")
             else:
                 # Execute skill
-                response = self._execute_skill(skill, session.sid, message, context)
+                response = await self._execute_skill(skill, session.sid, message, context)
                 
                 # Update execution stats
                 execution_time = (datetime.utcnow() - start_time).total_seconds()
@@ -103,7 +103,7 @@ class MessageRouter:
             self.error_count += 1
             return self._create_error_response(str(e))
     
-    def route_with_context(self, sid: str, message: str, 
+    async def route_with_context(self, sid: str, message: str, 
                           context: Dict[str, Any] = None) -> Dict[str, Any]:
         """
         Route a message with existing context.
@@ -141,7 +141,7 @@ class MessageRouter:
             if not skill:
                 response = self._create_fallback_response(message, context)
             else:
-                response = self._execute_skill(skill, sid, message, context)
+                response = await self._execute_skill(skill, sid, message, context)
                 
                 # Update execution stats
                 execution_time = (datetime.utcnow() - start_time).total_seconds()
@@ -224,7 +224,7 @@ class MessageRouter:
             logger.error(f"Error selecting skill: {e}")
             return None
     
-    def _execute_skill(self, skill, sid: str, message: str, 
+    async def _execute_skill(self, skill, sid: str, message: str, 
                       context: Dict[str, Any]) -> Dict[str, Any]:
         """
         Execute a skill and return response.
@@ -245,7 +245,7 @@ class MessageRouter:
                 return self._create_error_response("Invalid context for skill")
             
             # Execute skill
-            response = skill.handle(sid, message, context)
+            response = await skill.handle(sid, message, context)
             
             # Ensure response has required fields
             if not isinstance(response, dict):
@@ -349,8 +349,11 @@ class MessageRouter:
             metadata: Additional metadata
         """
         try:
-            # This would typically log to the message repository
-            # For now, just log to console
+            # Log to repository via SID Service
+            if hasattr(self.sid_service, 'log_message'):
+                self.sid_service.log_message(sid, content, direction, message_type, metadata)
+            
+            # Keep console logging for debugging
             logger.info(f"Message logged - SID: {sid}, Direction: {direction}, Type: {message_type}")
             
         except Exception as e:

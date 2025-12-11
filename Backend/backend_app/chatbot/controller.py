@@ -76,10 +76,10 @@ class ChatbotController:
                 raise HTTPException(status_code=404, detail="Session not found")
             
             # Route message to appropriate skill
-            response = await self.message_router.route_message(
-                session_id=session_id,
+            response = await self.message_router.route_with_context(
+                sid=session_id,
                 message=message,
-                message_type=message_type
+                context={'message_type': message_type}
             )
             
             return response

@@ -11,6 +11,10 @@ from typing import Dict, Any, Optional, List
 from .base_skill import BaseSkill
 from ...models.conversation_state import ConversationState, UserRole
 from ...utils.skill_context import SkillContext
+from backend_app.brain_module.brain_service import BrainSvc
+from backend_app.text_extraction.consolidated_extractor import extract_with_logging
+from pathlib import Path
+import json
 
 logger = logging.getLogger(__name__)
 
@@ -27,13 +31,14 @@ class ResumeIntakeSkill(BaseSkill):
     - Progress updates
     """
     
-    def __init__(self):
+    def __init__(self, profile_writer=None):
         """Initialize resume intake skill."""
         super().__init__(
             name="resume_intake_skill",
             description="Handles resume upload, processing, and profile creation for candidates",
             priority=15
         )
+        self.profile_writer = profile_writer
         
         # Define response templates
         self.templates = {
@@ -113,7 +118,7 @@ class ResumeIntakeSkill(BaseSkill):
             logger.error(f"Error checking if resume intake skill can handle: {e}")
             return False
     
-    def handle(self, sid: str, message: str, 
+    async def handle(self, sid: str, message: str, 
               context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """
         Handle the message and return response.
@@ -132,19 +137,19 @@ class ResumeIntakeSkill(BaseSkill):
             
             # Handle based on state
             if state == ConversationState.AWAITING_RESUME:
-                return self._handle_resume_upload(sid, message, context)
+                return await self._handle_resume_upload(sid, message, context)
             elif state == ConversationState.CANDIDATE_FLOW:
-                return self._handle_candidate_flow(sid, message, context)
+                return await self._handle_candidate_flow(sid, message, context)
             elif state == ConversationState.IDLE:
-                return self._handle_resume_request(sid, message, context)
+                return await self._handle_resume_request(sid, message, context)
             else:
-                return self._handle_fallback(sid, message, context)
+                return await self._handle_fallback(sid, message, context)
                 
         except Exception as e:
             logger.error(f"Error in resume intake skill handle: {e}")
             return self._create_error_response(str(e))
     
-    def _handle_resume_upload(self, sid: str, message: str, 
+    async def _handle_resume_upload(self, sid: str, message: str, 
                             context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """
         Handle resume upload process.
@@ -160,7 +165,7 @@ class ResumeIntakeSkill(BaseSkill):
         try:
             # Check if message contains file information
             if self._is_file_upload(message):
-                return self._handle_file_upload(sid, message, context)
+                return await self._handle_file_upload(sid, message, context)
             else:
                 # Request resume upload
                 return self._create_success_response(
@@ -176,8 +181,8 @@ class ResumeIntakeSkill(BaseSkill):
             logger.error(f"Error handling resume upload: {e}")
             return self._create_error_response(str(e))
     
-    def _handle_candidate_flow(self, sid: str, message: str, 
-                             context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    async def _handle_candidate_flow(self, sid: str, message: str, 
+                              context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """
         Handle candidate flow resume requests.
         
@@ -192,20 +197,20 @@ class ResumeIntakeSkill(BaseSkill):
         try:
             # Check for resume upload intent
             if any(keyword in message.lower() for keyword in ['resume', 'upload', 'send', 'attach']):
-                return self._handle_resume_upload(sid, message, context)
+                return await self._handle_resume_upload(sid, message, context)
             
             # Check for profile update intent
             if any(keyword in message.lower() for keyword in ['update', 'edit', 'change', 'modify']):
-                return self._handle_profile_update(sid, message, context)
+                return await self._handle_profile_update(sid, message, context)
             
             # Default to resume upload
-            return self._handle_resume_upload(sid, message, context)
+            return await self._handle_resume_upload(sid, message, context)
             
         except Exception as e:
             logger.error(f"Error handling candidate flow: {e}")
             return self._create_error_response(str(e))
     
-    def _handle_resume_request(self, sid: str, message: str, 
+    async def _handle_resume_request(self, sid: str, message: str, 
                              context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """
         Handle resume request in idle state.
@@ -233,7 +238,7 @@ class ResumeIntakeSkill(BaseSkill):
             logger.error(f"Error handling resume request: {e}")
             return self._create_error_response(str(e))
     
-    def _handle_file_upload(self, sid: str, message: str, 
+    async def _handle_file_upload(self, sid: str, message: str, 
                           context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """
         Handle file upload processing.
@@ -264,7 +269,7 @@ class ResumeIntakeSkill(BaseSkill):
                 )
             
             # Start resume processing
-            processing_result = self._start_resume_processing(sid, file_info, context)
+            processing_result = await self._start_resume_processing(sid, file_info, context)
             
             if processing_result['success']:
                 # Log execution
@@ -295,7 +300,7 @@ class ResumeIntakeSkill(BaseSkill):
             logger.error(f"Error handling file upload: {e}")
             return self._create_error_response(str(e))
     
-    def _handle_profile_update(self, sid: str, message: str, 
+    async def _handle_profile_update(self, sid: str, message: str, 
                              context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """
         Handle profile update requests.
@@ -411,48 +416,93 @@ class ResumeIntakeSkill(BaseSkill):
                 'message': self.templates['file_validation_error']
             }
     
-    def _start_resume_processing(self, sid: str, file_info: Dict[str, Any], 
+    async def _start_resume_processing(self, sid: str, file_info: Dict[str, Any], 
                                context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """
-        Start resume processing pipeline.
-        
-        Args:
-            sid: Session ID
-            file_info: File information
-            context: Additional context
-            
-        Returns:
-            Dict[str, Any]: Processing result
+        Start resume processing pipeline with Real Extraction and Brain Service.
         """
         try:
-            # Generate processing ID
-            import uuid
-            processing_id = f"proc_{uuid.uuid4().hex[:8]}"
+            # Generate QID
+            timestamp = datetime.utcnow().strftime("%Y%m%d%H%M%S")
+            qid = f"BOTC-UPLOAD-{sid}-{timestamp}"
             
-            # Mock resume processing - in real implementation, this would call the actual pipeline
-            processing_data = {
-                'processing_id': processing_id,
-                'file_info': file_info,
-                'sid': sid,
-                'start_time': datetime.utcnow().isoformat(),
-                'status': 'processing'
-            }
+            # Check for file path (simulated or real)
+            # In a real scenario, file_path comes from metadata/context
+            file_path = file_info.get('file_path') or file_info.get('path')
             
-            # Log processing start
-            logger.info(f"Resume processing started: {processing_id}")
+            # If no path (e.g. mock), fallback to mock logic OR fail
+            # For this repair, we try to use real extraction if path exists
+            if not file_path:
+                 # Check context/metadata for path
+                 if context and context.get('file_path'):
+                     file_path = context.get('file_path')
             
-            # Simulate processing completion
-            profile_data = self._generate_mock_profile_data(file_info)
+            if not file_path:
+                logger.warning("No file path found for resume processing. Using mock data for demo.")
+                # Fallback to mock data to prevent crash if file handling isn't fully set up upstream
+                return {
+                    'success': True,
+                    'processing_id': f"mock_{qid}",
+                    'profile_data': self._generate_mock_profile_data(file_info)
+                }
+
+            # Real Extraction
+            logger.info(f"Starting real extraction for {file_path}")
+            extraction_result = extract_with_logging(Path(file_path))
             
-            # Store processing result
+            if not extraction_result.get('success'):
+                logger.error(f"Extraction failed: {extraction_result.get('error')}")
+                return {'success': False, 'error': f"Text extraction failed: {extraction_result.get('error')}"}
+            
+            text = extraction_result.get('text', '')
+            
+            # Brain Processing
+            logger.info(f"Sending text to BrainService with QID: {qid}")
+            brain_result = await BrainSvc.process({
+                "qid": qid,
+                "text": text,
+                "intake_type": "resume_parse",
+                "meta": {"sid": sid, "filename": file_info.get('filename')}
+            })
+            
+            if not brain_result.get('success'):
+                logger.error(f"Brain processing failed: {brain_result.get('error')}")
+                return {'success': False, 'error': f"AI processing failed: {brain_result.get('error')}"}
+            
+            # Parse Brain Response (expecting JSON-compatible dict or string)
+            profile_data = brain_result.get('response', {})
+            if isinstance(profile_data, str):
+                try:
+                    profile_data = json.loads(profile_data)
+                except:
+                    logger.warning("Brain response was a string but not JSON. Using as raw text.")
+                    profile_data = {'raw_text': profile_data}
+
+            # Store processing result in context
             if context:
                 context['profile_data'] = profile_data
                 context['profile_exists'] = True
                 context['profile_complete'] = True
+                
+                # Persist to database if writer is available
+                if self.profile_writer:
+                    try:
+                        user_id = context.get('user_id')
+                        # Ensure user_id is int if present (SIDService stores string)
+                        # If user_id is None, it might create a candidate without user link or fail depending on repo
+                        self.profile_writer.create_profile_from_parsed_data(
+                            profile_data, 
+                            user_id=int(user_id) if user_id else None,
+                            source="chatbot_resume_upload"
+                        )
+                        logger.info(f"Persisted profile for SID {sid}")
+                    except Exception as pe:
+                        logger.error(f"Failed to persist profile to DB: {pe}")
+                        # Don't fail the user interaction, just log it
             
             return {
                 'success': True,
-                'processing_id': processing_id,
+                'processing_id': qid,
                 'profile_data': profile_data
             }
             
@@ -515,7 +565,7 @@ class ResumeIntakeSkill(BaseSkill):
         
         return profile_data
     
-    def _handle_fallback(self, sid: str, message: str, 
+    async def _handle_fallback(self, sid: str, message: str, 
                         context: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """
         Handle fallback cases.

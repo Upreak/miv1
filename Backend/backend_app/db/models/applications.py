@@ -2,7 +2,7 @@
 Applications Model
 The MOST CRITICAL table for tracking "One Candidate, Multiple Jobs".
 """
-from sqlalchemy import Column, String, Text, TIMESTAMP, Integer, Boolean, ForeignKey, Enum
+from sqlalchemy import Column, String, Text, TIMESTAMP, Integer, Boolean, ForeignKey, Enum, Date as DATE
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.sql import func
 import uuid
