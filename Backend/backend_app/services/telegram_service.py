@@ -124,15 +124,18 @@ class TelegramBotService:
     async def process_webhook(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         """Process incoming Telegram webhook"""
         try:
-            # Validate webhook secret
-            request_secret = payload.get("secret_token")
-            if not TelegramSecurityManager.validate_webhook_secret(request_secret):
-                logger.warning("Invalid webhook secret token")
-                raise HTTPException(status_code=401, detail="Invalid webhook secret")
+            # Secret validation is already done in telegram.py endpoint
+            # No need to validate again here
             
             # Process message
             message_data = payload.get("message") or payload.get("edited_message")
+
+            
+            # Handle Callback Query (Buttons)
             if not message_data:
+                callback_data = payload.get("callback_query")
+                if callback_data:
+                    return await self._handle_callback_query(callback_data)
                 return {"status": "ignored", "reason": "no_message"}
             
             # Parse message
@@ -234,74 +237,59 @@ class TelegramBotService:
     async def _handle_text_message(self, message: TelegramMessage) -> TelegramResponse:
         """Handle regular text messages"""
         try:
-            # --- LOCAL ROUTING LOGIC (Bypassing AI) ---
-            text = message.text.strip().lower()
-            print(f"DEBUG: Processing message text: '{text}'")
+            logger.info(f"Processing text message: '{message.text}' from user {message.user_id}")
             
-            # 1. Greetings / Entry Point
-            if text in ["/start", "hi", "hello", "hey", "start"]:
-                response_text = (
-                    "Hi, this is Sri from April! 👋\n\n"
-                    "Are you looking for a job or looking to hire?\n\n"
-                    "A) Recruiter (I want to hire)\n"
-                    "B) Candidate (I am looking for a job)\n\n"
-                    "Please reply with 'A' or 'B'."
-                )
-                return await self._send_message(message.chat_id, response_text)
-
-            # 2. Option A: Recruiter
-            if text in ["a", "option a", "recruiter", "hiring"]:
-                 response_text = (
-                     "Great! You are a Recruiter. 👔\n"
-                     "I can help you screen candidates and find the best match.\n\n"
-                     "Please tell me what role you are hiring for?"
-                 )
-                 return await self._send_message(message.chat_id, response_text)
+            # --- CHATBOT ENGINE INTEGRATION ---
+            
+            # 1. Initialize Engine (Lazy Load)
+            if not hasattr(self, "chatbot_engine"):
+                 from backend_app.chatbot.skill_registry import get_sid_service
+                 from backend_app.chatbot.engine.flow_manager import FlowManager
+                 from backend_app.chatbot.engine.chatbot_engine import ChatbotEngine
                  
-            # 3. Option B: Candidate
-            if text in ["b", "option b", "candidate", "job"]:
-                 response_text = (
-                     "Awesome! You are a Candidate. 👨‍💻\n"
-                     "I can help you find the perfect job.\n\n"
-                     "Please upload your resume (PDF) or tell me about your key skills."
-                 )
-                 return await self._send_message(message.chat_id, response_text)
-            
-            # --- END LOCAL LOGIC ---
+                 # Initialize FlowManager
+                 flow_path = "Backend/backend_app/chatbot/engine/candidate_flow.json"
+                 flow_manager = FlowManager(flow_path)
+                 
+                 # Get Session Service (SID Service)
+                 session_service = get_sid_service()
+                 
+                 self.chatbot_engine = ChatbotEngine(flow_manager, session_service)
 
-            # Integrate with chatbot controller
-            if not self.chatbot_controller:
-                # Initialize if not already initialized (should be done in startup, but safety check)
-                self.chatbot_controller = ChatbotController()
-
-            # Create a session ID based on Telegram chat ID
+            # 2. Process with Engine
+            # Use 'input_text' for text messages
             sid = f"telegram:{message.chat_id}"
-            
-            # Create context with user info
-            context = {
-                "source": "telegram",
-                "telegram_user_id": message.user_id,
-                "telegram_username": message.username,
-                "telegram_chat_id": message.chat_id,
-                "user_role": "candidate", # Default to candidate for now
-                "platform": "telegram"
-            }
-            
-            # Process message via ChatbotController (AI Fallback)
-            try:
-                # Note: process_message is async
-                response_data = await self.chatbot_controller.process_message(
-                    sid=sid,
-                    message=message.text,
-                    context=context
-                )
-                response_text = response_data.get("text", "I'm not sure how to respond to that.")
-            except Exception as e:
-                logger.error(f"Chatbot controller error: {e}")
-                response_text = "I'm set to 'AI Mode' for this query, but my brain isn't connected yet! Please ask your admin to configure the AI Provider."
+            response_messages = await self.chatbot_engine.process_message(
+                user_id=str(message.user_id),
+                input_text=message.text,
+                platform="telegram",
+                metadata=message.metadata
+            )
 
-            # Send response back to Telegram
-            return await self._send_message(message.chat_id, response_text)
+            # 3. Send Responses
+            last_response = None
+            for resp in response_messages:
+                reply_markup = None
+                if resp.buttons:
+                    # Convert buttons to InlineKeyboardMarkup
+                    inline_keyboard = [
+                        [{"text": btn.text, "callback_data": btn.payload}] 
+                        for btn in resp.buttons
+                    ]
+                    reply_markup = {"inline_keyboard": inline_keyboard}
+
+                last_response = await self._send_message(
+                    chat_id=message.chat_id,
+                    text=resp.text,
+                    reply_markup=reply_markup
+                )
+            
+            # Return the result of the last message sent (or success if list was empty but processed)
+            if last_response:
+                return last_response
+            else:
+                # No response generated (maybe internal state update only)
+                return TelegramResponse(success=True)
             
         except Exception as e:
             logger.error(f"Error handling text message: {e}")
@@ -453,7 +441,7 @@ class TelegramBotService:
         )
         return await self._send_message(chat_id, response_text)
     
-    async def _send_message(self, chat_id: int, text: str, parse_mode: str = "Markdown") -> TelegramResponse:
+    async def _send_message(self, chat_id: int, text: str, parse_mode: str = "Markdown", **kwargs) -> TelegramResponse:
         """Send message via Telegram Bot API"""
         try:
             if not TelegramSecurityManager.validate_chat_id(chat_id):
@@ -477,6 +465,9 @@ class TelegramBotService:
                 "parse_mode": parse_mode,
                 "disable_web_page_preview": False
             }
+            
+            if kwargs.get("reply_markup"):
+                payload["reply_markup"] = kwargs.get("reply_markup")
             
             response = await self.session.post(
                 url,
@@ -632,6 +623,73 @@ class TelegramBotService:
                 "webhook_secret_set": bool(telegram_settings.TELEGRAM_WEBHOOK_SECRET)
             }
         }
+
+
+    async def _handle_callback_query(self, callback_data: Dict[str, Any]) -> Dict[str, Any]:
+        """Handle Telegram callback queries (button clicks)"""
+        try:
+            query_id = callback_data.get("id")
+            user_id = callback_data.get("from", {}).get("id")
+            data = callback_data.get("data")
+            message = callback_data.get("message", {})
+            chat_id = message.get("chat", {}).get("id")
+
+            logger.info(f"Processing callback: {data} from user {user_id}")
+
+            # 1. Answer the callback query (stop spinner)
+            url = f"{telegram_settings.get_api_base_url()}/answerCallbackQuery"
+            await self.session.post(url, json={"callback_query_id": query_id})
+            
+            # 2. Integrate with Chatbot Engine
+            # Lazy load Engine to avoid circular imports / init issues
+            if not hasattr(self, "chatbot_engine"):
+                 # Initialize Engine (Need to solve Dependency Injection properly)
+                 # For now, we assume the global registry has what we need
+                 from backend_app.chatbot.skill_registry import get_sid_service
+                 from backend_app.chatbot.engine.flow_manager import FlowManager
+                 from backend_app.chatbot.engine.chatbot_engine import ChatbotEngine
+                 
+                 # Initialize FlowManager
+                 flow_path = "Backend/backend_app/chatbot/engine/candidate_flow.json"
+                 flow_manager = FlowManager(flow_path)
+                 
+                 # Get Session Service (SID Service)
+                 session_service = get_sid_service()
+                 
+                 self.chatbot_engine = ChatbotEngine(flow_manager, session_service)
+
+            # 3. Process with Engine
+            sid = f"telegram:{chat_id}"
+            response_messages = await self.chatbot_engine.process_message(
+                user_id=str(user_id),
+                input_payload=data,
+                platform="telegram"
+            )
+
+            # 4. Send Responses
+            success = True
+            for resp in response_messages:
+                reply_markup = None
+                if resp.buttons:
+                    # Convert buttons to InlineKeyboardMarkup
+                    inline_keyboard = [
+                        [{"text": btn.text, "callback_data": btn.payload}] 
+                        for btn in resp.buttons
+                    ]
+                    reply_markup = {"inline_keyboard": inline_keyboard}
+
+                result = await self._send_message(
+                    chat_id=chat_id,
+                    text=resp.text,
+                    reply_markup=reply_markup
+                )
+                success = success and result.success
+
+            return {"status": "processed", "success": success}
+
+        except Exception as e:
+            logger.error(f"Error handling callback query: {e}")
+            return {"status": "error", "error": str(e)}
 
 
 # Global Telegram bot service instance

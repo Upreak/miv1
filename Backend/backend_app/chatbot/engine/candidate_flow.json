@@ -1,0 +1,1425 @@
+{
+    "agent": {
+        "displayName": "Upreak Assistant",
+        "defaultLanguageCode": "en",
+        "timeZone": "Asia/Kolkata"
+    },
+    "flows": [
+        {
+            "name": "UserInitiatedFlow",
+            "displayName": "User Initiated",
+            "startPage": "AuthCheckPage",
+            "pages": [
+                {
+                    "pageId": "AuthCheckPage",
+                    "displayName": "Auth Check Page",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "Hi — I'm Sree 👋 Let me check your profile..."
+                            }
+                        ],
+                        "webhook": {
+                            "call": "check_user_status",
+                            "description": "Check if user is new or returning"
+                        }
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "event == 'user_is_new'",
+                            "targetPage": "StartPage"
+                        },
+                        {
+                            "condition": "event == 'user_is_returning_candidate'",
+                            "targetPage": "ReturningCandidateMenu"
+                        },
+                        {
+                            "condition": "event == 'user_is_returning_recruiter'",
+                            "targetPage": "ReturningRecruiterMenu"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "StartPage",
+                    "displayName": "Start Page",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "Welcome to Upreak — your one-stop job solution. Are you here as a Candidate or a Recruiter?",
+                                "buttons": [
+                                    {
+                                        "text": "Candidate 👨‍🎓",
+                                        "payload": "choose_candidate"
+                                    },
+                                    {
+                                        "text": "Recruiter 💼",
+                                        "payload": "choose_recruiter"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "intent == 'choose_candidate'",
+                            "targetPage": "CandidateEntry"
+                        },
+                        {
+                            "condition": "intent == 'choose_recruiter'",
+                            "targetPage": "RecruiterEntry"
+                        },
+                        {
+                            "condition": "true",
+                            "targetPage": "DefaultFallback"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "CandidateEntry",
+                    "displayName": "Candidate Entry",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "Great! Do you already have a resume, or shall I ask a few quick questions and create your profile for you?",
+                                "buttons": [
+                                    {
+                                        "text": "Upload Resume 📄",
+                                        "payload": "upload_resume"
+                                    },
+                                    {
+                                        "text": "Fill Manually ✍️",
+                                        "payload": "fill_manually"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "intent == 'upload_resume'",
+                            "targetPage": "ResumeUpload"
+                        },
+                        {
+                            "condition": "intent == 'fill_manually'",
+                            "targetPage": "ManualProfile_Start"
+                        },
+                        {
+                            "condition": "true",
+                            "targetPage": "DefaultFallback"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "ResumeUpload",
+                    "displayName": "Resume Upload",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "Please upload your resume file (PDF/DOCX). I will parse and pre-fill your profile."
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "intent == 'std.file_uploaded'",
+                            "targetPage": "ProcessingResume"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "ProcessingResume",
+                    "displayName": "Processing Resume",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "Received! Processing your resume... ⏳"
+                            }
+                        ],
+                        "webhook": {
+                            "call": "resume_upload_handler",
+                            "description": "Handle file upload and parsing"
+                        }
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "event == 'file_parsed_success'",
+                            "targetPage": "ResumeVerification"
+                        },
+                        {
+                            "condition": "event == 'file_parsed_failure'",
+                            "targetPage": "ResumeUpload_Failure"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "ResumeVerification",
+                    "displayName": "Resume Verification",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "I found the following details:\nName: {{session.params.full_name}}\nEmail: {{session.params.email}}\nPhone: {{session.params.mobile}}\nEducation: {{session.params.highest_education}}\nExperience: {{session.params.total_experience}} yrs\n\nIs this correct?",
+                                "buttons": [
+                                    {
+                                        "text": "Yes, Correct ✅",
+                                        "payload": "yes"
+                                    },
+                                    {
+                                        "text": "No, Edit ✏️",
+                                        "payload": "no"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "intent == 'yes'",
+                            "targetPage": "CandidateMissingFields"
+                        },
+                        {
+                            "condition": "intent == 'no'",
+                            "targetPage": "ManualProfile_Start"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "ResumeUpload_Failure",
+                    "displayName": "Resume Upload Failure",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "I couldn't parse your resume cleanly. Would you like to try uploading again or fill your profile manually?",
+                                "buttons": [
+                                    {
+                                        "text": "Try Again 🔄",
+                                        "payload": "upload_again"
+                                    },
+                                    {
+                                        "text": "Fill Manually ✍️",
+                                        "payload": "fill_manually"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "intent == 'upload_again'",
+                            "targetPage": "ResumeUpload"
+                        },
+                        {
+                            "condition": "intent == 'fill_manually'",
+                            "targetPage": "ManualProfile_Start"
+                        },
+                        {
+                            "condition": "true",
+                            "targetPage": "DefaultFallback"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "CandidateMissingFields",
+                    "displayName": "Candidate Missing Fields",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "I filled a few fields from your resume. I just need a couple more details to complete your profile."
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "true",
+                            "targetPage": "ManualProfile_Start"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "ManualProfile_Start",
+                    "displayName": "Manual Profile - Start",
+                    "form": {
+                        "parameters": [
+                            {
+                                "name": "full_name",
+                                "entityType": "@sys.any",
+                                "required": true,
+                                "prompts": [
+                                    "Could you please tell me your full name? Example: Sree Kumar"
+                                ]
+                            },
+                            {
+                                "name": "email",
+                                "entityType": "@sys.email",
+                                "required": true,
+                                "prompts": [
+                                    "What’s the best email address to reach you? Example: sree@example.com"
+                                ]
+                            },
+                            {
+                                "name": "mobile",
+                                "entityType": "@sys.phone-number",
+                                "required": true,
+                                "prompts": [
+                                    "Please share your mobile number (10 digits). Example: 9876543210"
+                                ]
+                            },
+                            {
+                                "name": "location",
+                                "entityType": "@sys.any",
+                                "required": true,
+                                "prompts": [
+                                    "Where are you currently based? Example: New York, NY"
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "form.valid",
+                            "targetPage": "Education_Highest"
+                        },
+                        {
+                            "condition": "true",
+                            "targetPage": "DefaultFallback"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "Education_Highest",
+                    "displayName": "Education - Highest",
+                    "form": {
+                        "parameters": [
+                            {
+                                "name": "highest_education",
+                                "entityType": "@education_levels",
+                                "required": true,
+                                "prompts": [
+                                    "What's your highest completed education?"
+                                ],
+                                "options": [
+                                    "10th",
+                                    "12th",
+                                    "Diploma/ITI",
+                                    "Bachelor's",
+                                    "Master's",
+                                    "PhD",
+                                    "Other"
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "session.params.highest_education == '10th' || session.params.highest_education == '12th' ",
+                            "targetPage": "Edu_Secondary"
+                        },
+                        {
+                            "condition": "session.params.highest_education == 'Diploma/ITI'",
+                            "targetPage": "Edu_Diploma"
+                        },
+                        {
+                            "condition": "session.params.highest_education == 'Bachelor\\'s'",
+                            "targetPage": "Edu_Bachelors"
+                        },
+                        {
+                            "condition": "session.params.highest_education == 'Master\\'s'",
+                            "targetPage": "Edu_Masters"
+                        },
+                        {
+                            "condition": "session.params.highest_education == 'PhD'",
+                            "targetPage": "Edu_PhD"
+                        },
+                        {
+                            "condition": "session.params.highest_education == 'Other'",
+                            "targetPage": "Edu_Other"
+                        },
+                        {
+                            "condition": "true",
+                            "targetPage": "DefaultFallback"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "Edu_Secondary",
+                    "displayName": "Education - Secondary",
+                    "form": {
+                        "parameters": [
+                            {
+                                "name": "secondary_year",
+                                "entityType": "@sys.year",
+                                "required": true,
+                                "prompts": [
+                                    "Which year did you pass? Example: 2012"
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "form.valid",
+                            "targetPage": "Ask_Add_Education"
+                        },
+                        {
+                            "condition": "true",
+                            "targetPage": "DefaultFallback"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "Edu_Diploma",
+                    "displayName": "Education - Diploma/ITI",
+                    "form": {
+                        "parameters": [
+                            {
+                                "name": "diploma_course",
+                                "entityType": "@sys.any",
+                                "required": true,
+                                "prompts": [
+                                    "Name of your Diploma / ITI course? Example: Diploma in Mechanical Engg."
+                                ]
+                            },
+                            {
+                                "name": "diploma_year",
+                                "entityType": "@sys.year",
+                                "required": true,
+                                "prompts": [
+                                    "Year of completion? Example: 2019"
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "form.valid",
+                            "targetPage": "Ask_Add_Education"
+                        },
+                        {
+                            "condition": "true",
+                            "targetPage": "DefaultFallback"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "Edu_Bachelors",
+                    "displayName": "Education - Bachelor's",
+                    "form": {
+                        "parameters": [
+                            {
+                                "name": "bachelors_degree",
+                                "entityType": "@sys.any",
+                                "required": true,
+                                "prompts": [
+                                    "What was your Bachelor's degree? Example: B.Sc Computer Science"
+                                ]
+                            },
+                            {
+                                "name": "bachelors_field",
+                                "entityType": "@sys.any",
+                                "required": false,
+                                "prompts": [
+                                    "Field of study? Example: Computer Science"
+                                ]
+                            },
+                            {
+                                "name": "bachelors_year",
+                                "entityType": "@sys.year",
+                                "required": true,
+                                "prompts": [
+                                    "Year of completion? Example: 2020"
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "form.valid",
+                            "targetPage": "Ask_Add_Education"
+                        },
+                        {
+                            "condition": "true",
+                            "targetPage": "DefaultFallback"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "Edu_Masters",
+                    "displayName": "Education - Master's",
+                    "form": {
+                        "parameters": [
+                            {
+                                "name": "masters_degree",
+                                "entityType": "@sys.any",
+                                "required": true,
+                                "prompts": [
+                                    "What was your Master's degree? Example: M.Sc Computer Science"
+                                ]
+                            },
+                            {
+                                "name": "masters_year",
+                                "entityType": "@sys.year",
+                                "required": true,
+                                "prompts": [
+                                    "Year of completion? Example: 2022"
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "form.valid",
+                            "targetPage": "Edu_Add_Bachelors_Check"
+                        },
+                        {
+                            "condition": "true",
+                            "targetPage": "DefaultFallback"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "Edu_Add_Bachelors_Check",
+                    "displayName": "Education - Add Bachelor's Check",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "Would you like to add your Bachelor's degree as well?",
+                                "buttons": [
+                                    {
+                                        "text": "Yes",
+                                        "payload": "yes"
+                                    },
+                                    {
+                                        "text": "No",
+                                        "payload": "no"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "intent == 'yes'",
+                            "targetPage": "Edu_Bachelors"
+                        },
+                        {
+                            "condition": "intent == 'no'",
+                            "targetPage": "Ask_Add_Education"
+                        },
+                        {
+                            "condition": "true",
+                            "targetPage": "DefaultFallback"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "Ask_Add_Education",
+                    "displayName": "Ask Add Another Education",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "Would you like to add another qualification?",
+                                "buttons": [
+                                    {
+                                        "text": "Yes",
+                                        "payload": "yes"
+                                    },
+                                    {
+                                        "text": "No",
+                                        "payload": "no"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "intent == 'yes'",
+                            "targetPage": "Education_Highest"
+                        },
+                        {
+                            "condition": "intent == 'no'",
+                            "targetPage": "Experience_Years"
+                        },
+                        {
+                            "condition": "true",
+                            "targetPage": "DefaultFallback"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "Experience_Years",
+                    "displayName": "Experience Years",
+                    "form": {
+                        "parameters": [
+                            {
+                                "name": "total_experience",
+                                "entityType": "@sys.number",
+                                "required": true,
+                                "prompts": [
+                                    "How many years of total professional experience do you have? (Use decimal if needed e.g., 1.5)"
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "form.valid",
+                            "targetPage": "Has_Work_Experience"
+                        },
+                        {
+                            "condition": "true",
+                            "targetPage": "DefaultFallback"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "Has_Work_Experience",
+                    "displayName": "Has Work Experience",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "Do you want to add your work history?",
+                                "buttons": [
+                                    {
+                                        "text": "Yes",
+                                        "payload": "yes"
+                                    },
+                                    {
+                                        "text": "No",
+                                        "payload": "no"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "intent == 'yes'",
+                            "targetPage": "Work_Role_Start"
+                        },
+                        {
+                            "condition": "intent == 'no'",
+                            "targetPage": "Skills_Input"
+                        },
+                        {
+                            "condition": "true",
+                            "targetPage": "DefaultFallback"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "Work_Role_Start",
+                    "displayName": "Work - Role Start",
+                    "form": {
+                        "parameters": [
+                            {
+                                "name": "job_title",
+                                "entityType": "@sys.any",
+                                "required": true,
+                                "prompts": [
+                                    "Job title of your latest role? Example: Backend Developer"
+                                ]
+                            },
+                            {
+                                "name": "company_name",
+                                "entityType": "@sys.any",
+                                "required": true,
+                                "prompts": [
+                                    "Company name?"
+                                ]
+                            },
+                            {
+                                "name": "start_date",
+                                "entityType": "@sys.date",
+                                "required": true,
+                                "prompts": [
+                                    "Start date? (DD-MMM-YYYY) Example: 10-Jan-2022"
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "form.valid",
+                            "targetPage": "Work_End_Check"
+                        },
+                        {
+                            "condition": "true",
+                            "targetPage": "DefaultFallback"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "Work_End_Check",
+                    "displayName": "Work - End Date or Current",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "Are you still working here?",
+                                "buttons": [
+                                    {
+                                        "text": "Yes, Currently Working",
+                                        "payload": "currently_working"
+                                    },
+                                    {
+                                        "text": "No, I left",
+                                        "payload": "left_role"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "intent == 'currently_working'",
+                            "targetPage": "Work_Responsibilities"
+                        },
+                        {
+                            "condition": "intent == 'left_role'",
+                            "targetPage": "Work_End_Date"
+                        },
+                        {
+                            "condition": "true",
+                            "targetPage": "DefaultFallback"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "Work_End_Date",
+                    "displayName": "Work - End Date",
+                    "form": {
+                        "parameters": [
+                            {
+                                "name": "end_date",
+                                "entityType": "@sys.date",
+                                "required": true,
+                                "prompts": [
+                                    "End date? (DD-MMM-YYYY) Example: 15-Aug-2023"
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "form.valid",
+                            "targetPage": "Work_Responsibilities"
+                        },
+                        {
+                            "condition": "true",
+                            "targetPage": "DefaultFallback"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "Work_Responsibilities",
+                    "displayName": "Work - Responsibilities",
+                    "form": {
+                        "parameters": [
+                            {
+                                "name": "key_responsibilities",
+                                "entityType": "@sys.any",
+                                "required": true,
+                                "prompts": [
+                                    "Key responsibilities? (short bullets)"
+                                ]
+                            },
+                            {
+                                "name": "tools_tech_stack",
+                                "entityType": "@sys.any",
+                                "required": false,
+                                "prompts": [
+                                    "Tools / Tech used? Example: React, Node.js, AWS"
+                                ]
+                            },
+                            {
+                                "name": "role_ctc",
+                                "entityType": "@sys.number",
+                                "required": false,
+                                "prompts": [
+                                    "CTC for this role (optional) - numbers only, no commas. Example: 1200000"
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "form.valid",
+                            "targetPage": "Work_Add_Another"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "Work_Add_Another",
+                    "displayName": "Work - Add Another",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "Would you like to add another past role?",
+                                "buttons": [
+                                    {
+                                        "text": "Yes",
+                                        "payload": "yes"
+                                    },
+                                    {
+                                        "text": "No",
+                                        "payload": "no"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "intent == 'yes'",
+                            "targetPage": "Work_Role_Start"
+                        },
+                        {
+                            "condition": "intent == 'no'",
+                            "targetPage": "Skills_Input"
+                        },
+                        {
+                            "condition": "true",
+                            "targetPage": "DefaultFallback"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "Skills_Input",
+                    "displayName": "Skills Input",
+                    "form": {
+                        "parameters": [
+                            {
+                                "name": "skills_list",
+                                "entityType": "@sys.any",
+                                "required": true,
+                                "prompts": [
+                                    "List your top skills (comma separated). Example: React, Node.js, TypeScript"
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "form.valid",
+                            "targetPage": "Compensation_Input"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "Compensation_Input",
+                    "displayName": "Compensation Input",
+                    "form": {
+                        "parameters": [
+                            {
+                                "name": "current_ctc",
+                                "entityType": "@sys.number",
+                                "required": true,
+                                "prompts": [
+                                    "Current CTC? Numbers only, no commas. Example: 1500000"
+                                ]
+                            },
+                            {
+                                "name": "expected_ctc",
+                                "entityType": "@sys.number",
+                                "required": true,
+                                "prompts": [
+                                    "Expected CTC? Example: 2500000"
+                                ]
+                            },
+                            {
+                                "name": "ctc_negotiable",
+                                "entityType": "@sys.any",
+                                "required": true,
+                                "prompts": [
+                                    "Is the expected CTC negotiable?"
+                                ],
+                                "options": [
+                                    "Yes",
+                                    "No"
+                                ]
+                            },
+                            {
+                                "name": "notice_period",
+                                "entityType": "@notice_periods",
+                                "required": true,
+                                "prompts": [
+                                    "What is your notice period?"
+                                ],
+                                "options": [
+                                    "Immediate",
+                                    "15 Days",
+                                    "30 Days",
+                                    "45 Days",
+                                    "60 Days",
+                                    "90+ Days"
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "form.valid",
+                            "targetPage": "Profile_Completion"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "Profile_Completion",
+                    "displayName": "Profile Completion",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "Your profile is ready 🎉 Would you like to start applying or see matching jobs?",
+                                "buttons": [
+                                    {
+                                        "text": "See Jobs 🔍",
+                                        "payload": "see_jobs"
+                                    },
+                                    {
+                                        "text": "Complete More Details 📝",
+                                        "payload": "complete_more"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "intent == 'see_jobs'",
+                            "targetPage": "Jobs_List"
+                        },
+                        {
+                            "condition": "intent == 'complete_more'",
+                            "targetPage": "ManualProfile_Continue"
+                        },
+                        {
+                            "condition": "true",
+                            "targetPage": "DefaultFallback"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "RecruiterEntry",
+                    "displayName": "Recruiter Entry",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "Recruiter flow is under construction. Please check back later."
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "true",
+                            "targetPage": "StartPage"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "RecruiterEntry",
+                    "displayName": "Recruiter Entry",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "Great! Let me gather a few details to set up your recruiter profile."
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "true",
+                            "targetPage": "RecruiterRegistration"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "RecruiterRegistration",
+                    "displayName": "Recruiter Registration",
+                    "form": {
+                        "parameters": [
+                            {
+                                "name": "recruiter_name",
+                                "entityType": "@sys.any",
+                                "required": true,
+                                "prompts": [
+                                    "What's your full name?"
+                                ]
+                            },
+                            {
+                                "name": "company_name",
+                                "entityType": "@sys.any",
+                                "required": true,
+                                "prompts": [
+                                    "Which company do you represent?"
+                                ]
+                            },
+                            {
+                                "name": "recruiter_email",
+                                "entityType": "@sys.email",
+                                "required": true,
+                                "prompts": [
+                                    "What's your work email?"
+                                ]
+                            },
+                            {
+                                "name": "recruiter_mobile",
+                                "entityType": "@sys.phone-number",
+                                "required": true,
+                                "prompts": [
+                                    "Please share your mobile number (10 digits)."
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "form.valid",
+                            "targetPage": "RecruiterRegistrationComplete"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "RecruiterRegistrationComplete",
+                    "displayName": "Recruiter Registration Complete",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "Perfect! Your recruiter profile is all set. You can now post jobs and connect with candidates.",
+                                "buttons": [
+                                    {
+                                        "text": "Post a Job 📝",
+                                        "payload": "post_job"
+                                    },
+                                    {
+                                        "text": "View Dashboard 📊",
+                                        "payload": "view_dashboard"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "intent == 'post_job'",
+                            "targetPage": "PostJobForm"
+                        },
+                        {
+                            "condition": "intent == 'view_dashboard'",
+                            "targetPage": "ReturningRecruiterMenu"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "ReturningCandidateMenu",
+                    "displayName": "Returning Candidate Menu",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "Welcome back! What would you like to do today?",
+                                "buttons": [
+                                    {
+                                        "text": "Review My Applications 📋",
+                                        "payload": "view_applications"
+                                    },
+                                    {
+                                        "text": "See Recommended Jobs 💼",
+                                        "payload": "view_recommendations"
+                                    },
+                                    {
+                                        "text": "Search for Jobs 🔍",
+                                        "payload": "search_jobs"
+                                    },
+                                    {
+                                        "text": "Update My Profile ✏️",
+                                        "payload": "update_profile"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "intent == 'view_applications'",
+                            "targetPage": "ViewApplications"
+                        },
+                        {
+                            "condition": "intent == 'view_recommendations'",
+                            "targetPage": "ViewRecommendations"
+                        },
+                        {
+                            "condition": "intent == 'search_jobs'",
+                            "targetPage": "SearchJobs"
+                        },
+                        {
+                            "condition": "intent == 'update_profile'",
+                            "targetPage": "ManualProfile_Start"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "ViewApplications",
+                    "displayName": "View Applications",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "Loading your applications..."
+                            }
+                        ],
+                        "webhook": {
+                            "call": "get_candidate_applications",
+                            "description": "Fetch candidate applications"
+                        }
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "event == 'applications_loaded'",
+                            "targetPage": "ShowApplications"
+                        },
+                        {
+                            "condition": "event == 'no_applications'",
+                            "targetPage": "NoApplicationsFound"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "ShowApplications",
+                    "displayName": "Show Applications",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "Here's the status of your applications:\n{{session.params.applications_summary}}\n\nAnything else you'd like to do?",
+                                "buttons": [
+                                    {
+                                        "text": "Back to Menu 🏠",
+                                        "payload": "back_to_menu"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "intent == 'back_to_menu'",
+                            "targetPage": "ReturningCandidateMenu"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "NoApplicationsFound",
+                    "displayName": "No Applications Found",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "You haven't applied to any jobs yet. Would you like to see some recommendations?",
+                                "buttons": [
+                                    {
+                                        "text": "Yes, Show Me Jobs 💼",
+                                        "payload": "view_recommendations"
+                                    },
+                                    {
+                                        "text": "Back to Menu 🏠",
+                                        "payload": "back_to_menu"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "intent == 'view_recommendations'",
+                            "targetPage": "ViewRecommendations"
+                        },
+                        {
+                            "condition": "intent == 'back_to_menu'",
+                            "targetPage": "ReturningCandidateMenu"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "ViewRecommendations",
+                    "displayName": "View Recommendations",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "Finding the best jobs for you..."
+                            }
+                        ],
+                        "webhook": {
+                            "call": "get_recommended_jobs",
+                            "description": "Fetch recommended jobs"
+                        }
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "event == 'jobs_loaded'",
+                            "targetPage": "ShowRecommendations"
+                        },
+                        {
+                            "condition": "event == 'no_jobs_found'",
+                            "targetPage": "NoJobsFound"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "ShowRecommendations",
+                    "displayName": "Show Recommendations",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "Here are some jobs we think you'll love:\n{{session.params.recommended_jobs}}\n\nWould you like to see more jobs or do something else?",
+                                "buttons": [
+                                    {
+                                        "text": "See More Jobs 🔄",
+                                        "payload": "view_recommendations"
+                                    },
+                                    {
+                                        "text": "Back to Menu 🏠",
+                                        "payload": "back_to_menu"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "intent == 'view_recommendations'",
+                            "targetPage": "ViewRecommendations"
+                        },
+                        {
+                            "condition": "intent == 'back_to_menu'",
+                            "targetPage": "ReturningCandidateMenu"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "NoJobsFound",
+                    "displayName": "No Jobs Found",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "We're still building your perfect job list. Check back soon or update your profile for better matches!",
+                                "buttons": [
+                                    {
+                                        "text": "Update Profile ✏️",
+                                        "payload": "update_profile"
+                                    },
+                                    {
+                                        "text": "Back to Menu 🏠",
+                                        "payload": "back_to_menu"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "intent == 'update_profile'",
+                            "targetPage": "ManualProfile_Start"
+                        },
+                        {
+                            "condition": "intent == 'back_to_menu'",
+                            "targetPage": "ReturningCandidateMenu"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "SearchJobs",
+                    "displayName": "Search Jobs",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "You can explore more opportunities on our website: https://upreak.com\n\nAnything else?",
+                                "buttons": [
+                                    {
+                                        "text": "Back to Menu 🏠",
+                                        "payload": "back_to_menu"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "intent == 'back_to_menu'",
+                            "targetPage": "ReturningCandidateMenu"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "ReturningRecruiterMenu",
+                    "displayName": "Returning Recruiter Menu",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "Welcome back! What would you like to do today?",
+                                "buttons": [
+                                    {
+                                        "text": "Post a New Job 📝",
+                                        "payload": "post_job"
+                                    },
+                                    {
+                                        "text": "View Job Posts 📋",
+                                        "payload": "view_posts"
+                                    },
+                                    {
+                                        "text": "Check Candidate Queries 💬",
+                                        "payload": "check_queries"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "intent == 'post_job'",
+                            "targetPage": "PostJobForm"
+                        },
+                        {
+                            "condition": "intent == 'view_posts'",
+                            "targetPage": "ViewJobPosts"
+                        },
+                        {
+                            "condition": "intent == 'check_queries'",
+                            "targetPage": "CheckQueries"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "PostJobForm",
+                    "displayName": "Post Job Form",
+                    "form": {
+                        "parameters": [
+                            {
+                                "name": "job_title",
+                                "entityType": "@sys.any",
+                                "required": true,
+                                "prompts": [
+                                    "What's the job title? Example: Senior Frontend Developer"
+                                ]
+                            },
+                            {
+                                "name": "job_location",
+                                "entityType": "@sys.any",
+                                "required": true,
+                                "prompts": [
+                                    "Where is this position located? Example: Remote / New York, NY"
+                                ]
+                            },
+                            {
+                                "name": "job_description",
+                                "entityType": "@sys.any",
+                                "required": true,
+                                "prompts": [
+                                    "Provide a brief description of the role."
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "form.valid",
+                            "targetPage": "JobPostedSuccess"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "JobPostedSuccess",
+                    "displayName": "Job Posted Success",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "Great! Your job posting for '{{session.params.job_title}}' has been created successfully. 🎉",
+                                "buttons": [
+                                    {
+                                        "text": "Post Another Job 📝",
+                                        "payload": "post_job"
+                                    },
+                                    {
+                                        "text": "Back to Menu 🏠",
+                                        "payload": "back_to_menu"
+                                    }
+                                ]
+                            }
+                        ],
+                        "webhook": {
+                            "call": "save_job_posting",
+                            "description": "Save job to database"
+                        }
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "intent == 'post_job'",
+                            "targetPage": "PostJobForm"
+                        },
+                        {
+                            "condition": "intent == 'back_to_menu'",
+                            "targetPage": "ReturningRecruiterMenu"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "ViewJobPosts",
+                    "displayName": "View Job Posts",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "You can view and manage all your job posts on our website: https://upreak.com/recruiter/dashboard",
+                                "buttons": [
+                                    {
+                                        "text": "Back to Menu 🏠",
+                                        "payload": "back_to_menu"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "intent == 'back_to_menu'",
+                            "targetPage": "ReturningRecruiterMenu"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "CheckQueries",
+                    "displayName": "Check Queries",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "You have no new candidate queries at the moment. We'll notify you when someone reaches out!",
+                                "buttons": [
+                                    {
+                                        "text": "Back to Menu 🏠",
+                                        "payload": "back_to_menu"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "intent == 'back_to_menu'",
+                            "targetPage": "ReturningRecruiterMenu"
+                        }
+                    ]
+                },
+                {
+                    "pageId": "DefaultFallback",
+                    "displayName": "Default Fallback",
+                    "entryFulfillment": {
+                        "messages": [
+                            {
+                                "text": "Sorry, I didn't get that. Could you please select one of the options below?"
+                            }
+                        ]
+                    },
+                    "transitionRoutes": [
+                        {
+                            "condition": "intent == 'help'",
+                            "targetPage": "StartPage"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
